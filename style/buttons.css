@@ -1,0 +1,299 @@
+.btn_to_signup_page {
+    height: 19px;
+    width: 59px;
+    border-radius: 8px;
+    border: 0;
+    background-color: rgb(42, 54, 71);
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 15px 16px;
+    text-decoration: none;
+}
+
+.btn_to_signup_page:hover {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #29ABE2;
+    box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.02);
+}
+
+.login_btn {
+    height: 48px;
+    width: 110px;
+    border-radius: 8px;
+    border: 0;
+    background-color: rgb(42, 54, 71);
+    color: white;
+    padding: 15px 24px;
+    font-weight: 700;
+    font-size: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_btn:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.02);
+}
+
+.guest_login_btn {
+    height: 16px;
+    border-radius: 8px;
+    border: 1px solid rgb(42, 54, 71);
+    background-color: white;
+    padding: 15px 24px;
+    color: rgb(42, 54, 71);
+    font-weight: 700;
+    font-size: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.guest_login_btn:hover {
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid #29ABE2;
+    color: #29ABE2;
+    box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.02);
+}
+
+.signup_btn {
+    width: 126px;
+    height: 55px;
+    border-radius: 8px;
+    padding: 15px 24px;
+    border: 0;
+    background-color: rgb(42, 54, 71);
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    font-weight: 700;
+    font-size: 21px;
+}
+
+.signup_btn:hover {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #29ABE2;
+    box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.02);
+}
+
+.signup_btn:disabled {
+    cursor: unset;
+    background-color: rgb(42, 54, 71);
+}
+
+.check_box_btn {
+    width: 24px;
+    background-image: url(../assets/icons/Check_button.svg);
+    height: 24px;
+    background-repeat: no-repeat;
+}
+
+.check_box_btn:hover {
+    background-image: url(../assets/icons/subtask_todo_hover.svg) !important;
+    cursor: pointer;
+}
+
+.checked_box {
+    background-image: url(../assets/icons/subtask_done.svg) !important;
+}
+
+.checked_box:hover {
+    background-image: url(../assets/icons/subtask_done_hover.svg) !important;
+}
+
+.button_clear_task {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    width: 110px;
+    height: 56px;
+    padding: 16px;
+    font-size: 20px;
+    line-height: 24px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: #2A3647;
+    color: #2A3647;
+    transition: all 0.3s ease;
+
+}
+
+.button_clear_task:hover {
+    color: #29ABE2;
+    border-color: #29ABE2;
+    height: 58px; /* Vergrößert den Button nach unten */
+
+}
+
+.button_clear_task:hover img {
+    color: #29ABE2;
+    border-color: #29ABE2;
+    filter: invert(50%) sepia(100%) saturate(200%) hue-rotate(165deg) brightness(100%) contrast(100%);
+
+}
+
+.button_create_task {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    width: 183px;
+    height: 56px;
+    padding: 16px;
+    background-color: #2A3647;
+    color: white;
+    font-size: 20px;
+    line-height: 24px;
+    border-radius: 10px;
+    border: 1px solid;
+    box-shadow: rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    pointer-events: none;
+    opacity: 0.5;
+
+
+    img {
+        background-color: #2A3647;
+    }
+}
+
+.button_create_task:hover {
+    background-color: #29ABE2;
+    img {
+        background-color: #29ABE2;
+    }
+}
+
+
+
+button:hover {
+    cursor: pointer;
+}
+
+
+.prio_buttons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:5px;
+    button {
+        padding: 16px 10px 16px 10px;
+        height: 56px;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        line-height: 24px;
+        border-radius: 10px;
+        border: 0.1px solid;
+        border-color: #D1D1D1;
+    }
+}
+
+
+.go_back_btn {
+    width: 32px;
+    height: 32px;
+}
+
+.go_back_btn:hover {
+    cursor: pointer;
+    background-color: #EEEEEE;
+    border-radius: 50%;
+}
+
+.go_back_btn_help {
+    width: 37px;
+    height: 37px;
+}
+
+.go_back_btn_help:hover {
+    cursor: pointer;
+    background-color: #EEEEEE;
+    border-radius: 50%;
+}
+
+.add_task_btn {
+    height: 48px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: #2A3647;
+    font-weight: 700;
+    color: white;
+    font-size: 21px;
+}
+
+.add_task_btn:hover {
+    cursor: pointer;
+    background-color: #29ABE2;
+    border: 1px solid #29ABE2;
+    box-shadow: 0 4px 4px 0px #00000040;
+}
+
+.successful_signin_btn {
+    width: 312px;
+    height: 74px;
+    box-shadow: 0 0 4px 0px rgb(0, 0, 0, 0.01);
+    background-color: #2A3647;
+    border-radius: 20px;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    bottom: 65px;
+    left: calc(50vw - 156px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    text-decoration: none;
+}
+
+@keyframes signedUp {
+    from {bottom: 0;}
+    to {top: calc(50vh + 37px ); }
+}
+
+
+
+.delete_btn_overlay_board:hover {
+    cursor: pointer;
+}
+
+
+.edit_btn_overlay_board:hover {
+    cursor: pointer;
+}
+
+.close_btn_overlay:hover {
+    cursor: pointer;
+}
+
+.disable {
+    pointer-events: none;
+}
+
+.close_btn_overlay {
+    width: 13.5px !important;
+    height: 13.5px !important;
+    padding: 9.25px 9.25px !important;
+}
+
+.back_icon {
+    width: 26px;
+    filter: grayscale(1);
+}
+
+.back_icon:hover {
+    cursor: pointer;
+}

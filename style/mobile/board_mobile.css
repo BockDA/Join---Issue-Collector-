@@ -1,0 +1,297 @@
+@media (max-width: 1462px) {
+    .board_table_content{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .board_header{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+
+
+
+@media(max-width: 1370px) {
+    .content_right{
+        width: calc(100vw - 232px);
+    }
+    .navbar_seperator{
+        right: 0;
+    }
+    .headline_logo_user_sign_in {
+        padding-right: 32px;
+    }
+    .headline{
+        width: unset;
+    }
+    .main_content{
+        width: 100%;
+    }
+    .board_table_content{
+        flex-direction: column;
+        align-items: center;
+        padding: 0 16px;
+    }
+    .board_header{
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
+    .board_content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 64px;
+        width: unset;
+    }
+    .board_content_box{
+        min-height: auto !important;
+        overflow-y: auto;
+        scrollbar-color: rgb(167, 168, 188) transparent;
+    }
+    .add_task_btn{
+        width: 166px;
+    }
+    .board_category_header{
+        width: 100%;
+    }
+    .heading_mobile_div{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+    .Board_description_text{
+        font-size: 27px;
+    }
+    .board_table{
+        padding-top: 24px;
+        width: 100%;
+    }
+    .add_task_icon{
+        display: none;
+    }
+    .add_task_icon_mobile{
+        display: unset;
+    }
+    .add_task_icon_mobile:hover{
+        cursor: pointer;
+        filter: invert(56%) sepia(99%) saturate(880%) hue-rotate(168deg) brightness(93%) contrast(98%);
+    }
+    .board_description_box{
+        width: 100%;
+    }
+    .board_content_colums_cards {
+        flex-direction: row;
+        width: fit-content;
+        width: 100%;
+    }
+    .no_tasks{
+        width: 100%;
+    }
+}
+
+@media (max-width: 1180px) {
+    .addTask_overlay{
+        width: 445px;
+        position: unset;
+    }
+}
+
+@media(max-width: 1164px) {
+    .board_content{
+        padding: 0 64px;
+        align-items: flex-start;
+    }
+   
+    .board_header{
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 100%;
+        padding-top: 48px;
+        gap: 16px;
+    }
+    .heading_mobile_div{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+    .add_task_mobile{
+        background-color: #2A3647;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .add_task_mobile:hover {
+        cursor: pointer;
+        background-color: #29ABE2;
+    }
+    .add_task_btn{
+        display: none;
+    }
+    .add_icon_board {
+        width: 20px;
+        display: block;
+    }
+    .input_board{
+        width: 362px;
+    }
+    
+    .inputfield_board{
+        width: 312px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .content_right{
+        width: 100vw;
+    }
+    .board_table_content{
+        height: calc(100vh - 373.5px);
+    }
+    .board_table_content{
+        padding: 0;
+    }
+    .nav_mobile{
+        z-index: 99;
+    }
+    .board_heading {
+        font-size: 47px;
+    }
+    .change_category_btn {
+        display: block;
+    }
+    .change_category_btn:hover {
+        cursor: pointer;
+    }
+    .div_category_menu {
+        transition: all 250ms ease-in-out;
+    }
+    .bg_category {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 98;
+    }
+    .bg_category:hover {
+        cursor: pointer;
+    }
+    .category_menu{
+        justify-content: space-evenly;
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 106px;
+        padding: 16px 8px;
+        background-color: rgba(42, 54, 71);
+        border-radius: 0 20px 20px 20px;
+        box-shadow: 0 0 5px 3px rgb(0, 0, 0, 0.04);
+    }
+    .category_menu:hover {
+        cursor: default;
+    }
+    .div_category_options{
+        display: flex;
+        gap: 8px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 2px;
+        padding-right: 5px;
+        border-radius: 8px;
+        width: 100%;
+    }
+    .div_category_options:hover{
+        cursor: pointer;
+        background-color: #091931;
+    }
+    .category_menu_text {
+        font-size: 14px;
+        font-weight: 500;
+        color: white;
+    }
+    .category_menu_heading {
+        font-size: 16px;
+        font-weight: 700;
+        color: white;
+    }
+}
+@media (max-width: 600px) {
+    .card_overlay_board{
+        padding: 32px 24px;
+        width: 348px;
+    }
+    .technical_task_overlay {
+        min-width: 113px !important;
+    }
+    .task_category_overlay{
+        height: 19px !important;
+        width: 81px !important;
+        font-size: 16px !important;
+        padding: 4px 16px !important;
+    }
+    .task_description_overlay{
+        font-size: 16px;
+    }
+    .font_19{
+        font-size: 16px;
+    }
+    .font_weight_700{
+        font-weight: 700;
+    }
+    .addTask_overlay{
+        width: 348px;
+    }
+}
+
+@media (max-width: 680px) {
+    .board_content{
+        width: unset;
+    }
+    .board_table{
+        width: 100%;
+    }
+    .input_board{
+        width: unset;
+        justify-content: space-between;
+    }
+    .input_mobile{
+        width: 100%;
+    }
+    .board_options{
+        width: 100%;
+    }
+    .inputfield_board {
+        width: 280px;
+    }
+}
+@media(max-width: 477px){
+    .board_content{
+        padding: 0 16px;
+    }
+    .mobile_join_logo{
+        left: 16px;
+    }
+   
+}
+@media(max-width: 375px){
+    .inputfield_board {
+        width: 180px;
+    }
+    .card_overlay_board{
+        padding: 16px 14px;
+        width: 280px;
+    }
+    .addTask_overlay{
+        width: 280px;
+    }
+}
+
+
+

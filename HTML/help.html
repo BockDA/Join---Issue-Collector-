@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.svg">
+    <link rel="stylesheet" href="../style/navbar.css">
+    <link rel="stylesheet" href="../style/buttons.css">
+    <link rel="stylesheet" href="../style/color.css">
+    <link rel="stylesheet" href="../style/fonts.css">
+    <link rel="stylesheet" href="../style/board/board.css">
+    <link rel="stylesheet" href="../style/board/board_overlay.css">
+    <link rel="stylesheet" href="../style/help.css">
+    <link rel="stylesheet" href="../style/mobile/policy_mobile.css">
+    <link rel="stylesheet" href="../style/mobile/navbar_mobile.css">
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/policy_legalnotice/policy_legal_notices.js"></script>
+
+</head>
+
+<body onload=" renderInitials()">
+    <div class="full_content">
+        <nav class="nav mobile_display_none">
+            <div class="nav-icon-capa2">
+                <img src="../assets/icons/capa_2.svg">
+            </div>
+
+            <div class="div_nav_icons">
+                <a class="navbar_icon" href="../HTML/summary.html">
+                    <img src="../assets/icons/summary.svg">
+                </a>
+                <a class="navbar_icon"  href="../HTML/task.html">
+                    <img src="../assets/icons/add_task.svg">
+                </a>
+                <a class="navbar_icon"  href="../HTML/board.html">
+                    <img src="../assets/icons/board.svg">
+                </a>
+                <a class="navbar_icon" href="../HTML/contacts.html">
+                    <img src="../assets/icons/contacts.svg">
+                </a>
+            </div>
+            <div class="div_impressum">
+                <a class="nav_impressum" href="../HTML/policy.html">
+                    <span>Privacy Policy</span>
+                </a>
+                <a class="nav_impressum" href="../HTML/legal_notice.html">
+                    <span>Legal notice</span>
+                </a>
+            </div>
+        </nav>
+
+        <section class="content_right">
+
+            <div class="headline">
+                <div class="mobile_join_logo desktop_display_none mobile_display_flex">
+                    <img src="../assets/icons/mobile_capa.svg">
+                </div>
+                <span class="headline_title font20">Kanban Project Management Tool</span>
+                <div id="logo_user_sign_in" onclick="toggleMenu()" class="headline_logo_user_sign_in">
+                </div>
+                <seperator class="navbar_seperator"></seperator>
+            </div>
+
+            <div class="main_content">
+
+                <div class="div_submenu submenu_closed" id="submenu_toogle">
+                    <div class="submenu">
+                        <a href="../HTML/legal_notice.html">Legal Notice</a>
+                        <a href="../HTML/policy.html">Privacy Policy</a>
+                        <a href="../index.html">Log out</a>
+                    </div>
+                </div>
+
+                <div class="help_content">
+                    <div class="header_help">
+                        <h1 class="heading_help">Help</h1>
+                        <img onclick="goBack()" class="go_back_btn_help" src="../assets/icons/arrow-left-line.svg" alt="arrow back">
+                    </div>
+                    <div class="help_text">
+                        <span class="text">
+                            Welcome to the help page for <span class="blue">Join</span>, your guide to using our kanban
+                            project management tool. Here, we'll provide an overview of what <span
+                                class="blue">Join</span>
+                            is, how it can benefit you, and how to use it.
+                        </span>
+                        <div class="explanation_join">
+                            <h2 class="subheading_help">What is Join?</h2>
+                            <span>
+                                <span class="blue">Join</span> is a kanban-based project management tool designed and
+                                built
+                                by a group of dedicated students as part of their web development bootcamp at the
+                                Developer
+                                Akademie.
+                                <br><br>
+                                Kanban, a Japanese term meaning "billboard", is a highly effective method to visualize
+                                work,
+                                limit work-in-progress, and maximize efficiency (or flow). <span
+                                    class="blue">Join</span>
+                                leverages the principles of kanban to help users manage their tasks and projects in an
+                                intuitive, visual interface.
+                                <br><br>
+                                It is important to note that <span class="blue">Join</span> is designed as an
+                                educational
+                                exercise and is not intended for extensive business usage. While we strive to ensure the
+                                best possible user experience, we cannot guarantee consistent availability, reliability,
+                                accuracy, or other aspects of quality regarding <span class="blue">Join</span>.
+
+                            </span>
+
+
+                        </div>
+
+                        <h2 class="subheading_help">How to use it?</h2>
+                        <div class="explanation_join">
+
+                            <span>Here is a step-by-step guide on how to use <span class="blue">Join</span>:</span>
+                            <div class="steps_to_use_join">
+                                <span class="subheading_help">1.</span>
+                                <div class="step_to_use_join">
+                                    <span class="subheading2_help">Exploring the Board</span>
+                                    <span>When you log in to <span class="blue">Join</span>, you'll find a default
+                                        board.
+                                        This board represents your project and contains four default lists: "To Do", "In
+                                        Progress", “Await feedback” and "Done".</span>
+                                </div>
+                            </div>
+                            <div class="steps_to_use_join">
+                                <span class="subheading_help">2.</span>
+                                <div class="step_to_use_join">
+                                    <span class="subheading2_help">Creating Contacts</span>
+                                    <span>In <span class="blue">Join</span>, you can add contacts to collaborate on your
+                                        projects. Go to the "Contacts" section, click on "New contact", and fill in the
+                                        required information. Once added, these contacts can be assigned tasks and they
+                                        can
+                                        interact with the tasks on the board.</span>
+                                </div>
+                            </div>
+                            <div class="steps_to_use_join">
+                                <span class="subheading_help">3.</span>
+                                <div class="step_to_use_join">
+                                    <span class="subheading2_help">Adding Contacts</span>
+                                    <span>Now that you've added your contacts, you can start adding cards. Cards
+                                        represent
+                                        individual tasks. Click the "+" button under the appropriate list to create a
+                                        new
+                                        card. Fill in the task details in the card, like task name, description, due
+                                        date,
+                                        assignees, etc.</span>
+                                </div>
+                            </div>
+                            <div class="steps_to_use_join">
+                                <span class="subheading_help">4.</span>
+                                <div class="step_to_use_join">
+                                    <span class="subheading2_help">Moving Cards</span>
+                                    <span>As the task moves from one stage to another, you can reflect that on the board
+                                        by
+                                        dragging and dropping the card from one list to another.</span>
+                                </div>
+                            </div>
+                            <div class="steps_to_use_join">
+                                <span class="subheading_help">5.</span>
+                                <div class="step_to_use_join">
+                                    <span class="subheading2_help">Deleting Cards</span>
+                                    <span>Once a task is completed, you can either move it to the "Done" list or delete
+                                        it.
+                                        Deleting a card will permanently remove it from the board. Please exercise
+                                        caution
+                                        when deleting cards, as this action is irreversible.
+                                        <br><br>
+                                        Remember that using <span class="blue">Join</span> effectively requires
+                                        consistent
+                                        updates from you and your team to ensure the board reflects the current state of
+                                        your project.
+                                        <br><br>
+                                        Have more questions about <span class="blue">Join</span>? Feel free to contact
+                                        us at
+                                        [Your Contact Email]. We're here to help you!
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <h2 class="subheading_help" style="padding: 15px 0;">Enjoy using Join!</h2>
+                    </div>
+                </div>
+            </div>
+            <nav class="nav_mobile">
+                <div class="mobile_navbar_icon mobile_display_flex" onclick="openPage('../HTML/summary.html')">
+                    <img src="../assets/icons/mobile_summary.svg">
+                </div>
+                <div class="mobile_navbar_icon mobile_display_flex"  onclick="openPage('../HTML/task.html')">
+                    <img src="../assets/icons/mobile_task.svg">
+                </div>
+                <div class="mobile_navbar_icon mobile_display_flex"  onclick="openPage('../HTML/board.html')">
+                    <img src="../assets/icons/mobile_board.svg">
+                </div>
+                <div class="mobile_navbar_icon mobile_display_flex"  onclick="openPage('../HTML/contacts.html')">
+                    <img src="../assets/icons/mobile_contact.svg">
+                </div>
+            </nav>
+        </section>
+
+    </div>
+</body>
+
+</html>
+
+</html>

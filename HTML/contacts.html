@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.svg">
+    <link rel="stylesheet" href="../style/navbar.css">
+    <link rel="stylesheet" href="../style/buttons.css">
+    <link rel="stylesheet" href="../style/color.css">
+    <link rel="stylesheet" href="../style/fonts.css">
+    <link rel="stylesheet" href="../style/board/board.css">
+    <link rel="stylesheet" href="../style/board/board_overlay.css">
+    <link rel="stylesheet" href="../style/contact/contact.css">
+    <link rel="stylesheet" href="../style/contact/contactCard.css">
+    <link rel="stylesheet" href="../style/contact/contactMobile.css">
+    <link rel="stylesheet" href="../style/mobile/navbar_mobile.css">
+    <link rel="stylesheet" href="../style/contact/contactsresponsive.css">
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/contact/contactFirebase.js"></script>
+    <script src="../scripts/contact/contactMain.js"></script>
+    <script src="../scripts/contact/contactTemplate.js"></script>
+    <script src="../scripts/contact/validateContacts.js"></script>
+    <script src="../scripts/contact/contactMobile.js"></script>
+    <script src="../scripts/policy_legalnotice/policy_legal_notices.js"></script>
+</head>
+
+<body onload=" renderInitials(); getUsersList()">
+    <div class="full_content" >
+        <nav class="nav mobile_display_none">
+            <div class="nav-icon-capa2">
+                <img src="../assets/icons/capa_2.svg">
+            </div>
+
+            <div class="div_nav_icons">
+                <a class="navbar_icon" href="../HTML/summary.html">
+                    <img src="../assets/icons/summary.svg">
+                </a>
+                <a class="navbar_icon" href="../HTML/task.html">
+                    <img src="../assets/icons/add_task.svg">
+                </a>
+                <a class="navbar_icon" href="../HTML/board.html">
+                    <img src="../assets/icons/board.svg">
+                </a>
+                <div class="navbar_current_icon">
+                    <img src="../assets/icons/contacts.svg">
+                </div>
+            </div>
+
+            <div class="div_impressum">
+                <a class="nav_impressum" href="../HTML/policy.html">
+                    <span>Privacy Policy</span>
+                </a>
+                <a class="nav_impressum" href="../HTML/legal_notice.html">
+                    <span>Legal notice</span>
+                </a>
+            </div>
+        </nav>
+
+        <section class="content_right">
+
+            <div class="headline">
+                <div class="mobile_join_logo desktop_display_none mobile_display_flex">
+                    <img src="../assets/icons/mobile_capa.svg">
+                </div>
+                <span class="headline_title font20">Kanban Project Management Tool</span>
+                <a class="headline_logo_help mobile_display_none" href="../HTML/help.html">
+                    <img src="../assets/icons/help.svg" alt="">
+                </a>
+                <div id="logo_user_sign_in" onclick="toggleMenu()" class="headline_logo_user_sign_in">
+                </div>
+                <seperator class="navbar_seperator"></seperator>
+            </div>
+                <div class="main_content">
+                    <!--  CSS Datei contact.css-->
+                    <div class="div_submenu submenu_closed" id="submenu_toogle">
+                        <div class="submenu">
+                            <a id="mobile_help_link" href="../HTML/help.html">Help</a>
+                            <a href="../HTML/legal_notice.html">Legal Notice</a>
+                            <a href="../HTML/policy.html">Privacy Policy</a>
+                            <a onclick="logout()" href="../index.html">Log out</a>
+                        </div>
+                    </div>
+                    <div class="contact_Card" id="contact_Card">
+                        <div class="contact_List_Frame">
+                            <div class="contact_scroll">
+                                <div class="contac_List_Sec_Header">
+                                    <button class="contact_Add_btn btn_hover_blue" onclick="openContactBig()">
+                                        <p>Add new Contact</p>
+                                        <img src="../assets/icons/person_add.svg">
+                                    </button>
+                                </div>
+                                <div class="contact_Entry">
+                                    <!--Contact Card START-->
+                                    <div class="contact_Line">
+                                    </div>
+                                    <div id="letter">
+                                        <div id="user-list">
+
+                                        </div>
+                                    </div>
+
+
+                                    <!--Contact Card ENDE-->
+                                    <div class="button_mobile_add">
+                                        <img src="../assets/icons/Secondary mobile contact V1.png"
+                                            alt="add-button-mobile" class="img_mobile_add_button"
+                                            onclick="openContactBig()">
+                                    </div>
+                                    <div class="contact_Line">
+                                        <hr>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="contact_Detail contact_Detaile_mobile" >
+                            <div class="contact_Detail_Header">
+                                <p class="contact_header_1">Contacts</p>
+                                <div class="line_Vertikal"></div>
+                                <p class="contact_header_2">Better with a team</p>
+                                <img src="../assets/icons/arrow-left-line.png" alt="" class="arrow_back_mobile"
+                                    onclick="closeContactBigMiddleMobil(), closeWindowMobile(), clearInputsAndClose()">
+
+                            </div>
+                            <div id="contact-big-middle" >
+
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+                    <div id="mobile_window"></div>
+
+
+                    <!--  CSS Datei contactCarrd.css    sichtbar mit flex-->
+                    <div id="background_card" onclick="closeContactBig(event)" >
+
+                    <div class="card_contact" id="content-card-big">
+                        <div class="contact_Card_Frame" id="headline">
+
+                        </div>
+                        <div class="contact_Card_Input_Frame_one">
+                            <div class="contact_Card_Close_btn">
+                                <img class="contact_Card_Close_img" src="../assets/icons/close.svg"
+                                onclick="clearInputsAndClose(); closeEditMobile();">
+                            </div>
+                            <div class="contact_Card_abbreviation_Frame">
+                                <div class="contact_Card_abbreviation" id="picture-edit">
+                                    <img src="../assets/icons/Group 13.png" alt="pic_edit" class="pic_edit">
+                                </div>
+                                <div class="contact_Card_Input_Frame_two ">
+                                    <div class="contact_Card_Input">
+                                        <input type="text" placeholder="Name" id="name_input"
+                                            oninput="updateCancelButton()" required>
+                                        <img src="../assets/icons/person.svg">
+                                    </div>
+                                    <span id="name_error" class="error_message"></span>
+
+                                    <div class="contact_Card_Input">
+                                        <input type="email" placeholder="Email" id="email_input"
+                                            oninput="updateCancelButton()" required>
+                                        <img src="../assets/icons/mail.svg">
+                                    </div>
+                                    <span id="email_error" class="error_message"></span>
+
+                                    <div class="contact_Card_Input">
+                                        <input type="tel" placeholder="Phone" id="tel_input" required
+                                            oninput="updateCancelButton()"  >
+                                        <img src="../assets/icons/call.svg">
+                                    </div>
+                                    <span id="tel_error" class="error_message"></span>
+
+                                    <div class="contact_Card_button">
+                                        <button class="button_create_contact_mobile" onclick="addContact()"
+                                            id="button_create_mobile">Create Contact <img
+                                                src="../assets/icons/check.svg" alt=""></button>
+
+                                        <button class="contact_Card_button1 btn_hover_white" onclick="cancelStatus()"
+                                            id="cancel-button">
+                                            Cancel
+                                        </button>
+                                        <button class="contact_Card_button2 btn_hover_blue" onclick="addContact()"
+                                            id="save-button">
+                                            <p>Save</p>
+                                            <img src="../assets/icons/check.svg">
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div_submenu submenu_closed" id="submenu_toogle">
+                        <div class="submenu">
+                            <a href="../HTML/legal_notice.html">Legal Notice</a>
+                            <a href="../HTML/policy.html">Privacy Policy</a>
+                            <a onclick="logout()" href="../index.html">Log out</a>
+                        </div>
+                    </div>
+                </div>
+                <nav class="nav_mobile">
+                    <div class="mobile_navbar_icon mobile_display_flex" onclick="openPage('../HTML/summary.html')">
+                        <img src="../assets/icons/mobile_summary.svg">
+                    </div>
+                    <div class="mobile_navbar_icon mobile_display_flex" onclick="openPage('../HTML/task.html')">
+                        <img src="../assets/icons/mobile_task.svg">
+                    </div>
+                    <div class="mobile_navbar_icon mobile_display_flex" onclick="openPage('../HTML/board.html')">
+                        <img src="../assets/icons/mobile_board.svg">
+                    </div>
+                    <div class="mobile_navbar_icon mobile_display_flex">
+                        <img src="../assets/icons/mobile_current_contact.svg">
+                    </div>
+                </nav>
+        </section>
+    </div>
+    </div>
+   
+
+</body>
+
+</html>

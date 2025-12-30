@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.svg">
+    <link rel="stylesheet" href="../style/navbar.css">
+    <link rel="stylesheet" href="../style/mobile/navbar_mobile.css">
+    <link rel="stylesheet" href="../style/buttons.css">
+    <link rel="stylesheet" href="../style/color.css">
+    <link rel="stylesheet" href="../style/fonts.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/board/board.css">
+    <link rel="stylesheet" href="../style/board/board_overlay.css">
+    <link rel="stylesheet" href="../style/mobile/board_mobile.css">
+    <link rel="stylesheet" href="../style/task/addTaskTemplateEdit.css"> 
+    <link rel="stylesheet" href="../style/mobile/task_mobile_edit.css">
+    <link rel="stylesheet" href="../style/task/task_overlay.css"> 
+    <link rel="stylesheet" href="../style/mobile/tast_mobile_overlay.css"> 
+  
+    
+    <script src="../scripts/board/board.js"></script>
+    <script src="../scripts/board/board_cards.js"></script>
+    <script src="../scripts/board/board_overlay.js"></script>
+    <script src="../scripts/board/board_template.js"></script>
+    <script src="..//scripts/task/taskAddTaskOverlay.js"></script>
+    <script src="..//scripts/task/taskEdit.js"></script>
+    <script src="../scripts/task/taskMain.js"></script>
+    <script src="../scripts/task/taskRender.js"></script>
+    <script src="../scripts/task/tastTemplate.js"></script>
+    <script src="../scripts/task/taskFirebase.js"></script>
+   <script src="..//scripts/script.js"></script> 
+  <script src="..//scripts/policy_legalnotice/policy_legal_notices.js"></script>
+</head>
+
+
+<body onload="loadTaskData();renderInitials();">
+    <div id="full_content" class="full_content">
+        <nav class="nav mobile_display_none">
+            <div class="nav-icon-capa2">
+                <img src="../assets/icons/capa_2.svg">
+            </div>
+
+            <div class="div_nav_icons">
+                <a class="navbar_icon" href="../HTML/summary.html">
+                    <img src="../assets/icons/summary.svg">
+                </a>
+                <a class="navbar_icon" href="../HTML/task.html">
+                    <img src="../assets/icons/add_task.svg">
+                </a>
+                <div class="navbar_current_icon" href="../HTML/board.html">
+                    <img src="../assets/icons/board.svg">
+                </div>
+                <a class="navbar_icon" href="../HTML/contacts.html">
+                    <img src="../assets/icons/contacts.svg">
+                </a>
+            </div>
+            <div class="div_impressum">
+                <a class="nav_impressum" href="../HTML/policy.html">
+                    <p>Privacy Policy</p>
+                </a>
+                <a class="nav_impressum" href="../HTML/legal_notice.html">
+                    <p>Legal notice</p>
+                </a>
+            </div>
+        </nav>
+
+        <section class="content_right">
+            <div class="headline">
+                <div class="mobile_join_logo desktop_display_none mobile_display_flex">
+                    <img src="../assets/icons/mobile_capa.svg">
+                </div>
+                <span class="headline_title font20">Kanban Project Management Tool</span>
+                <a class="headline_logo_help mobile_display_none" href="../HTML/help.html">
+                    <img src="../assets/icons/help.svg" alt="">
+                </a>
+                <div id="logo_user_sign_in" onclick="toggleMenu()" class="headline_logo_user_sign_in">
+                </div>
+                <seperator class="navbar_seperator"></seperator>
+            </div>
+
+            <div class="main_content">
+                <div class="board_content">
+                    <div class="div_submenu submenu_closed" id="submenu_toogle">
+                        <div class="submenu">
+                            <a id="mobile_help_link" href="../HTML/help.html">Help</a>
+                            <a href="../HTML/legal_notice.html">Legal Notice</a>
+                            <a href="../HTML/policy.html">Privacy Policy</a>
+                            <a onclick="logout()" href="../index.html">Log out</a>
+                        </div>
+                    </div>
+
+                    <div class="board_header">
+                        <div class="heading_mobile_div">
+                            <h1 class="board_heading">Board</h1>
+                            <div onclick="showAddTaskOverlay('toDo')" class="add_task_mobile"><img class="add_icon_board" src="../assets/icons/add_task_mobile.svg" alt="add task">
+                            </div>
+                        </div>
+                        <div class="board_options">
+                            <div class="input_mobile">
+                            <div id="input_board" class="input_board">
+                                <input onkeyup="startTyping()" id="inputfield_board" class="inputfield_board" type="text" placeholder="Find Task"
+                                    alt="input find task">
+                                <div id="search_icon" onclick="findTask()" class="input_icons">
+                                    <img class="seperator_icon" src="../assets/icons/seperator.png"
+                                        alt="seperator icon">
+                                    <img class="search_icon" src="../assets/icons/search.png" alt="search icon">
+                                </div>
+                                <div id="back_icon" onclick="refreshFoundResults()" class="input_icons d_none">
+                                    <img class="seperator_icon" src="../assets/icons/seperator.png"
+                                        alt="seperator icon">
+                                    <img class="back_icon" src="../assets/icons/arrow-left-line.svg" alt="back icon">
+                                </div>
+                            </div>
+                            <div id="no_element_found_alert" class="alert_box d_none">No Task has been found</div>
+                            </div>
+                            
+                             <button onclick="showAddTaskOverlay('toDo')" type="button" class="add_task_btn">Add task<img class="add_icon"
+                                    src="../assets/icons/add.svg" alt="add task"></button>
+                            </div>
+                    </div>
+                    <div class="board_table">
+                        <div class="board_table_content">
+                            
+                                <div class="board_description_box">
+                                    <div class="board_category_header">
+                                        <h2 class="Board_description_text">To do</h2>
+                                        <img onclick="showAddTaskOverlay('toDo')" class="add_task_icon" src="../assets/icons/plus button.png" alt="plus icon">
+                                        <img onclick="showAddTaskOverlay('toDo')" class="add_task_icon_mobile" src="../assets/icons/plus_button_mobile.svg" alt="plus icon">
+                                    </div>
+                                    <div class="board_content_box" ondrop="moveTo('toDo', event)" ondragover="allowDrop(event)" ondragenter="showDottedBox(event)" ondragleave="removeDottedBox(event)">
+                                        <div id="toDo" class="board_content_colums_cards"></div>
+                                    </div>
+                                </div>
+                               
+                                    <div class="board_description_box">
+                                        <div class="board_category_header">
+                                            <h2 class="Board_description_text">In progress</h2>
+                                            <img onclick="showAddTaskOverlay('inProgress')" class="add_task_icon" src="../assets/icons/plus button.png" alt="plus icon">
+                                            <img onclick="showAddTaskOverlay('inProgress')" class="add_task_icon_mobile" src="../assets/icons/plus_button_mobile.svg" alt="plus icon">
+                                        </div>
+                                        <div class="board_content_box" ondrop="moveTo('inProgress', event)" ondragover="allowDrop(event)" ondragenter="showDottedBox(event)" ondragleave="removeDottedBox(event)">
+                                        <div id="inProgress" class="board_content_colums_cards"></div>
+                                        </div>
+                                    </div>
+
+                               
+                                
+                                    <div class="board_description_box">
+                                        <div class="board_category_header">
+                                            <h2 class="Board_description_text">Await feedback</h2>
+                                            <img onclick="showAddTaskOverlay('awaitFeedback')" class="add_task_icon" src="../assets/icons/plus button.png" alt="plus icon">
+                                            <img onclick="showAddTaskOverlay('awaitFeedback')" class="add_task_icon_mobile" src="../assets/icons/plus_button_mobile.svg" alt="plus icon">
+                                        </div>
+                                        <div class="board_content_box" ondrop="moveTo('awaitFeedback', event)" ondragover="allowDrop(event)" ondragenter="showDottedBox(event)" ondragleave="removeDottedBox(event)">
+                                        <div id="awaitFeedback" class="board_content_colums_cards"></div>
+                                        </div>
+                                    </div>
+                                
+                                
+                                    <div class="board_description_box">
+                                        <div class="board_category_header">
+                                            <h2 class="Board_description_text">Done</h2>
+                                        </div>
+                                    <div class="board_content_box"  ondrop="moveTo('done', event)" ondragover="allowDrop(event)" ondragenter="showDottedBox(event)" ondragleave="removeDottedBox(event)">
+                                        <div id="done" class="board_content_colums_cards"></div>
+                                    </div>
+                                    </div>
+                                    
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    </section>
+    <nav class="nav_mobile">
+        <div class="mobile_navbar_icon mobile_display_flex" onclick="openPage('../HTML/summary.html')">
+            <img src="../assets/icons/mobile_summary.svg">
+        </div>
+        <div class="mobile_navbar_icon mobile_display_flex" onclick="openPage('../HTML/task.html')">
+            <img src="../assets/icons/mobile_task.svg">
+        </div>
+        <div class="mobile_navbar_icon mobile_display_flex">
+            <img src="../assets/icons/mobile_current_board.svg">
+        </div>
+        <div class="mobile_navbar_icon mobile_display_flex" onclick="openPage('../HTML/contacts.html')">
+            <img src="../assets/icons/mobile_contact.svg">
+        </div>
+    </nav>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.svg">
+    <link rel="stylesheet" href="../style/navbar.css">
+    <link rel="stylesheet" href="../style/buttons.css">
+    <link rel="stylesheet" href="../style/color.css">
+    <link rel="stylesheet" href="../style/fonts.css">
+    <link rel="stylesheet" href="../style/board/board.css">
+    <link rel="stylesheet" href="../style/board/board_overlay.css">
+    <link rel="stylesheet" href="../style/summary.css">
+    <link rel="stylesheet" href="../style/mobile/navbar_mobile.css">
+    <link rel="stylesheet" href="../style/mobile/summary_mobile.css">
+    <script src="../scripts/summary/guest_summary.js"></script>
+    <script src="../scripts/policy_legalnotice/policy_legal_notices.js"></script>
+
+</head>
+
+<body onload="fetchData()">
+    <div class="full_content">
+        <nav class="nav mobile_display_none">
+            <div class="nav-icon-capa2">
+                <img src="../assets/icons/capa_2.svg">
+            </div>
+
+            <div class="div_nav_icons">
+                <div class="navbar_current_icon">
+                    <img src="../assets/icons/summary.svg">
+                </div>
+                <a class="navbar_icon" href="../HTML/task.html">
+                    <img src="../assets/icons/add_task.svg">
+                </a>
+                <a class="navbar_icon" href="../HTML/board.html">
+                    <img src="../assets/icons/board.svg">
+                </a>
+                <a class="navbar_icon" href="../HTML/contacts.html">
+                    <img src="../assets/icons/contacts.svg">
+                </a>
+            </div>
+            <div class="div_impressum">
+                <a class="nav_impressum" href="../HTML/policy.html">
+                    <span>Privacy Policy</span>
+                </a>
+                <a class="nav_impressum" href="../HTML/legal_notice.html">
+                    <span>Legal notice</span>
+                </a>
+            </div>
+        </nav>
+
+        <section class="content_right">
+
+            <div class="headline">
+                <span class="headline_title font20">Kanban Project Management Tool</span>
+                <a class="headline_logo_help  mobile_display_none" href="../HTML/help.html">
+                    <img src="../assets/icons/help.svg" alt="">
+                </a>
+                <div class="headline_logo_user_sign_in">
+                    <div id="guest_logo_user_sign_in" onclick="toggleMenu()" class="user_logo">
+                        <span>G</span>
+                    </div>
+                </div>
+                <seperator class="navbar_seperator"></seperator>
+            </div>
+
+            <div class="main_content">
+                <div class="div_submenu submenu_closed" id="submenu_toogle">
+                    <div class="submenu">
+                        <a href="../HTML/legal_notice.html">Legal Notice</a>
+                        <a href="../HTML/policy.html">Privacy Policy</a>
+                        <a  onclick="logoutGuest()" href="../index.html">Log out</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="first-container">
+                <h1>Join 360</h1>
+                <hr class="hr_first_container">
+                <span>Key Metrics at a Glance</span>
+            </div>
+            <div class="content">
+                <div class="content-to-do">
+                    <div class="content-pen border-style" onclick="openPage('../HTML/board.html')">
+                        <img src="../assets/icons/pen.png" alt="pen" class="img-pen">
+                        <div class="text-pen">
+                            <span id="content_to_do" class="one-done"></span>
+                            <span class="text-to-do">To-do</span>
+                        </div>
+                    </div>
+                    <div class="content-success border-style" onclick="openPage('../HTML/board.html')">
+                        <img src="../assets/icons/success.png" alt="sucess" class="img-pen">
+                        <div class="text-pen">
+                            <span id="content_success" class="one-done"></span>
+                            <span class="text-to-do">Done</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-date border-style" onclick="openPage('../HTML/board.html')">
+                    <div class="content-date-div">
+                        <img src="../assets/icons/up.png" alt="Urgent" class="img-up">
+                        <div class="text-up">
+                            <span id="content_urgent" class="one-urgent"></span>
+                            <span class="text-urgent">Urgent</span>
+                        </div>
+                        <div class="line-between-div">
+                            <hr class="line-between">
+                        </div>
+                    </div>
+                    <div class="content-deadline">
+                        <div class="content-deadline-date">
+                            <span id="content_date_div" class="text"></span>
+                        </div>
+                        <div class="content-deadline-date-upcoming">
+                            <span class="text">Upcoming Deadline</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-task ">
+                    <div class="container-task-one border-style" onclick="openPage('../HTML/board.html')">
+                        <div class="task-text">
+                            <span id="content_task_in_board" class="task-text-big"></span>
+                            <span class="task-text-small">Tasks in Board</span>
+                        </div>
+                    </div>
+
+                    <div class="container-task-two border-style" onclick="openPage('../HTML/board.html')">
+                        <div class="task-text">
+                            <span id="content_task_in_progress" class="task-text-big"></span>
+                            <span class="task-text-small">Tasks In Progress</span>
+                        </div>
+                    </div>
+                    <div class="container-task-three border-style" onclick="openPage('../HTML/board.html')">
+                        <div class="task-text">
+                            <span id="content_awaiting_feedback" class="task-text-big text"></span>
+                            <span class="task-text-small text">Awaiting Feedback</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-morning">
+                <h3 id="content_welcome" class="titel-one"></h3></p><span class="titel-two">Guest</span>
+            </div>
+
+            <div class="mobile_container-morning">
+                <p id="mobie_content_welcome" class="mobile_titel-one"></p><span class="mobile_titel-two">Guest</span>
+            </div>
+
+            <nav class="nav_mobile">
+                <div class="mobile_navbar_icon mobile_display_flex">
+                    <img src="../assets/icons/mobile_current_summary.svg">
+                </div>
+                <div class="mobile_navbar_icon mobile_display_flex" onclick="openPage('../HTML/task.html')">
+                    <img src="../assets/icons/mobile_task.svg">
+                </div>
+                <div class="mobile_navbar_icon mobile_display_flex" onclick="openPage('../HTML/board.html')">
+                    <img src="../assets/icons/mobile_board.svg">
+                </div>
+                <div class="mobile_navbar_icon mobile_display_flex" onclick="openPage('../HTML/contacts.html')">
+                    <img src="../assets/icons/mobile_contact.svg">
+                </div>
+            </nav>
+    </section>
+    </div>
+</body>
+
+</html>
