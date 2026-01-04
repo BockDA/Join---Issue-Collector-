@@ -79,7 +79,6 @@ function showHelpIconMobile() {
     }
 }
 
-
 window.onresize = showHelpIconMobile;
 
 

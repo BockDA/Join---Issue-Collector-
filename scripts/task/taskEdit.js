@@ -255,7 +255,7 @@ function taskCreateTaskEdit() {
     if (contents.trim() == "") {
       return;
     } else {
-      DataSubTaskListEdit.push({ name: contents, status: "todo" });
+      DataSubTaskListEdit.push({ name: contents, status: "triage" });  // TODO: status geändert 
     }
   }
   subTaskClose();

@@ -15,6 +15,9 @@ function updateTaskBoard() {
  * This function deletes all task cards from the board and places an indicator that there are no tasks in the column
 */
 function emptyBoard() {
+    // TODO: Task müssen überarbeitet werden
+    document.getElementById("triage").innerHTML = getNoTasksCard("no_task_triage", "No tasks Triage");
+    document.getElementById("triage").innerHTML += getPlaceholder();
     document.getElementById("toDo").innerHTML = getNoTasksCard("no_task_toDo", "No tasks To do");
     document.getElementById("toDo").innerHTML += getPlaceholder();
     document.getElementById("inProgress").innerHTML = getNoTasksCard("no_task_inProgress", "No tasks In progress");
