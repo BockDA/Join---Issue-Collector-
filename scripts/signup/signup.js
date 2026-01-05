@@ -140,7 +140,8 @@ async function checkIfContactExists(email) {
  * @param {string} password
  */
 async function saveContact(email, name, password) {
-  const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
+  //const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
+  const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/";
   const personData = { email, name, password };
   const url = `${Base_URL}/logindata.json`;
 
