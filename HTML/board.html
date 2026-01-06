@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="../style/task/task_overlay.css">
     <link rel="stylesheet" href="../style/mobile/tast_mobile_overlay.css">
 
-
     <script src="../scripts/board/board.js"></script>
     <script src="../scripts/board/board_cards.js"></script>
     <script src="../scripts/board/board_overlay.js"></script>
@@ -119,8 +118,9 @@
                                 <div id="no_element_found_alert" class="alert_box d_none">No Task has been found</div>
                             </div>
 
-                            <button onclick="showAddTaskOverlay('toDo')" type="button" class="add_task_btn">Add task<img
-                                    class="add_icon" src="../assets/icons/add.svg" alt="add task"></button>
+                            <button onclick="showAddTaskOverlay('triage')" type="button" class="add_task_btn">Add
+                                task<img class="add_icon" src="../assets/icons/add.svg" alt="add task"></button>
+
                         </div>
                     </div>
                     <div class="board_table">
@@ -139,9 +139,9 @@
                                 <div class="board_content_box" ondrop="moveTo('triage', event)"
                                     ondragover="allowDrop(event)" ondragenter="showDottedBox(event)"
                                     ondragleave="removeDottedBox(event)">
-             <!--
-               TODO: id vergeben
-             -->                       <div id="triage" class="board_content_colums_cards"></div>
+                                    <!--               TODO: id vergeben
+             -->
+                                    <div id="triage" class="board_content_colums_cards"></div>
                                 </div>
                             </div>
 
@@ -150,10 +150,13 @@
                             <div class="board_description_box">
                                 <div class="board_category_header">
                                     <h2 class="Board_description_text">To do</h2>
+                                    <!--
                                     <img onclick="showAddTaskOverlay('toDo')" class="add_task_icon"
                                         src="../assets/icons/plus button.png" alt="plus icon">
+                                    
                                     <img onclick="showAddTaskOverlay('toDo')" class="add_task_icon_mobile"
                                         src="../assets/icons/plus_button_mobile.svg" alt="plus icon">
+                                            -->
                                 </div>
                                 <div class="board_content_box" ondrop="moveTo('toDo', event)"
                                     ondragover="allowDrop(event)" ondragenter="showDottedBox(event)"
@@ -163,14 +166,16 @@
                             </div>
 
 
-                            
+
                             <div class="board_description_box">
                                 <div class="board_category_header">
                                     <h2 class="Board_description_text">In progress</h2>
+                                    <!--
                                     <img onclick="showAddTaskOverlay('inProgress')" class="add_task_icon"
                                         src="../assets/icons/plus button.png" alt="plus icon">
                                     <img onclick="showAddTaskOverlay('inProgress')" class="add_task_icon_mobile"
                                         src="../assets/icons/plus_button_mobile.svg" alt="plus icon">
+                                -->
                                 </div>
                                 <div class="board_content_box" ondrop="moveTo('inProgress', event)"
                                     ondragover="allowDrop(event)" ondragenter="showDottedBox(event)"
@@ -184,10 +189,12 @@
                             <div class="board_description_box">
                                 <div class="board_category_header">
                                     <h2 class="Board_description_text">Await feedback</h2>
+                                    <!--
                                     <img onclick="showAddTaskOverlay('awaitFeedback')" class="add_task_icon"
                                         src="../assets/icons/plus button.png" alt="plus icon">
                                     <img onclick="showAddTaskOverlay('awaitFeedback')" class="add_task_icon_mobile"
                                         src="../assets/icons/plus_button_mobile.svg" alt="plus icon">
+                                        -->
                                 </div>
                                 <div class="board_content_box" ondrop="moveTo('awaitFeedback', event)"
                                     ondragover="allowDrop(event)" ondragenter="showDottedBox(event)"
