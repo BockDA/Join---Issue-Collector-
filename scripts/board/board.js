@@ -160,6 +160,7 @@ function removeDottedBox(event) {
 function startDragging(index) {
     document.getElementById('card_number_' + index).classList.add('rotate_card');
     elementToBeDropped = index;
+    console.log("Verschiebe Caed");
 }
 
 
