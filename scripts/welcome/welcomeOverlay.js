@@ -1,12 +1,11 @@
 function welcomeTemplate() {
-    
     return `
         <div id="dialog_Show" class="dialog-Show">
         <div class="welcome-contents">
             <h1>Welcome</h1>
             <hr>
             <p>Pick the option that suits your role: create a request as a </p>
-            <p>stakeholder or log in if you´re part of the team</p>
+            <p>stakeholder or log in if youre part of the team</p>
 
             <div class="welcome-section"></div>
             <div id="" class="welcome-option">
@@ -15,7 +14,7 @@ function welcomeTemplate() {
                         <img src="../assets/icons/work.png" alt="stakeholder icon">
                         <span>Are your a stakeholder?</span>
                     </div>
-                    <button id="" class="btn-stakeholder">Create request</button>
+                    <button id="" class="btn-stakeholder" onclick="dialogShowCreateMail()">Create request</button>
                 </div>
                 <div class="welcome-section-btn">
                     <div class="option-b">
@@ -27,17 +26,6 @@ function welcomeTemplate() {
                </div>
           </div>
     </div>
-    
-    
-    
-    
-    
-    
-    
-    
+     
     `
-    
-
-
-
 }

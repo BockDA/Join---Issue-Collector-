@@ -18,6 +18,21 @@ let contactColorArray = [
 ];
 
 
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+  await loadTemplate();
+
+ 
+})
+
+async function loadTemplate() {
+  console.log("Lades stratsei");
+  dialogShoW();  
+}
+
+
+
 /**
  * Toggles the visibility of the submenu by adding/removing a CSS class.
  */

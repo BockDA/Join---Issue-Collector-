@@ -106,7 +106,6 @@ body {
     display: flex;
     gap:10px;
     font-size: 23px;
-
     img{
         width: 21px;
         height: 21px;
@@ -118,7 +117,7 @@ body {
 
 /* ------------------------CSS Dialog Mail ----------------*/
 .welcome-mail{
-    display: none;
+    
     width: 100vw;
     height: 100vh;
     background-color: var(--white)
@@ -155,6 +154,12 @@ body {
 }
 
 
+.mail-header:hover{
+    cursor: pointer;
+   
+}
+
+
 .welcome-container-inner{
     display: flex;
     flex-direction: column;
@@ -169,11 +174,11 @@ body {
 
 
 .welcome-headline{
-    font-family: 'open sans';
+    font-family: 'Open sans';
     font-weight: 700;
     font-size: 64px;
     margin-left: 20px;
-    margin-top: 20px;
+    margin-bottom: 40px;
     text-align: center;
 
 }
@@ -183,13 +188,21 @@ body {
 
 }
 
+.welcome-mail-textarea{
+    width: 470px;
+    height: 280px;
+    
+}
+
+
+
 .welcome-text-first{
     font-family: 'open sans';
     font-weight: 400;
     font-size: 28px;
-       text-align: left;
-       margin-bottom: 20px;
-            color:var(--grau);
+    text-align: left;
+    margin-bottom: 20px;
+    color:var(--grau);
 }
 
 
@@ -222,8 +235,8 @@ position: relative;
 
 .welcome-btn-mail{
     position: absolute;
-    left:75px;
-    bottom: 0;
+    left:110px;
+    top:600px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -252,9 +265,10 @@ footer{
     font-family: 'Inter';
     font-weight: 400;
     font-size: 16px;
-    color:var(--grau1);
+   
     a{
     text-decoration: none;
+     color:var(--grau1);
     }
 }
 

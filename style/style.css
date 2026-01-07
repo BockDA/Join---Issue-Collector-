@@ -3,6 +3,12 @@
     font-family: "Inter", sans-serif;
 }
 
+
+.hidden {
+display: none; 
+}
+
+
 .d_none {
     display: none !important;
 }
