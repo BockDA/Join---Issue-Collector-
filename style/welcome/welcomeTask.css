@@ -126,13 +126,16 @@ body {
     position: absolute;
     top:20px;
     left: 20px;
+        width: 45px;
+        height: 56px;
+   
 }
 
 .mail-content{
     position: absolute;
-    top: 50%;
+    top: 80px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%);
     width: 1121px;   
     height: 598px;
     border-style: solid;
@@ -145,5 +148,72 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-right: 20px;
+    color:var(--blue2);
+    font-size: 19px;
+}
+
+
+.welcome-container-inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    gap:20px;
+    max-width:964px; 
+    margin: auto;
+    margin-top: 60px;
+    
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+.welcome-headline{
+    font-family: 'open sans';
+    font-weight: 700;
+    font-size: 64px;
+    margin-left: 20px;
+    margin-top: 20px;
+    text-align: center;
+
+}
+
+.welcome-container{
+    display: flex;
+
+}
+.welcome-container-inner{
+position: relative;
+}
+
+
+
+.welcome-picture{
+    width: 416px;
+    height: 280px;
+   
+}
+
+
+.welcome-btn-mail{
+    position: absolute;
+    left:0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    gap:20px;
+    width: 293px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: var(--blue2);
+    color:var(--white);
+    border-color: var(--blue2);
+
+    font-family: 'open sans';
+    font-weight: 100;
+    font-size: 23px;
+    cursor: pointer;
+ 
+
 
 }
