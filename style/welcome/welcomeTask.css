@@ -117,7 +117,6 @@ body {
 
 /* ------------------------CSS Dialog Mail ----------------*/
 .welcome-mail{
-    
     width: 100vw;
     height: 100vh;
     background-color: var(--white)
@@ -191,7 +190,7 @@ body {
 .welcome-mail-textarea{
     width: 470px;
     height: 280px;
-    
+   
 }
 
 
@@ -219,6 +218,16 @@ body {
 }
 
 
+.textFormat{
+     font-family: 'open sans';
+    font-weight: 400;
+    font-size: 19px;
+     text-align: left;
+     color:var(--grau);
+}
+
+
+
 
 .welcome-container-inner{
 position: relative;
@@ -233,7 +242,15 @@ position: relative;
 }
 
 
-.welcome-btn-mail{
+.welcome-picture-second{
+    
+    width: 416px;
+    height: 280px;
+}
+
+
+
+.welcome-button{
     position: absolute;
     left:110px;
     top:600px;
@@ -255,6 +272,12 @@ position: relative;
     
 }
 
+.welcome-btn-sendmail{
+    display: none;
+}
+
+
+
 footer{
     position: absolute;
     bottom: 20px;
@@ -274,4 +297,23 @@ footer{
 
 footer a:hover{
    color:var( --details-font-color);
+}
+
+
+
+
+.welcome-text-one{
+  margin: 0 auto 30px auto;
+  width: 502px;
+  height: 56px;
+  background-color: #FFD2D285;
+
+  display: flex;
+  align-items: center;   /* vertikal */
+  justify-content: center; /* horizontal */
+    
+}
+
+.welcome-btn-sendmail{
+    top:450px
 }

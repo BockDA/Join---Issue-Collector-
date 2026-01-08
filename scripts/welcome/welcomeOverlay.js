@@ -21,7 +21,7 @@ function welcomeTemplate() {
                     <img src="../assets/icons/group.png" alt="team icon">
                     <span>Are you a team member?</span>
                     </div>
-                        <button id="" class="btn-team">Member log in</button>
+                        <button id="" class="btn-team" onclick="dialogShowStartPage()">Member log in</button>
                 </div>
                </div>
           </div>

@@ -19,19 +19,6 @@ let contactColorArray = [
 
 
 
-document.addEventListener("DOMContentLoaded", async () => {
-
-  await loadTemplate();
-
- 
-})
-
-async function loadTemplate() {
-  console.log("Lades stratsei");
-  dialogShoW();  
-}
-
-
 
 /**
  * Toggles the visibility of the submenu by adding/removing a CSS class.
@@ -40,10 +27,12 @@ function toggleMenu() {
   document.getElementById('submenu_toogle').classList.toggle('submenu_open');
 }
 
-
 /**
  * Closes the submenu if a user clicks outside of it or the toggle button.
  */
+
+// TODO: habe das was entfernt !!!
+/*
 document.addEventListener('click', function(event) {
   const submenu = document.getElementById('submenu_toogle');
   const toggleButton = document.getElementById('logo_user_sign_in');
@@ -52,7 +41,7 @@ document.addEventListener('click', function(event) {
     submenu.classList.remove('submenu_open'); 
   }
 });
-
+*/
 
 /**
  * Renders the user's initials inside the user logo element.
