@@ -303,8 +303,9 @@ async function TaskEditSave() {
 /**
  * function creates object to save in FirbaseDB
  */
-function collectDataEdit() {
+function collectDataEdit() {  // TODO: Hier habe ich das editieren geändert
   currentTaskEdit = {
+    test: 1,
     title: document.getElementById("taskTitle").value,
     description: document.getElementById("descriptionTask").value.trim(),
     contacts: checkContacts(),

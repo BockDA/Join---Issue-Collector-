@@ -424,6 +424,7 @@ function timePopUp(duration) {
  */
 function collectData() {
   currentTaskAdd = {
+    test:1,
     title: document.getElementById("taskTitle").value,
     description: document.getElementById("descriptionTask").value.trim(),
     contacts: selectedTaskContacts,

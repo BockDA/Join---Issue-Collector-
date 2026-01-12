@@ -166,8 +166,9 @@ async function createUserFolder(userData) {
  * @param {string} email - Email address to check.
  * @returns {Promise<Object|null>} - Found user or null.
  */
-async function checkIfContactExists(email) {
-  const url = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/logindata.json";
+async function checkIfContactExists(email) {  // TODO: login URL geändert
+  const url ="https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/logindata.json"
+  //const url = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/logindata.json";
   try {
     const res = await fetch(url);
     const data = await res.json();

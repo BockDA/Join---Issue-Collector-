@@ -1,3 +1,5 @@
+
+// TODO: url geändert
 //const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
 const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/";
 let currentTasks = [];
@@ -19,8 +21,9 @@ async function fetchData() {
  */
 function update() {
   if (isUserLoggedIn() && localStorage.getItem('greetingShown') === 'false') {
-      showGreetingContainer();
+    showGreetingContainer();
   }
+  console.log("hier startet das Renden");
   updateHTML();
   renderUserLogo();
   renderInitials();
@@ -35,13 +38,13 @@ function update() {
  */
 function showGreetingContainer() {
   if (window.innerWidth < 1000) {
-      const mobileContainer = document.querySelector('.mobile_container-morning');
-      mobileContainer.style.display = 'flex';
+    const mobileContainer = document.querySelector('.mobile_container-morning');
+    mobileContainer.style.display = 'flex';
 
-      setTimeout(() => {
-          mobileContainer.style.display = 'none';
-          localStorage.setItem('greetingShown', 'true');
-      }, 3000);
+    setTimeout(() => {
+      mobileContainer.style.display = 'none';
+      localStorage.setItem('greetingShown', 'true');
+    }, 3000);
   }
 }
 
@@ -66,7 +69,7 @@ function logout() {
 
 
 function openPage() {
-  window.location.href = "../HTML/board.html"; 
+  window.location.href = "../HTML/board.html";
 }
 
 
@@ -77,9 +80,9 @@ function showHelpIconMobile() {
   let helpLink = document.getElementById("mobile_help_link");
 
   if (window.innerWidth <= 1000) {
-    helpLink.style.display = "flex"; 
+    helpLink.style.display = "flex";
   } else {
-    helpLink.style.display = "none"; 
+    helpLink.style.display = "none";
   }
 }
 
@@ -132,7 +135,8 @@ function getDeadlineDate() {
 /**
  * This function renders the user logo in the UI.
  */
-function renderUserLogo() {
+function renderUserLogo() {  // TODO: console log
+  console.log("Login Gast");
   document.getElementById("logo_user_sign_in").innerHTML = addUserLogoTemplate();
 }
 
@@ -141,17 +145,18 @@ function renderUserLogo() {
  * This function renders the user's initials in the UI.
  * It fetches the current user's name and calculates the initials.
  */
-function renderInitials() {
-  let userInitials = document.getElementById('render_initials_user_logo');
-
-  fetch(`${Base_URL}/currentUser.json`)
-    .then(res => res.json())
-    .then(data => {
-      const userName = data.name; 
-      const initials = getInitials(userName);
-      userInitials.textContent = initials;
-    })
-    .catch(err => console.error("Error fetching user name:", err));
+function renderInitials() { // TODO: logo rendern ausgeblendet und geht trotzdem ???
+ let userInitials = document.getElementById('render_initials_user_logo');
+ fetch(`${Base_URL}/currentUser.json`)
+   .then(res => res.json())
+   .then(data => {
+     const userName = data.name; 
+     const initials = getInitials(userName);
+     userInitials.textContent = initials;
+ 
+   })
+   .catch(err => console.error("Error fetching user name:", err));
+  
 }
 
 
@@ -170,6 +175,9 @@ function getInitials(name) {
 /**
  * This function renders the current user's name in the UI.
  */
+
+// TODO: function render deaktiviert
+
 function renderCurrentUser() {
   let userDiv = document.getElementById('current_user');
   let mobileUserDiv = document.getElementById('mobile_current_user');
@@ -177,9 +185,13 @@ function renderCurrentUser() {
   fetch(`${Base_URL}/currentUser.json`)
     .then(res => res.json())
     .then(data => {
-      const userName = data.name; 
+      // TODO: wen keine Eingabe dann Gast
+      // const userName = data?.name ?? 'Gast'; 
+      const userName = data.name;
       userDiv.textContent = userName;
       mobileUserDiv.textContent = userName;
+      console.log("Login mit Name1", userName);
+
     })
     .catch(err => console.error("Error fetching user name:", err));
 }
@@ -191,16 +203,16 @@ function renderCurrentUser() {
 function renderWelcome() {
   let currentWelcome = document.getElementById('content_welcome');
   let mobileCurrentWelcome = document.getElementById('mobie_content_welcome');
-  
-  const currentHour = new Date().getHours(); 
+
+  const currentHour = new Date().getHours();
 
   let greeting = '';
   if (currentHour >= 5 && currentHour < 12) {
-      greeting = 'Good morning,';
+    greeting = 'Good morning,';
   } else if (currentHour >= 12 && currentHour < 18) {
-      greeting = 'Good afternoon,';
+    greeting = 'Good afternoon,';
   } else {
-      greeting = 'Good evening,';
+    greeting = 'Good evening,';
   }
   currentWelcome.textContent = greeting;
   mobileCurrentWelcome.textContent = greeting;

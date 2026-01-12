@@ -116,8 +116,10 @@ function resetFormFields() {
  * @param {string} email
  * @returns {Promise<boolean>}
  */
-async function checkIfContactExists(email) {
-  const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
+async function checkIfContactExists(email) { // TODO: URl DB geändert
+  
+  const Base_URL ="https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/"
+  //const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
   const url = `${Base_URL}/logindata.json`;
 
   try {

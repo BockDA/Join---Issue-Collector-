@@ -32,7 +32,7 @@ function toggleMenu() {
  */
 
 // TODO: habe das was entfernt !!!
-/*
+
 document.addEventListener('click', function(event) {
   const submenu = document.getElementById('submenu_toogle');
   const toggleButton = document.getElementById('logo_user_sign_in');
@@ -41,14 +41,15 @@ document.addEventListener('click', function(event) {
     submenu.classList.remove('submenu_open'); 
   }
 });
-*/
+
 
 /**
  * Renders the user's initials inside the user logo element.
  * Fetches user data from Firebase and processes the name.
  */
 function renderInitials() {
-  const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
+ // const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
+  const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/"
   renderUserLogo();
 
   fetch(`${Base_URL}/currentUser.json`)
@@ -57,8 +58,32 @@ function renderInitials() {
       const userName = data.name; 
       const initials = getCurrentInitials(userName);
       document.getElementById('render_initials_user_logo').textContent = initials;
+     
     })
     .catch(err => console.error("Error fetching name:", err)); 
+}
+
+
+
+/**
+ * This function renders the current user's name in the UI.
+ */
+function renderCurrentUser() {
+  let userDiv = document.getElementById('current_user');
+  let mobileUserDiv = document.getElementById('mobile_current_user');
+
+  fetch(`${Base_URL}/currentUser.json`)
+    .then(res => res.json())
+    .then(data => {
+      // TODO: wen keine Eingabe dann Gast
+      // const userName = data?.name ?? 'Gast'; 
+      const userName = data.name;
+      userDiv.textContent = userName;
+      mobileUserDiv.textContent = userName;
+      console.log("Login mit Name1", userName);
+
+    })
+    .catch(err => console.error("Error fetching user name:", err));
 }
 
 
@@ -82,17 +107,23 @@ function renderUserLogo() {
 }
 
 
+
+
 /**
  * Returns the HTML template string for the user logo container.
  * @returns {string} HTML string of the user logo template.
  */
 function addUserLogoTemplate() {
   return ` 
-    <div class="user_logo">
+   <div class="user_logo">
       <div id="render_initials_user_logo"> </div>
     </div>
   `;
 }
+
+
+
+
 
 
 /**
