@@ -1,6 +1,5 @@
 const fieldErrors = {};
 
-
 /**
  * Displays an error message for a specific field.
  * @param {string} message - The message to display.
@@ -9,7 +8,6 @@ const fieldErrors = {};
 function showErrorMessage(message, fieldId) {
   fieldErrors[fieldId] = message;
   updateErrorDisplay();
-
   if (fieldId === "form") {
     setTimeout(() => {
       
@@ -146,9 +144,10 @@ async function userLogin() {
  * @param {Object} userData - User data to save.
  */
 async function createUserFolder(userData) {
-  const url = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/currentUser.json";
+  // TODO: Datenbaankpfad geändert
+  //const url = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/currentUser.json";
+  const url = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/currentUser.json";
   const data = { email: userData.email, name: userData.name };
-
   try {
     await fetch(url, {
       method: "PUT",

@@ -1,8 +1,7 @@
 
 // TODO: sobald anwendung gestartet ist 
 document.addEventListener("DOMContentLoaded", async () => {
-   
-   console.log("Start script")
+     console.log("Start script")
     await loadTemplate();
 })
 

@@ -31,8 +31,6 @@ function toggleMenu() {
  * Closes the submenu if a user clicks outside of it or the toggle button.
  */
 
-// TODO: habe das was entfernt !!!
-
 document.addEventListener('click', function(event) {
   const submenu = document.getElementById('submenu_toogle');
   const toggleButton = document.getElementById('logo_user_sign_in');
