@@ -23,8 +23,7 @@ function update() {
   if (isUserLoggedIn() && localStorage.getItem('greetingShown') === 'false') {
     showGreetingContainer();
   }
-  console.log("hier startet das Renden");
-  updateHTML();
+   updateHTML();
   renderUserLogo();
   renderInitials();
   renderCurrentUser();
@@ -186,12 +185,9 @@ function renderCurrentUser() {
     .then(res => res.json())
     .then(data => {
       // TODO: wen keine Eingabe dann Gast
-      // const userName = data?.name ?? 'Gast'; 
-      const userName = data.name;
+       const userName = data?.name ?? 'Guast'; 
       userDiv.textContent = userName;
       mobileUserDiv.textContent = userName;
-      console.log("Login mit Name1", userName);
-
     })
     .catch(err => console.error("Error fetching user name:", err));
 }
@@ -217,3 +213,4 @@ function renderWelcome() {
   currentWelcome.textContent = greeting;
   mobileCurrentWelcome.textContent = greeting;
 }
+

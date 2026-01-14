@@ -15,9 +15,9 @@ async function guestLogin() {
   if (localStorage.getItem("userLoggedIn") === "true") {
     return;
   }
-
   localStorage.setItem("userLoggedIn", "true");
   localStorage.setItem("greetingShown", "false");
+  localStorage.setItem("userNameLogIn", "Guest");
 
   openGuestLoginPage();
 }

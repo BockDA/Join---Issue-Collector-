@@ -422,9 +422,17 @@ function timePopUp(duration) {
 /**
  * function to collect the data which is then stored in the db
  */
-function collectData() {
+function collectData() { // TODO: Hier werden die daten gespeichert wird erweiter mit uiser der gespeichert hat
+
+  let mobileUserDiv = document.getElementById('mobile_current_user');
+  let nameUser = mobileUserDiv ? mobileUserDiv.textContent.trim() : '';
+  // let nameUser = mobileUserDiv.textContent.trim();
+
+
   currentTaskAdd = {
-    test:1,
+    creatorType: "Member",
+    userName: loadUserNameLoacalStor(),
+    createdBy:"Profil",
     title: document.getElementById("taskTitle").value,
     description: document.getElementById("descriptionTask").value.trim(),
     contacts: selectedTaskContacts,
@@ -440,6 +448,12 @@ function collectData() {
     },
     status: statusSave(),
   };
+}
+
+
+function loadUserNameLoacalStor() {
+  console.log("hole wert aus speicher");
+  return localStorage.getItem("userNameLogIn");
 }
 
 

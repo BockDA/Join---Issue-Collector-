@@ -305,7 +305,9 @@ async function TaskEditSave() {
  */
 function collectDataEdit() {  // TODO: Hier habe ich das editieren geändert
   currentTaskEdit = {
-    test: 1,
+    creatorType: "Member",
+    userName: loadUserNameLoacalStor(),
+    createdBy: "Profil",
     title: document.getElementById("taskTitle").value,
     description: document.getElementById("descriptionTask").value.trim(),
     contacts: checkContacts(),

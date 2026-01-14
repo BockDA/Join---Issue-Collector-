@@ -70,6 +70,45 @@
     font-size: 23px !important;
 }
 
+
+.creator_name{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+    }
+
+.creator_name_detail{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+    padding: 2px;
+    img{
+        width: 18px;
+        height:13px ;
+    }
+    p{
+        font-weight: 400;
+        font-size: 16px;
+        color: #2A3647;
+    }
+    background-color:  #1FD7C1;
+    border-radius: 4px;
+}
+
+.profil_entry{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:5px;
+
+}
+
+
+
 .task_description_overlay {
     font-weight: 400;
     font-size: 20px;

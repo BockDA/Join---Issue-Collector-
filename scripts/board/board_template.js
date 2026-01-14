@@ -71,6 +71,21 @@ function getCardOverlayContent(index) {
                     <h1 class="board_heading">${currentTasks[index].title}</h1>
                 </div>
                 <div class="task_description_overlay">${currentTasks[index].description}</div>
+               
+                <div>
+                    <div class="creator_name">
+                            <h2>Creator:</h2>
+                            <div class="creator_name_detail">
+                              <img src=..//assets/icons/member.png>
+                              <p>${currentTasks[index].creatorType}</p>
+                            </div>
+                            <h2>${currentTasks[index].userName}</h2>
+                    <div>
+                    </div>
+                        ${profileSelection(index)}  
+                    </div>
+                </div>
+                              
                 <div class="task_description_overlay">
                     <p class="color_blue font_weight_700">Due Date:</p>
                     <p>${currentTasks[index].deadline}</p>
@@ -432,4 +447,24 @@ function getAddTaskOverlay() {
         </div> 
       </div>
     `
+}
+
+
+function profileSelection(index) {
+    let profil = currentTasks[index].createdBy;
+    if (profil === "Profil") {
+        return `
+        <div class="profil_entry">
+        <img src="../assets/icons/person.png">
+        <p>Profil</p>
+        </div>
+        `
+    } else {
+        return `
+        <div class="profil_entry">
+            <img src="../assets/icons/email.png">
+            <p>E-Mail</p>
+        </div>
+          `
+    }
 }

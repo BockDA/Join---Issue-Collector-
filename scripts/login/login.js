@@ -131,7 +131,6 @@ async function userLogin() {
   if (userData.password !== password) {
     return showErrorMessage("Incorrect password.", "form");
   }
-
   await createUserFolder(userData);
   localStorage.setItem("userLoggedIn", "true");
   localStorage.setItem("greetingShown", "false");

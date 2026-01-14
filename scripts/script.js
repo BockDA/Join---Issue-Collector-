@@ -30,7 +30,8 @@ function toggleMenu() {
 /**
  * Closes the submenu if a user clicks outside of it or the toggle button.
  */
-
+// TODO: evtl wird diese function nicht mehr gebartucht
+/* 
 document.addEventListener('click', function(event) {
   const submenu = document.getElementById('submenu_toogle');
   const toggleButton = document.getElementById('logo_user_sign_in');
@@ -39,7 +40,7 @@ document.addEventListener('click', function(event) {
     submenu.classList.remove('submenu_open'); 
   }
 });
-
+*/
 
 /**
  * Renders the user's initials inside the user logo element.
@@ -79,10 +80,18 @@ function renderCurrentUser() {
       userDiv.textContent = userName;
       mobileUserDiv.textContent = userName;
       console.log("Login mit Name1", userName);
+      writeLoginUserLocalStorage(userName);
 
     })
     .catch(err => console.error("Error fetching user name:", err));
 }
+
+// TODO: neue function schreine username in localstprage
+function writeLoginUserLocalStorage(userName) {
+  localStorage.setItem("userNameLogIn", userName);
+}
+
+
 
 
 /**
