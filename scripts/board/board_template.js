@@ -63,6 +63,10 @@ function getCardOverlayContent(index) {
     return `<div onclick="stopPropagation(event)" id="card_overlay" class="card_overlay_board slide-in-overlay">
                 <div class="card_overlay_header">
                     <div id="category_${index}_overlay" class="task_category task_category_overlay technical_task_overlay ">${currentTasks[index].category}</div>
+                    <div>
+                    <p>${noteAIagent(index)}</p>
+                    </div>
+                    
                     <div class="close_btn_overlay">
                         <img onclick="closeOverlay('bg_overlay')"  src="..//assets/icons/close.svg" alt="close button">
                     </div>
@@ -76,10 +80,9 @@ function getCardOverlayContent(index) {
                     <div class="creator_name">
                             <h2>Creator:</h2>
                             <div class="creator_name_detail">
-                              <img src=..//assets/icons/member.png>
-                              <p>${currentTasks[index].creatorType}</p>
+                           ${membercontrol(index)}
                             </div>
-                            <h2>${currentTasks[index].userName}</h2>
+                            <h2>${userNameLogin(index)}</h2>
                     <div>
                     </div>
                         ${profileSelection(index)}  
@@ -434,37 +437,88 @@ function getAddTaskOverlay() {
                                 </div>
 
                        </div>  
-      
-        
+           
                          <div class="button_bottom_task_mobile_ol">
                               <button id="btnClearTask" class="button_clear_task" onclick="addTaskClear()">Clear <img
                               class="cancel_ol" src="../assets/icons/iconoir_cancel.png" alt=""></button>
                               <button id="btnCreateTaskMobile" class="button_create_task" onclick="checkInputData('overlay')">Create Task
                               <img src="../assets/icons/check.png" alt=""></button>
                          </div>
-                      
-
-        </div> 
+              </div> 
       </div>
     `
 }
 
 
+// TODO: neue function eingefügt
+
+
+function noteAIagent(index) {
+    let profil = currentTasks[index].createdBy;
+    console.log(profil);
+    if (profil == "mail") {
+        return `
+            <img src=..//assets/icons/ki_gener.png>
+        `
+    } else {
+        return ``
+    }
+}
+
+function membercontrol(index) {
+    let member = currentTasks[index].creatorType;
+    if (member == "Member") {
+        return `
+         <img src=..//assets/icons/member.png>
+        <p>Member</p>
+       `
+    } else if (member === "Extern") {
+        return `
+         <img src=..//assets/icons/extern.png>
+        <p>Extern</p>
+       `
+    } else {
+        return `
+         <p>------</p>
+       `
+    }
+
+
+}
+
 function profileSelection(index) {
     let profil = currentTasks[index].createdBy;
-    if (profil === "Profil") {
+    if (profil == "Profil") {
         return `
         <div class="profil_entry">
         <img src="../assets/icons/person.png">
         <p>Profil</p>
         </div>
         `
-    } else {
+    } else if (profil == "mail") {
         return `
         <div class="profil_entry">
             <img src="../assets/icons/email.png">
             <p>E-Mail</p>
         </div>
           `
+    } else {
+        return `
+        <div class="profil_entry">
+            <p>------</p>
+        </div>
+          `
+
     }
+}
+
+
+function userNameLogin(index) {
+    if (currentTasks[index].userName === undefined) {
+        return "------";
+    } else {
+        return currentTasks[index].userName;
+    }
+
+
 }

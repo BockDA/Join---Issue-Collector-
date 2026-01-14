@@ -432,7 +432,7 @@ function collectData() { // TODO: Hier werden die daten gespeichert wird erweite
   currentTaskAdd = {
     creatorType: "Member",
     userName: loadUserNameLoacalStor(),
-    createdBy:"Profil",
+    createdBy: "Profil",
     title: document.getElementById("taskTitle").value,
     description: document.getElementById("descriptionTask").value.trim(),
     contacts: selectedTaskContacts,

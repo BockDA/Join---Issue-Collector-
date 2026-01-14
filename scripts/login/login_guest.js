@@ -5,6 +5,7 @@
 function resetLoginState() {
   localStorage.setItem("userLoggedIn", "false");
   localStorage.setItem("greetingShown", "false");
+  createGuastFolder();
 }
 
 /**
@@ -40,3 +41,25 @@ function openGuestLoginPage() {
 }
 
 resetLoginState();
+
+
+// TODO: Neue Function für Gast login
+/**
+ * Stores the current user data in the database.
+ * @param {Object} userData - User data to save.
+ */
+async function createGuastFolder() {
+
+  //const url = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/currentUser.json";
+  const url = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/currentUser.json";
+  const data = { email: "", name: "Guest" };
+  try {
+    await fetch(url, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+  } catch (error) {
+    console.error("Error saving user folder:", error);
+  }
+}
