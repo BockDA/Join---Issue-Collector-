@@ -6,7 +6,9 @@ function welcomeCreateEmail() {
             <div class="mail-content">
                 <div class="mail-header">
                     <img src="../assets/icons/arrow-left-line-black.png" onclick="dialogShoW()" alt="mail-icon">
-                        <p>0 of 10 requests used today</p>
+                      <p class="requestAdvertisement">
+                         <span id="requestCount"></span> of 10 requests used today
+                      </p>
                 </div>
                 <div class="welcome-container-inner">
                     <p class="welcome-headline">Welcome</p>
@@ -31,6 +33,11 @@ function welcomeCreateEmail() {
                             <P>The daily 10-request limit has been reached!</p>
                             </div>
 
+                            <div id="counterDay" class="counterDay">
+                                <p>The daily 10-request limit has been reached! </p>
+                            </div>
+
+
                             <div class="welome-text-two textFormat">
                             <p>Need more? No worries - you can still send emails, but </p>
                             <p>out team will review them manually instead of using Al </p>
@@ -51,7 +58,10 @@ function welcomeCreateEmail() {
                  <button class="welcome-btn-sendmail welcome-button" id="welcomeTaskButton" onclick="callGmail()">Send an email
                    <img class="welcome-arrow-down" src="../assets/icons/check.png" alt="arrow-down"></button>
 
+                   
             </div>
+           
+
             <footer>
                 <a href="./guest_policy.html">Privacy Policy</a>
 

@@ -182,6 +182,22 @@ body {
 
 }
 
+
+.counterDay{
+    display: none;
+    font-family: 'open sans';
+    font-weight: 400;
+    font-size: 18px;
+    color:var(--black);
+    margin-bottom: 20px;
+    height: 56px;
+    border-radius: 8px;
+    background-color: #FFD2D285;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .welcome-container{
     display: flex;
 
@@ -317,3 +333,6 @@ footer a:hover{
 .welcome-btn-sendmail{
     top:450px
 }
+
+
+

@@ -5,8 +5,11 @@ const Base_URLTask = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedat
  *Function retrieves the data Task and Contacts on the FirebaseDB
  */
 async function loadDataFirebase() {
+
+  console.log(Base_URLTask + "/tasks/" + ".json");
   try {
     const [responseTask, responseContact] = await Promise.all([
+      
       fetch(Base_URLTask + "/tasks/" + ".json"),
       fetch(Base_URLTask + "/contacts/" + ".json"),
     ]);
@@ -18,6 +21,7 @@ async function loadDataFirebase() {
     console.log("Fehler beim lesen ", error);
   }
 }
+
 
 
 /**
