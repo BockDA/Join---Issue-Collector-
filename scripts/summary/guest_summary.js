@@ -21,9 +21,9 @@ document.addEventListener('click', function(event) {
   }
 });
 
-
+// TODO: Url löschen
 //const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
-const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/";
+//const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/";
 
 let currentTasks = [];
 

@@ -19,6 +19,7 @@ async function guestLogin() {
   localStorage.setItem("userLoggedIn", "true");
   localStorage.setItem("greetingShown", "false");
   localStorage.setItem("userNameLogIn", "Guest");
+  localStorage.setItem("userEmail", "");
 
   openGuestLoginPage();
 }
@@ -51,8 +52,8 @@ resetLoginState();
 async function createGuastFolder() {
 
   //const url = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/currentUser.json";
-  const url = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/currentUser.json";
-  const data = { email: "", name: "Guest" };
+   const url = Base_URL+"currentUser.json";
+   const data = { email: "", name: "Guest" };
   try {
     await fetch(url, {
       method: "PUT",

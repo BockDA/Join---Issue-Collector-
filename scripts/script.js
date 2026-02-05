@@ -48,7 +48,7 @@ document.addEventListener('click', function(event) {
  */
 function renderInitials() {
  // const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
-  const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/"
+ // const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/"
   renderUserLogo();
 
   fetch(`${Base_URL}/currentUser.json`)
@@ -77,18 +77,20 @@ function renderCurrentUser() {
       // TODO: wen keine Eingabe dann Gast
       // const userName = data?.name ?? 'Gast'; 
       const userName = data.name;
+      const userEmail = data.email;
       userDiv.textContent = userName;
       mobileUserDiv.textContent = userName;
       console.log("Login mit Name1", userName);
-      writeLoginUserLocalStorage(userName);
+      writeLoginUserLocalStorage(userName,userEmail);
 
     })
     .catch(err => console.error("Error fetching user name:", err));
 }
 
 // TODO: neue function schreine username in localstprage
-function writeLoginUserLocalStorage(userName) {
+function writeLoginUserLocalStorage(userName,userEmail) {
   localStorage.setItem("userNameLogIn", userName);
+  localStorage.setItem("userEmail", userEmail);
 }
 
 
@@ -127,10 +129,6 @@ function addUserLogoTemplate() {
     </div>
   `;
 }
-
-
-
-
 
 
 /**

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../style/board/board.css">
     <link rel="stylesheet" href="../style/board/board_overlay.css">
     <link rel="stylesheet" href="../style/mobile/signup_mobile.css">
+    <script src="../scripts/data.js"></script>
 
 </head>
 
@@ -28,7 +29,7 @@
             <div class="login_field signup_field">
                 <div class="signup_field_header">
                     <a class="go_back_btn" href="../index.html">
-                        <img src="../assets/icons/arrow-left-line.svg" >
+                        <img src="../assets/icons/arrow-left-line.svg">
                     </a>
                     <div class="login_heading_div">
                         <h1 class="heading_login">Sign up</h1>
@@ -36,31 +37,39 @@
                     </div>
                 </div>
                 <div class="login_inputs no_padding">
-                    <input class="input_login input_name" id="name" type="text" placeholder="Name" required alt="mail icon">
-                    <input class="input_login input_mail" id="email" type="email" placeholder="Email" required alt="mail icon">
-                    
+                    <input class="input_login input_name" id="name" type="text" placeholder="Name" required
+                        alt="mail icon">
+                    <input class="input_login input_mail" id="email" type="email" placeholder="Email" required
+                        alt="mail icon">
+
                     <div class="password-container">
-                        <input class="input_login input_pw" id="password" type="password" placeholder="Password" required alt="lock icon">
+                        <input class="input_login input_pw" id="password" type="password" placeholder="Password"
+                            required alt="lock icon">
                         <img id="togglePassword" src="../assets/icons/lock.svg" alt="lock icon" class="lock-icon">
-                        <img id="togglePasswordVisibility" src="../assets/icons/visibility_off.svg" alt="eye icon" class="eye-icon">
+                        <img id="togglePasswordVisibility" src="../assets/icons/visibility_off.svg" alt="eye icon"
+                            class="eye-icon">
                     </div>
-                    
+
                     <div class="password-container">
-                        <input class="input_login input_pw" id="confirm_password" type="password" placeholder="Confirm Password" required alt="lock icon">
-                        <img id="toggleConfimrPassword" src="../assets/icons/lock.svg" alt="lock icon" class="lock-icon">
-                        <img id="toggleConfirmVisibility" src="../assets/icons/visibility_off.svg" alt="eye icon" class="eye-icon">
+                        <input class="input_login input_pw" id="confirm_password" type="password"
+                            placeholder="Confirm Password" required alt="lock icon">
+                        <img id="toggleConfimrPassword" src="../assets/icons/lock.svg" alt="lock icon"
+                            class="lock-icon">
+                        <img id="toggleConfirmVisibility" src="../assets/icons/visibility_off.svg" alt="eye icon"
+                            class="eye-icon">
                     </div>
-                
+
                     <div class="privacy_check">
                         <input type="checkbox" id="privacy_checkbox" class="privacy_checkbox">
-                        <label for="privacy_checkbox" class="privacy_check_text">I accept the <a class="link_privacy" href="../HTML/guest_policy.html" target="_blank">Privacy Policy</a></label>
+                        <label for="privacy_checkbox" class="privacy_check_text">I accept the <a class="link_privacy"
+                                href="../HTML/guest_policy.html" target="_blank">Privacy Policy</a></label>
                     </div>
                 </div>
-                
-                
+
+
 
                 <div class="login_btns">
-                    <button type="button"  onclick="addUserSignUp()" class="signup_btn" id="signup_btn">Sign up</button>
+                    <button type="button" onclick="addUserSignUp()" class="signup_btn" id="signup_btn">Sign up</button>
                 </div>
                 <div class="wrong_data_alert position_signup"></div>
             </div>

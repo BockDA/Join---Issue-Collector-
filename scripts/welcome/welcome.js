@@ -56,7 +56,6 @@ function callGmail() {
     const height = 700;
     const left = (window.screen.width - width) / 2;
     const top = (window.screen.height - height) / 2;
-
     const url =
         "https://mail.google.com/mail/?view=cm&fs=1" +
         "&to=wbda@elektro-bock.com" +
@@ -67,16 +66,15 @@ function callGmail() {
         "_blank",
         `width=${width},height=${height},top=${top},left=${left}`
     );
-  
+
+    setTimeout(() => {
+        dialogShoW();
+    }, 2000);
 }
 
-
-
-
 async function counterStatus() {
-    const res = await fetch("https://n8n.srv1249473.hstgr.cloud/webhook/counterStatus");
+    const res = await fetch(urln8n);
     const data = await res.json();
-    console.log("Counter Status ", data);
     return data;
 }
 
@@ -84,14 +82,14 @@ async function counterStatus() {
 async function requestCounter() {
     let data = await counterStatus();
     document.getElementById("requestCount").innerHTML += data;
-    if (data == 10) {
+    if (data >= 10) {
         document.getElementsByClassName("requestAdvertisement")[0].style.color = "red";
     }
 }
 
 async function counterMax() {
     let data = await counterStatus();
-    if (data == 10) {
+    if (data >= 10) {
         document.getElementById("counterDay").style.display = "flex";
         const btn = document.getElementsByClassName("welcome-btn-sendmail")[0];
         btn.style.pointerEvents = "none";

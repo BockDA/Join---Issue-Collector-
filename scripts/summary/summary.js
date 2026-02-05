@@ -1,7 +1,7 @@
 
 // TODO: url geändert
 //const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
-const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/";
+//const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/";
 let currentTasks = [];
 
 /**
@@ -63,6 +63,7 @@ function isUserLoggedIn() {
  */
 function logout() {
   localStorage.removeItem('userLoggedIn');
+  localStorage.removeItem("userEmail");
   localStorage.setItem('greetingShown', 'false');
 }
 

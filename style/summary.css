@@ -131,6 +131,13 @@ hr {
     font-weight: 600;
 }
 
+
+.test{
+    display: flex;
+ 
+
+}
+
 .content-date {
     padding-left: 70px;
     padding-right: 70px;
@@ -145,6 +152,18 @@ hr {
     border: 1px solid #d1d1d1;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
+    background-color: red;
+   
+}
+
+
+.content-Email{
+    position: absolute;
+    top:220px;
+    left:220px;
+    height: 100px;
+    width: 200px;
+    background-color: yellow;
 }
 
 .content-date-div {
@@ -153,6 +172,7 @@ hr {
     display: flex;
     gap: 18px;
     align-items: center;
+   
 }
 
 .img_up {

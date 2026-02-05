@@ -1,5 +1,7 @@
 const fieldErrors = {};
 
+console.log("URL ", window.Base_URL);
+
 /**
  * Displays an error message for a specific field.
  * @param {string} message - The message to display.
@@ -165,7 +167,9 @@ async function createUserFolder(userData) {
  * @returns {Promise<Object|null>} - Found user or null.
  */
 async function checkIfContactExists(email) {  // TODO: login URL geändert
-  const url ="https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/logindata.json"
+
+  const url = Base_URL+"logindata.json"
+  //const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/"
   //const url = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/logindata.json";
   try {
     const res = await fetch(url);
