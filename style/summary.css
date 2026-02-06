@@ -29,6 +29,7 @@ hr {
     display: flex;
     align-items: center;
     gap: 30px;
+    
 
     span {
         height: 32px;
@@ -49,12 +50,14 @@ hr {
     overflow: scroll;
     padding-left: 30px;
     padding-top: 30px;
+    
 }
 
 
 .content-to-do {
     display: flex;
     justify-content: space-between;
+    
 }
 
 .content-pen {
@@ -68,7 +71,9 @@ hr {
     border: 1px solid #d1d1d1;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
+   
 }
+
 
 .img-pen {
     height: 69px;
@@ -129,48 +134,60 @@ hr {
     font-size: 64px;
     line-height: 76.8px;
     font-weight: 600;
-}
-
-
-.test{
-    display: flex;
- 
-
+   
 }
 
 .content-date {
-    padding-left: 70px;
-    padding-right: 70px;
+    padding-left: 20px;
+    padding-right: 20px;
     height: 168px;
+    
     position: absolute;
     top: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 109px;
+    gap: 30px;
     background-color: white;
     border: 1px solid #d1d1d1;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    background-color: red;
-   
+ 
 }
 
 
-.content-Email{
+.container-Email{
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top:220px;
-    left:220px;
-    height: 100px;
-    width: 200px;
-    background-color: yellow;
+    left:370px;
+    height: 168px;
+    width: 210px;
+    background-color: white;
+    border: 1px solid #d1d1d1;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    
 }
 
+.text-urget{
+    background: linear-gradient(180deg, #8A2BE2 0%, #29ABE2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-size: 64px;
+    font-weight: bold;
+}
+
+
 .content-date-div {
-    width: 130px;
+    width: 115px;
     height: 96px;
     display: flex;
-    gap: 18px;
     align-items: center;
    
 }
@@ -208,7 +225,7 @@ hr {
 }
 
 .content-deadline {
-    width: 178px;
+    width: 130px;
     height: 57px;
     display: flex;
     gap: 13px;
@@ -218,7 +235,7 @@ hr {
 
 .line-between-div {
 
-    padding-left: 40px;
+    padding-left: 15px;
 }
 
 .line-between {
@@ -412,6 +429,18 @@ hr {
     transition: all 0.3s ease-in-out;
 
 }
+
+.container-Email:hover {
+    background-color: #2A3647;
+    cursor: pointer;
+    transform: scale(1.1);
+    color: white;   
+ }
+
+.container-Email:hover .text-urget {
+    -webkit-text-fill-color: white;
+}
+
 
 .container-task div {
     transition: all 0.3s ease-in-out;
