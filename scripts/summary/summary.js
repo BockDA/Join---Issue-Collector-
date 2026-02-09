@@ -23,7 +23,7 @@ function update() {
   if (isUserLoggedIn() && localStorage.getItem('greetingShown') === 'false') {
     showGreetingContainer();
   }
-   updateHTML();
+  updateHTML();
   renderUserLogo();
   renderInitials();
   renderCurrentUser();
@@ -101,6 +101,7 @@ function updateHTML() {
     content_task_in_board: () => countTasks(),
     content_task_in_progress: () => countTasks({ status: "inProgress" }),
     content_awaiting_feedback: () => countTasks({ status: "awaitFeedback" }),
+    content_email:()=>countTasks({createdBy: "mail"})
   };
 
   for (const [id, fn] of Object.entries(contentMap)) {
