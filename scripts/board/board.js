@@ -1,6 +1,3 @@
-//const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
-//const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/";
-
 let currentTasks = {}; /** This is the object, where all tasks are saved*/
 let currentTask = {}; /** This is the object, which is used to post new data on the database*/
 let elementToBeDropped = ""; /** This is the variable where the id number is saved when starting to drag an element*/
@@ -40,11 +37,11 @@ async function fetchTaskData() {
     let lastTask = 0;
 
     for (let task in TaskResponseToJson) {
-        if(TaskResponseToJson.hasOwnProperty(task)){
+        if (TaskResponseToJson.hasOwnProperty(task)) {
             lastTask = task + 1;
         }
     }
-    
+
     // currentTasks = Object.values(TaskResponseToJson);
 
 
@@ -161,10 +158,7 @@ function removeDottedBox(event) {
 function startDragging(index) {
     document.getElementById('card_number_' + index).classList.add('rotate_card');
     elementToBeDropped = index;
-    console.log("Verschiebe Card", index);
-
-   
-}
+ }
 
 
 /** 
@@ -182,7 +176,7 @@ async function moveTo(category, event) {
     }
     DragCounter = 0;
     moveCard(elementToBeDropped, category)
-    
+
 }
 
 
@@ -191,12 +185,17 @@ async function moveTo(category, event) {
  * @param {string} category - This parameter indicates the category, meaning the column, where the card belongs to
 */
 async function moveCard(elementToBeDropped, category) {
-    currentTasks[elementToBeDropped].status = category;
-    currentTask = currentTasks[elementToBeDropped];
+    const card = currentTasks[elementToBeDropped];
+    const creatorEmail = card?.creatorEmail ?? card?.createdMail ?? '';
+    const title = card?.title ?? card?.title ?? '';
+    requestMovecardMail(creatorEmail, title, category);
+    if (!card || typeof card !== 'object') {
+        return;
+    }
+    card.status = category;
+    currentTask = card;
     await changeCategory(`/tasks/${elementToBeDropped}`, currentTask);
     loadTaskData();
-    console.log("Karte wird verschoben ", category, elementToBeDropped);
-        
 }
 
 
@@ -322,4 +321,18 @@ function refreshFoundResults() {
 }
 
 
+
+/**
+ * This function notifies n8n that a card has been moved. n8n then sends an email to the author.
+ */
+async function requestMovecardMail(creatorEmail, title, category) {
+       if (!creatorEmail || creatorEmail.trim() === "") {
+       return;
+    }
+    const res = await fetch(urln8n + 'moveMail', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ creatorEmail, title, category })
+    })
+}
 

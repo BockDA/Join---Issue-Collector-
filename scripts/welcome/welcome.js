@@ -1,9 +1,3 @@
-setTimeout(() => {
-    //  console.log("Time Ende");
-    //  logoNone();
-    //  dialogShoW();
-}, 1000);
-
 function logoNone() {
     document.getElementById("welcome_logo").style.display = "none";
 }
@@ -23,8 +17,6 @@ function dialogShowCreateMail() {
     document.querySelector(".welome-text-two").classList.add("hidden");
     document.querySelector(".welcome-picture-second").classList.add("hidden");
     requestCounter();
-    //   document.querySelector("welcome-btn-sendmail").classList.add('hidden');
-
 }
 
 
@@ -73,7 +65,7 @@ function callGmail() {
 }
 
 async function counterStatus() {
-    const res = await fetch(urln8n);
+    const res = await fetch(urln8n + 'counterStatus');
     const data = await res.json();
     return data;
 }
