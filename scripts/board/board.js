@@ -29,21 +29,13 @@ async function loadTaskData() {
 async function fetchTaskData() {
     currentTasks = [];
     let TaskResponse = await fetch(Base_URL + "/tasks/" + ".json");
-    // TaskResponseToJson = await TaskResponse.json();
-
-    TaskResponseToJson = await TaskResponse.json();
-
-
+       TaskResponseToJson = await TaskResponse.json();
     let lastTask = 0;
-
     for (let task in TaskResponseToJson) {
         if (TaskResponseToJson.hasOwnProperty(task)) {
             lastTask = task + 1;
         }
     }
-
-    // currentTasks = Object.values(TaskResponseToJson);
-
 
     for (let index = 0; index < lastTask; index++) {
         if (TaskResponseToJson[index]) {
