@@ -426,12 +426,12 @@ function collectData() { // TODO: Hier werden die daten gespeichert wird erweite
   let mobileUserDiv = document.getElementById('mobile_current_user');
   let nameUser = mobileUserDiv ? mobileUserDiv.textContent.trim() : '';
   // let nameUser = mobileUserDiv.textContent.trim();
-
+  console.log("Schreibe neuen Task")
   currentTaskAdd = {
     creatorType: "Member",
     userName: loadUserNameLoacalStor(),
     createdBy: "Profil",
-    creatorEmail: "",
+    creatorEmail: localStorage.getItem('userEmail'),
     title: document.getElementById("taskTitle").value,
     description: document.getElementById("descriptionTask").value.trim(),
     contacts: selectedTaskContacts,

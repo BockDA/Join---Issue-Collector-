@@ -161,9 +161,9 @@ function removeDottedBox(event) {
 function startDragging(index) {
     document.getElementById('card_number_' + index).classList.add('rotate_card');
     elementToBeDropped = index;
-    console.log("Verschiebe Caed");
-    console.log("email ");
-    conolöe.log("veschiebe in");
+    console.log("Verschiebe Card", index);
+
+   
 }
 
 
@@ -182,6 +182,7 @@ async function moveTo(category, event) {
     }
     DragCounter = 0;
     moveCard(elementToBeDropped, category)
+    
 }
 
 
@@ -194,6 +195,8 @@ async function moveCard(elementToBeDropped, category) {
     currentTask = currentTasks[elementToBeDropped];
     await changeCategory(`/tasks/${elementToBeDropped}`, currentTask);
     loadTaskData();
+    console.log("Karte wird verschoben ", category, elementToBeDropped);
+        
 }
 
 

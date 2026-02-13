@@ -308,7 +308,7 @@ function collectDataEdit() {  // TODO: Hier habe ich das editieren geändert
     creatorType: "Member",
     userName: loadUserNameLoacalStor(),
     createdBy: "Profil",
-    creatorEmail:"",
+    creatorEmail: localStorage.getItem('userEmail'),
     title: document.getElementById("taskTitle").value,
     description: document.getElementById("descriptionTask").value.trim(),
     contacts: checkContacts(),
