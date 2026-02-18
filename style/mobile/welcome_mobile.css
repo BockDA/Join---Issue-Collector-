@@ -1,0 +1,61 @@
+
+@media (max-width: 1150px) {
+  .dialog-Show {
+    width: 90vw;                  
+    height: auto;                 
+    max-height: 90vh;
+
+  }
+
+
+
+.welcome-option{
+    display: flex;
+    flex-direction: column;
+   gap:20px;
+ }
+ 
+
+.welcome-section-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:15px;
+    margin-bottom: 20px;
+}
+
+
+
+/*------------------ CSS Dialog Mail ------------------*/
+
+
+.welcome-mail{
+    width: 100vw;
+    height: 100vh;
+background-color: yellow;
+
+
+
+}
+
+
+@media (max-width: 680px) {
+   
+.welcome-contents p{
+    text-align: center;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.welcome-section-btn span{
+font-size: 20px;
+}
+
+.welcome-section-btn button{
+    font-size: 20px;
+    width: 156px;
+    height: 48px;
+}
+
+}

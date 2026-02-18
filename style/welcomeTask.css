@@ -1,8 +1,7 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-color: var(--white)
-  
+    background-color: var(--white);
 }
 
 .welcom-Logo {
@@ -11,10 +10,11 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    img{
-        width: 275px;
-        height: 335px;
-    }
+}
+
+.welcom-Logo img {
+    width: 275px;
+    height: 335px;
 }
 
 
@@ -27,7 +27,7 @@ body {
     height: 403px;
     border-radius: 30px;
     background-color: var(--white);
-       flex-direction: column;
+    flex-direction: column;
 }   
 
 .welcome-contents{
@@ -35,24 +35,25 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 25px;
-    h1{
-        font-family: 'open sans';
-        font-weight: 700;
-        font-size: 32px;
-      }
+}
 
-    hr{
-        width: 10%;
-        height: 2px;
-        background-color:var(--blue2);
-        border-radius: 6px;
-        margin: 15px 0;
-    }
+.welcome-contents h1{
+    font-family: 'open sans';
+    font-weight: 700;
+    font-size: 32px;
+}
 
-    p{
-        text-align: left;
-        font-size: 23px;;
-    }
+.welcome-contents hr{
+    width: 10%;
+    height: 2px;
+    background-color:var(--blue2);
+    border-radius: 6px;
+    margin: 15px 0;
+}
+
+.welcome-contents p{
+    text-align: left;
+    font-size: 23px;
 }
 
 
@@ -65,28 +66,25 @@ body {
     margin-top: 20px;
     gap:30px;
     margin-top: 70px;
- 
- 
-
-}
+ }
 
 
 .welcome-section-btn{
     display: flex;
     flex-direction: column;
     gap:35px;
+}
 
-    button{
-        width: 195px;
-        height: 48px;
-        border-radius: 8px;
-        border-style:solid; 
-        border-width: 1px;
-        font-family: 'open sans', sans-serif;
-        font-weight: 100;
-        font-size: 23px;
-        cursor: pointer;
-    }
+.welcome-section-btn button{
+    width: 195px;
+    height: 48px;
+    border-radius: 8px;
+    border-style:solid; 
+    border-width: 1px;
+    font-family: 'open sans', sans-serif;
+    font-weight: 100;
+    font-size: 23px;
+    cursor: pointer;
 }
 
 .btn-stakeholder{
@@ -106,10 +104,12 @@ body {
     display: flex;
     gap:10px;
     font-size: 23px;
-    img{
-        width: 21px;
-        height: 21px;
-    }
+}
+
+.option-a img,
+.option-b img{
+    width: 21px;
+    height: 21px;
 }
 
 
@@ -119,13 +119,13 @@ body {
 .welcome-mail{
     width: 100vw;
     height: 100vh;
-    background-color: var(--white)
+    background-color: var(--white);
 }
 
 .logo{
     position: absolute;
-    top:20px;
-    left: 20px;
+    top:40px;
+    left: 40px;
         width: 45px;
         height: 56px;
    
@@ -150,6 +150,7 @@ body {
     margin-right: 20px;
     color:var(--blue2);
     font-size: 19px;
+    margin-top: 20px;
 }
 
 
@@ -304,11 +305,11 @@ footer{
     font-family: 'Inter';
     font-weight: 400;
     font-size: 16px;
-   
-    a{
+}
+
+footer a{
     text-decoration: none;
-     color:var(--grau1);
-    }
+    color:var(--grau1);
 }
 
 footer a:hover{
