@@ -4,14 +4,23 @@ function welcomeCreateEmail() {
     <div id="mail" class="welcome-mail">
         <img class="logo" src="../assets/icons/logo.svg" alt="logo">
             <div class="mail-content">
-                <div class="mail-header">
-                    <img src="../assets/icons/arrow-left-line-black.png" onclick="dialogShoW()" alt="mail-icon">
+                <div class="mail-header mail-header--top">
+                    <img class="mail-back-icon mail-back-icon--header" src="../assets/icons/arrow-left-line-black.png" onclick="dialogShoW()" alt="back">
                       <p class="requestAdvertisement">
-                         <span id="requestCount"></span> of 10 requests used today
+                         <span class="requestCount"></span> of 10 requests used today
                       </p>
                 </div>
                 <div class="welcome-container-inner">
-                    <p class="welcome-headline">Welcome</p>
+                    <div class="welcome-headline-row">
+                        <p class="welcome-headline">Welcome</p>
+                        <img class="mail-back-icon mail-back-icon--headline" src="../assets/icons/arrow-left-line-black.png" onclick="dialogShoW()" alt="back">
+                    </div>
+                    <div class="mail-header mail-header--below">
+                        <img class="mail-back-icon mail-back-icon--header" src="../assets/icons/arrow-left-line-black.png" onclick="dialogShoW()" alt="back">
+                        <p class="requestAdvertisement">
+                            <span class="requestCount"></span> of 10 requests used today
+                        </p>
+                    </div>
                     <div class="welcome-container">
                         <div class="welcome-mail-textarea">
 
@@ -19,6 +28,8 @@ function welcomeCreateEmail() {
                                 <p>Easily create a ticket by sending an email </p>
                                 <p> no extra steps needed</p>
                             </div>
+
+                            <img class="welcome-picture welcome-picture--responsive" src="../assets/icons/picWelcomeMail.png" alt="welcome-illustration">
 
                             <div class="welcome-text-second">
                                 <p>On this platform, you can submit your feature requests via email. Our AI system will
@@ -47,7 +58,7 @@ function welcomeCreateEmail() {
 
 
                         </div>
-                        <img class="welcome-picture" src="../assets/icons/picWelcomeMail.png" alt="welcome-illustration">
+                        <img class="welcome-picture welcome-picture--desktop" src="../assets/icons/picWelcomeMail.png" alt="welcome-illustration">
                         <img class="welcome-picture-second" src="../assets/icons/Artboard.png" alt="welcome-illustration">
 
                     </div>

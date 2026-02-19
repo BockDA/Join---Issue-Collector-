@@ -4,7 +4,8 @@
     width: 90vw;                  
     height: auto;                 
     max-height: 90vh;
-
+        overflow-y: auto;
+        overflow-x: hidden;
   }
 
 
@@ -25,19 +26,134 @@
 }
 
 
-
-/*------------------ CSS Dialog Mail ------------------*/
-
+/*------------------ CSS Dialog Create Mail ------------------*/
 
 .welcome-mail{
-    width: 100vw;
-    height: 100vh;
-background-color: yellow;
+   
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+    }
 
-
-
+.welcome-mail .logo{
+    position: static;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
+    .mail-content{
+        width: 100%;
+        max-width: 100%;
+      }
+
+   .mail-header{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       gap: 12px;
+       
+   }
+
+   .mail-header--top{
+        display: none;
+    }
+
+   .mail-header--below{
+        display: flex;
+        margin-top: -30px;
+        margin-bottom: 10px;
+    }
+
+   
+   .mail-back-icon--header{
+        display: none;
+    }
+
+   .welcome-headline-row{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+       margin-bottom: 40px;
+    }
+
+   .mail-back-icon--headline{
+        display: block;
+        position: static;
+    }
+
+   .welcome-headline{
+        margin-left: 0;
+       margin-bottom: 0;
+    }
+
+
+     .welcome-container{
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+        }
+
+    .welcome-mail-textarea{
+      display: flex;
+      flex-direction: column;
+            gap:20px;
+            height: auto;
+            width: 100%;
+            max-width: 470px;
+
+      }
+
+
+.welcome-picture{
+    position: static;
+    top: auto;
+    width: 100%;
+    max-width: 416px;
+    height: auto;
+ }
+
+.welcome-picture--desktop{
+    display: none;
+}
+
+.welcome-picture--responsive{
+    display: block;
+}
+
+.welcome-picture-second{
+    position: static;
+    width: 100%;
+    max-width: 416px;
+    height: auto;
+}
+
+
+
+.welcome-mail .welcome-button{
+    position: static;
+    left: auto;
+    top: auto;
+    bottom: auto;
+    transform: none;
+    margin: 20px auto 0 auto;
+}
+
+
+.welcome-mail footer{
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: static;
+    margin: 20px 0;
+}
+
+}
 
 @media (max-width: 680px) {
    
@@ -57,5 +173,25 @@ font-size: 20px;
     width: 156px;
     height: 48px;
 }
+
+
+/*------------------ CSS Dialog Create Mail ------------------*/
+
+
+
+.welcome-mail{
+
+padding-left: 20px;
+padding-right: 10px;
+
+}
+
+.welcome-headline{
+  
+   font-size: 40px;
+}
+
+
+
 
 }

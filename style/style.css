@@ -1,4 +1,20 @@
-* {
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    touch-action: pan-y;
+    overscroll-behavior-x: none;
+}
+
+body.welcome-overlay-open {
+    overflow: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     font-family: "Inter", sans-serif;
 }

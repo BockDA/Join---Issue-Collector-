@@ -4,6 +4,7 @@ function logoNone() {
 
 function dialogShoW() {
     document.getElementById("body").style.backgroundColor = "var(--sideheader-main-color)";
+    document.getElementById("body").classList.add("welcome-overlay-open");
     //document.getElementById("mail").style.display = "flex";
     document.getElementById("body").innerHTML = "";
     document.getElementById("body").innerHTML += welcomeTemplate();
@@ -11,6 +12,7 @@ function dialogShoW() {
 
 function dialogShowCreateMail() {
     console.log("Seite vreate Email");
+    document.getElementById("body").classList.add("welcome-overlay-open");
     document.getElementById("body").innerHTML = "";
     document.getElementById("body").innerHTML += welcomeCreateEmail();
     document.querySelector(".welcome-text-one").style.display = 'none';
@@ -34,7 +36,7 @@ function dialogShowSendMail() {
     document.querySelector(".welcome-text-second").style.display = "none";
     document.querySelector(".welcome-picture-second").classList.remove("hidden");
     document.querySelector(".welcome-btn-mail").style.display = "none";
-    document.querySelector(".welcome-picture").classList.add("hidden");
+    document.querySelectorAll(".welcome-picture").forEach((el) => el.classList.add("hidden"));
     document.querySelector(".welcome-text-one").classList.remove("hidden");
     document.querySelector(".welome-text-two").classList.remove("hidden");
     document.querySelector(".welcome-picture-second").classList.remove("hidden");
@@ -73,7 +75,9 @@ async function counterStatus() {
 
 async function requestCounter() {
     let data = await counterStatus();
-    document.getElementById("requestCount").innerHTML += data;
+    document.querySelectorAll(".requestCount").forEach((el) => {
+        el.textContent = data;
+    });
     if (data >= 10) {
         document.getElementsByClassName("requestAdvertisement")[0].style.color = "red";
     }
