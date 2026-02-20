@@ -23,15 +23,12 @@ function dialogShowCreateMail() {
 
 
 function dialogShowStartPage() {
-    console.log("Starte StartPage");
-    //  document.getElementById("body").style.backgroundColor = "var(--white)"
     document.getElementById("body").innerHTML = "";
     window.location.href = "/startPage.html";
 }
 
 
 function dialogShowSendMail() {
-    console.log("Dialog Send a Mail)")
     document.querySelector(".welcome-text-first").style.display = "none";
     document.querySelector(".welcome-text-second").style.display = "none";
     document.querySelector(".welcome-picture-second").classList.remove("hidden");
@@ -39,7 +36,7 @@ function dialogShowSendMail() {
     document.querySelectorAll(".welcome-picture").forEach((el) => el.classList.add("hidden"));
     document.querySelector(".welcome-text-one").classList.remove("hidden");
     document.querySelector(".welome-text-two").classList.remove("hidden");
-    document.querySelector(".welcome-picture-second").classList.remove("hidden");
+    document.querySelector(".welcome-picture").style.display = "none";
     document.querySelector(".welcome-btn-sendmail").style.display = "flex";
     counterMax();
 }

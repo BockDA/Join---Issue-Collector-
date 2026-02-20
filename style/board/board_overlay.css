@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
+   
     background-color: rgba(0, 0, 0, 0.4);
     top: 0;
     display: flex;
@@ -22,7 +23,7 @@
                      
 
 .card_overlay_board {
-    width: 445px;
+    width: 500px;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
@@ -55,13 +56,15 @@
 }
 
 .technical_task_overlay {
-    min-width: 160px !important;
+    min-width: 250px;
+    min-height: 40px;
     background-color: #1FD7C1;
 }
 
 .user_story_overlay {
-    width: 116px !important;
-    background-color: #0038FF;
+    min-width: 200px;  
+    min-height: 40px;
+       background-color: #0038FF;
 }
 
 .task_category_overlay {

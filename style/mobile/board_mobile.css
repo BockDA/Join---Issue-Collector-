@@ -270,6 +270,11 @@
     .inputfield_board {
         width: 280px;
     }
+
+.card_overlay_board{
+      width: 100%;;
+}
+
 }
 @media(max-width: 477px){
     .board_content{
@@ -285,12 +290,19 @@
         width: 180px;
     }
     .card_overlay_board{
-        padding: 16px 14px;
-        width: 280px;
+      
+        width: 100%;
     }
     .addTask_overlay{
         width: 280px;
     }
+
+.creator_name{
+  
+  gap: 0px;
+
+    }
+    
 }
 
 
