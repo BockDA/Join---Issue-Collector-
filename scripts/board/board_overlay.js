@@ -260,7 +260,6 @@ function changeCategoryOverlay(index, firstElementToBeRemoved, secondElementToBe
 */
 function closeCategoryOverlay() {
     resetAdaptedClassesCategoryOverlay();
-
     document.getElementById('bg_category').classList.add('d_none');
     document.getElementById('change_category_btn_' + elementToBeDropped).innerHTML = "";
     document.getElementById('change_category_btn_' + elementToBeDropped).classList.remove('z99');
@@ -292,7 +291,6 @@ function resetAdaptedClassesCategoryOverlay() {
 */
 function resetClassCategoryOverlay(currentCategory, firstToBeRemoved, secondToBeRemoved, thirdToBeRemoved) {
     document.getElementById(currentCategory).classList.remove('d_none');
-
     document.getElementById(firstToBeRemoved + elementToBeDropped).classList.add('d_none');
     document.getElementById(secondToBeRemoved + elementToBeDropped).classList.add('d_none');
     document.getElementById(thirdToBeRemoved + elementToBeDropped).classList.add('d_none');

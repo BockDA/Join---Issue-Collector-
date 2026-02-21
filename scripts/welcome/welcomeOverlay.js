@@ -1,3 +1,8 @@
+/**
+ * View template welcome
+ * @returns 
+ */
+
 function welcomeTemplate() {
     return `
         <div id="dialog_Show" class="dialog-Show">

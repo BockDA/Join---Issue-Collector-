@@ -1,6 +1,6 @@
 .btn_to_signup_page {
-    height: 19px;
-    width: 59px;
+    height: 48px;
+    width: 95px;
     border-radius: 8px;
     border: 0;
     background-color: rgb(42, 54, 71);
@@ -40,7 +40,7 @@
 }
 
 .guest_login_btn {
-    height: 16px;
+    height: 48px;
     border-radius: 8px;
     border: 1px solid rgb(42, 54, 71);
     background-color: white;
@@ -64,7 +64,7 @@
 
 .signup_btn {
     width: 126px;
-    height: 55px;
+    height: 48px;
     border-radius: 8px;
     padding: 15px 24px;
     border: 0;
@@ -122,14 +122,12 @@
     border-color: #2A3647;
     color: #2A3647;
     transition: all 0.3s ease;
-
 }
 
 .button_clear_task:hover {
     color: #29ABE2;
     border-color: #29ABE2;
-    height: 58px; /* Vergrößert den Button nach unten */
-
+    height: 58px; 
 }
 
 .button_clear_task:hover img {

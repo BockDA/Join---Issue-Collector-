@@ -87,14 +87,11 @@ async function addContact() {
     let newContact = collectContactData();
     const email = document.getElementById('email_input').value;
     if (!validateInputs(email)) return;
-
     let firstLetter = getFirstLetter(newContact.name);
     let contactsGroup = contactsData[firstLetter] || {};
     let newId = Object.keys(contactsGroup).length;
     contactsGroup[newId] = newContact;
-
     await postData(`/contacts/${firstLetter}`, contactsGroup);
-
     clearInputsAndClose();
     index = newId;
     let contactsId = `${firstLetter}-${newId}`;

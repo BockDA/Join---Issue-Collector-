@@ -366,10 +366,9 @@ footer a:hover{
   width: 502px;
   height: 56px;
   background-color: #FFD2D285;
-
   display: flex;
-  align-items: center;   /* vertikal */
-  justify-content: center; /* horizontal */
+  align-items: center;   
+  justify-content: center; 
     
 }
 

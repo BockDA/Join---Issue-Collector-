@@ -1,3 +1,4 @@
+
 function getExampleCard(index, layer) {
     return `<div id="card_number_${index}" class="card" onclick="showCardOverlay(${index})" draggable="true" ondragstart="startDragging(${index})">
                 <div class="card_header">
@@ -411,19 +412,13 @@ function getAddTaskOverlay() {
                                            <div id="subTaskList" class="subtask_list_ol">
                                     </div>
                                 </div>
-                    
-
-                                            <div class="button_bottom_task_ol">
+                                                                <div class="button_bottom_task_ol">
                                                 <button id="btnClearTask" class="button_clear_task" onclick="addTaskClear()">Clear <img
                                                         class="cancel_ol" src="../assets/icons/iconoir_cancel.png" alt=""></button>
                                                 <button id="btnCreateTask" class="button_create_task" onclick="checkInputData('overlay')">Create Task
                                                     <img src="../assets/icons/check.png" alt=""></button>
                                             </div>
                              </div>
-
-
-
-
                                 <div class="required_text_mobile_ol">
                                     <span><span class="star_red_ol ">*</span class="required-text_ol">This field is requiered</span>
                                 </div>
@@ -435,9 +430,8 @@ function getAddTaskOverlay() {
                                         <img src="../assets/icons/boardIcon.svg">
                                     </div>
                                 </div>
-
                        </div>  
-           
+         
                          <div class="button_bottom_task_mobile_ol">
                               <button id="btnClearTask" class="button_clear_task" onclick="addTaskClear()">Clear <img
                               class="cancel_ol" src="../assets/icons/iconoir_cancel.png" alt=""></button>
@@ -450,12 +444,14 @@ function getAddTaskOverlay() {
 }
 
 
-// TODO: neue function eingefügt
 
-
+/**
+ * If card was created via email, add Logi AI
+ * @param {cardIndex} index 
+ * @returns 
+ */
 function noteAIagent(index) {
     let profil = currentTasks[index].createdBy;
-    console.log(profil);
     if (profil == "mail") {
         return `
             <img src=..//assets/icons/ki_gener.png>
@@ -465,6 +461,11 @@ function noteAIagent(index) {
     }
 }
 
+/**
+ * If card was created via email, write externally
+ * @param {cardIndex} index 
+ * @returns 
+ */
 function membercontrol(index) {
     let member = currentTasks[index].creatorType;
     if (member == "Member") {
@@ -482,10 +483,14 @@ function membercontrol(index) {
          <p>------</p>
        `
     }
-
-
 }
 
+
+/**
+ * If the card was created via email, write an email to the creator.
+ * @param {cardIndex} index 
+ * @returns 
+ */
 function profileSelection(index) {
     let profil = currentTasks[index].createdBy;
     if (profil == "Profil") {
@@ -508,17 +513,19 @@ function profileSelection(index) {
             <p>------</p>
         </div>
           `
-
     }
 }
 
 
+/**
+ * If the card was created via email, write the username.
+ * @param {cardIndex} index 
+ * @returns 
+ */
 function userNameLogin(index) {
     if (currentTasks[index].userName === undefined) {
         return "------";
     } else {
         return currentTasks[index].userName;
     }
-
-
 }

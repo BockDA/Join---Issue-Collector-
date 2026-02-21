@@ -9,7 +9,6 @@ function validateInputs() {
   const email = document.getElementById("email_input").value;
   const emailValid = validateEmailSync(email, originalEmail);
   const telValid = validateTelInput();
-
   return nameValid && emailValid && telValid;
 }
 

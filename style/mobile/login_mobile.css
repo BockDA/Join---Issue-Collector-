@@ -104,8 +104,7 @@
     }
 
     .login_logo img {
-        transform: translate(-20%, -50%);
-        width: 62.02px;
+        animation: slide-in-mobile 1.0s ease-out forwards;
     }
 
     .login_content {
@@ -220,5 +219,19 @@
 
     .login_footer {
         padding-top: 0;
+    }
+}
+
+@keyframes slide-in-mobile {
+    from {
+        top: 50%;
+        left: 50%;
+    }
+
+    to {
+        width: 40px;
+        height: 56px;
+        top: 10%;
+        left: 7%;
     }
 }

@@ -44,14 +44,11 @@ function openGuestLoginPage() {
 resetLoginState();
 
 
-// TODO: Neue Function für Gast login
 /**
  * Stores the current user data in the database.
  * @param {Object} userData - User data to save.
  */
 async function createGuastFolder() {
-
-  //const url = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/currentUser.json";
    const url = Base_URL+"currentUser.json";
    const data = { email: "", name: "Guest" };
   try {

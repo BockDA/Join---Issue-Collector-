@@ -21,12 +21,7 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// TODO: Url löschen
-//const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
-//const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/";
-
 let currentTasks = [];
-
 
 /**
  * This function fetches task data from the Firebase database and updates the task list.
@@ -78,12 +73,17 @@ function isUserLoggedIn() {
 }
 
 
+/**
+ * Delete login user from Local Storage
+ */
 function logoutGuest() {
   localStorage.removeItem('userLoggedIn');
   localStorage.setItem('greetingShown', 'false');
 }
 
-
+/**
+ * View board page
+ */
 function openPage() {
   window.location.href = "../HTML/board.html"; 
 }
@@ -102,7 +102,6 @@ function updateHTML() {
     content_task_in_progress: () => countTasks({ status: "inProgress" }),
     content_awaiting_feedback: () => countTasks({ status: "awaitFeedback" }),
     content_email: () => countTasks({ createdBy: "mail" })
-
   };
 
   for (const [id, fn] of Object.entries(contentMap)) {
@@ -140,9 +139,7 @@ function getDeadlineDate() {
 function renderWelcome() {
   let currentWelcome = document.getElementById('content_welcome');
   let mobileCurrentWelcome = document.getElementById('mobie_content_welcome');
-
   const currentHour = new Date().getHours(); 
-
   let greeting = '';
   if (currentHour >= 5 && currentHour < 12) {
     greeting = 'Good morning,';

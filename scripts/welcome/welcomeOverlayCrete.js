@@ -1,5 +1,8 @@
+/**
+ * 
+ * @returns View template Send email
+ */
 function welcomeCreateEmail() {
-
     return `
     <div id="mail" class="welcome-mail">
         <img class="logo" src="../assets/icons/logo.svg" alt="logo">
@@ -47,20 +50,14 @@ function welcomeCreateEmail() {
                             <div id="counterDay" class="counterDay">
                                 <p>The daily 10-request limit has been reached! </p>
                             </div>
-
-
                             <div class="welome-text-two textFormat">
                             <p>Need more? No worries - you can still send emails, but </p>
                             <p>out team will review them manually instead of using Al </p>
                             <p>to create tickets.</p>
                             </div>
-
-
-
                         </div>
                         <img class="welcome-picture welcome-picture--desktop" src="../assets/icons/picWelcomeMail.png" alt="welcome-illustration">
                         <img class="welcome-picture-second" src="../assets/icons/Artboard.png" alt="welcome-illustration">
-
                     </div>
                 </div>
                 <button class="welcome-btn-mail welcome-button" id="welcomeTaskButton" onclick="dialogShowSendMail()">Create Email
@@ -68,15 +65,11 @@ function welcomeCreateEmail() {
 
                  <button class="welcome-btn-sendmail welcome-button" id="welcomeTaskButton" onclick="callGmail()">Send an email
                    <img class="welcome-arrow-down" src="../assets/icons/check.png" alt="arrow-down"></button>
+                         </div>
+                    <footer>
+                <a href="./HTML/guest_policy.html">Privacy Policy</a>
 
-                   
-            </div>
-           
-
-            <footer>
-                <a href="./guest_policy.html">Privacy Policy</a>
-
-                <a href="./guest_legal_notice.html">Legal notice</a>
+                <a href="./HTML/guest_legal_notice.html">Legal notice</a>
             </footer>
     </div>
     </div >

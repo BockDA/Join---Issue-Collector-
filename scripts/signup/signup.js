@@ -116,18 +116,15 @@ function resetFormFields() {
  * @param {string} email
  * @returns {Promise<boolean>}
  */
-async function checkIfContactExists(email) { // TODO: URl DB geändert
-  
-  const Base_URL ="https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/"
-  //const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
+async function checkIfContactExists(email) {
+  const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/"
   const url = `${Base_URL}/logindata.json`;
-
   try {
     const response = await fetch(url);
     const data = await response.json();
     return data && Object.values(data).some(
       (contact) => contact.email.toLowerCase() === email.toLowerCase()
-    );    
+    );
   } catch (error) {
     console.error("Error checking Firebase data:", error);
     return false;
@@ -143,17 +140,15 @@ async function checkIfContactExists(email) { // TODO: URl DB geändert
  */
 async function saveContact(email, name, password) {
   //const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
- // const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/";
+  // const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/";
   const personData = { email, name, password };
   const url = `${Base_URL}/logindata.json`;
-
   try {
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(personData),
     });
-
     if (!response.ok) throw new Error("Error saving contact");
     await response.json();
   } catch (error) {
@@ -201,7 +196,6 @@ function removeFieldError(fieldId) {
 function updateErrorMessage() {
   const errorMessageElement = document.querySelector(".wrong_data_alert");
   const firstErrorKey = Object.keys(fieldErrors)[0];
-
   if (firstErrorKey) {
     errorMessageElement.textContent = fieldErrors[firstErrorKey];
     errorMessageElement.classList.add("show");
@@ -385,7 +379,6 @@ document.addEventListener("DOMContentLoaded", function () {
   confirmPasswordInput.addEventListener("input", () => {
     const password = passwordInput.value.trim();
     const confirmPassword = confirmPasswordInput.value.trim();
-
     if (confirmPassword.length > 0 && password === confirmPassword) {
       removeFieldError("confirm_password");
     }

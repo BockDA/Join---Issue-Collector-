@@ -1,7 +1,13 @@
+/**
+ * Disable logo
+ */
 function logoNone() {
     document.getElementById("welcome_logo").style.display = "none";
 }
 
+/**
+ * Show dialog
+ */
 function dialogShoW() {
     document.getElementById("body").style.backgroundColor = "var(--sideheader-main-color)";
     document.getElementById("body").classList.add("welcome-overlay-open");
@@ -10,8 +16,10 @@ function dialogShoW() {
     document.getElementById("body").innerHTML += welcomeTemplate();
 }
 
+/**
+ * Create email, display dialog
+ */
 function dialogShowCreateMail() {
-    console.log("Seite vreate Email");
     document.getElementById("body").classList.add("welcome-overlay-open");
     document.getElementById("body").innerHTML = "";
     document.getElementById("body").innerHTML += welcomeCreateEmail();
@@ -21,13 +29,17 @@ function dialogShowCreateMail() {
     requestCounter();
 }
 
-
+/**
+ * Back to the homepage
+ */
 function dialogShowStartPage() {
     document.getElementById("body").innerHTML = "";
     window.location.href = "/startPage.html";
 }
 
-
+/**
+ * Show dialog box for sending mail
+ */
 function dialogShowSendMail() {
     document.querySelector(".welcome-text-first").style.display = "none";
     document.querySelector(".welcome-text-second").style.display = "none";
@@ -42,6 +54,9 @@ function dialogShowSendMail() {
 }
 
 
+/**
+ * Open Gmail dialog, show email, close after 2 seconds
+ */
 function callGmail() {
     const width = 900;
     const height = 700;
@@ -51,18 +66,20 @@ function callGmail() {
         "https://mail.google.com/mail/?view=cm&fs=1" +
         "&to=wbda@elektro-bock.com" +
         "&su=Support%20Request";
-
     window.open(
         url,
         "_blank",
         `width=${width},height=${height},top=${top},left=${left}`
     );
-
     setTimeout(() => {
         dialogShoW();
     }, 2000);
 }
 
+/**
+ * Increase the number of emails sent.
+ * @returns 
+ */
 async function counterStatus() {
     const res = await fetch(urln8n + 'counterStatus');
     const data = await res.json();
@@ -70,6 +87,9 @@ async function counterStatus() {
 }
 
 
+/**
+ * Retrieve the number of email requests and daily limit.
+ */
 async function requestCounter() {
     let data = await counterStatus();
     document.querySelectorAll(".requestCount").forEach((el) => {
@@ -80,6 +100,9 @@ async function requestCounter() {
     }
 }
 
+/**
+ * Check if the maximum number of email requests has been reached.
+ */
 async function counterMax() {
     let data = await counterStatus();
     if (data >= 10) {

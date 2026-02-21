@@ -43,8 +43,7 @@ body {
     flex-grow: 1;
     gap: 30px;
     justify-content: right;
-    
-}
+  }
 
 .headline_title {
     display: flex;

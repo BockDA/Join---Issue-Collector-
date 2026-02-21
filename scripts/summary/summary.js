@@ -1,7 +1,3 @@
-
-// TODO: url geändert
-//const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
-//const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/";
 let currentTasks = [];
 
 /**
@@ -136,8 +132,7 @@ function getDeadlineDate() {
 /**
  * This function renders the user logo in the UI.
  */
-function renderUserLogo() {  // TODO: console log
-  console.log("Login Gast");
+function renderUserLogo() {  
   document.getElementById("logo_user_sign_in").innerHTML = addUserLogoTemplate();
 }
 
@@ -146,7 +141,7 @@ function renderUserLogo() {  // TODO: console log
  * This function renders the user's initials in the UI.
  * It fetches the current user's name and calculates the initials.
  */
-function renderInitials() { // TODO: logo rendern ausgeblendet und geht trotzdem ???
+function renderInitials() { 
  let userInitials = document.getElementById('render_initials_user_logo');
  fetch(`${Base_URL}/currentUser.json`)
    .then(res => res.json())
@@ -177,8 +172,6 @@ function getInitials(name) {
  * This function renders the current user's name in the UI.
  */
 
-// TODO: function render deaktiviert
-
 function renderCurrentUser() {
   let userDiv = document.getElementById('current_user');
   let mobileUserDiv = document.getElementById('mobile_current_user');
@@ -186,7 +179,6 @@ function renderCurrentUser() {
   fetch(`${Base_URL}/currentUser.json`)
     .then(res => res.json())
     .then(data => {
-      // TODO: wen keine Eingabe dann Gast
        const userName = data?.name ?? 'Guast'; 
       userDiv.textContent = userName;
       mobileUserDiv.textContent = userName;

@@ -1,6 +1,7 @@
-
-// TODO: render function deaktiviert
-
+/**
+ * Rendering user logo in app
+ * @returns 
+ */
 function addUserLogoTemplate() {
     return ` 
         <div class="user_logo">

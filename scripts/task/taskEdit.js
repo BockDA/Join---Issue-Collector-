@@ -255,7 +255,7 @@ function taskCreateTaskEdit() {
     if (contents.trim() == "") {
       return;
     } else {
-      DataSubTaskListEdit.push({ name: contents, status: "triage" });  // TODO: status geändert 
+      DataSubTaskListEdit.push({ name: contents, status: "triage" });  
     }
   }
   subTaskClose();
@@ -303,7 +303,7 @@ async function TaskEditSave() {
 /**
  * function creates object to save in FirbaseDB
  */
-function collectDataEdit() {  // TODO: Hier habe ich das editieren geändert
+function collectDataEdit() { 
   currentTaskEdit = {
     creatorType: "Member",
     userName: loadUserNameLoacalStor(),
@@ -408,7 +408,7 @@ async function loadDataFirebaseEdit() {
     const DataContact = await responseContact.json();
     return { DataTask, DataContact };
   } catch (error) {
-    console.log("Fehler beim lesen ", error);
+
   }
 }
 

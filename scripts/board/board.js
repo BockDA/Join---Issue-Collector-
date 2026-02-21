@@ -168,7 +168,6 @@ async function moveTo(category, event) {
     }
     DragCounter = 0;
     moveCard(elementToBeDropped, category)
-
 }
 
 

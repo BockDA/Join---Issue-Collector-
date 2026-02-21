@@ -1,14 +1,14 @@
-
-// TODO: sobald anwendung gestartet ist 
+/**
+ * Run when the app is launched
+ */
 document.addEventListener("DOMContentLoaded", async () => {
-     console.log("Start script")
-    await loadTemplate();
+     await loadTemplate();
 })
 
-
-// TODO: start welcome bildschirm
+/**
+ * Show welcome screen
+ */
 async function loadTemplate() {
-    console.log("Lades stratsei");
     dialogShoW();
 }
 

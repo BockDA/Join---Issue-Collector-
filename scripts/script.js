@@ -19,28 +19,12 @@ let contactColorArray = [
 
 
 
-
 /**
  * Toggles the visibility of the submenu by adding/removing a CSS class.
  */
 function toggleMenu() {
   document.getElementById('submenu_toogle').classList.toggle('submenu_open');
 }
-
-/**
- * Closes the submenu if a user clicks outside of it or the toggle button.
- */
-// TODO: evtl wird diese function nicht mehr gebartucht
-/* 
-document.addEventListener('click', function(event) {
-  const submenu = document.getElementById('submenu_toogle');
-  const toggleButton = document.getElementById('logo_user_sign_in');
-
-  if (!submenu.contains(event.target) && !toggleButton.contains(event.target)) {
-    submenu.classList.remove('submenu_open'); 
-  }
-});
-*/
 
 /**
  * Renders the user's initials inside the user logo element.
@@ -74,26 +58,25 @@ function renderCurrentUser() {
   fetch(`${Base_URL}/currentUser.json`)
     .then(res => res.json())
     .then(data => {
-      // TODO: wen keine Eingabe dann Gast
-      // const userName = data?.name ?? 'Gast'; 
       const userName = data.name;
       const userEmail = data.email;
       userDiv.textContent = userName;
       mobileUserDiv.textContent = userName;
-      console.log("Login mit Name1", userName);
-      writeLoginUserLocalStorage(userName,userEmail);
+       writeLoginUserLocalStorage(userName,userEmail);
 
     })
     .catch(err => console.error("Error fetching user name:", err));
 }
 
-// TODO: neue function schreine username in localstprage
+/**
+ * write logged-in username to LocalStorage
+ * @param {*} userName 
+ * @param {*} userEmail 
+ */
 function writeLoginUserLocalStorage(userName,userEmail) {
   localStorage.setItem("userNameLogIn", userName);
   localStorage.setItem("userEmail", userEmail);
 }
-
-
 
 
 /**
@@ -114,8 +97,6 @@ function getCurrentInitials(name) {
 function renderUserLogo() {
   document.getElementById("logo_user_sign_in").innerHTML = addUserLogoTemplate();
 }
-
-
 
 
 /**

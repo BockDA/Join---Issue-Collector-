@@ -5,8 +5,8 @@ function updateTaskBoard() {
     emptyBoard();
     for (let index = 0; index < currentTasks.length; index++) {
         if (currentTasks[index]) {
-        showCardOnBoard(index);
-        }    
+            showCardOnBoard(index);
+        }
     }
 }
 
@@ -15,7 +15,6 @@ function updateTaskBoard() {
  * This function deletes all task cards from the board and places an indicator that there are no tasks in the column
 */
 function emptyBoard() {
-    // TODO: Task müssen überarbeitet werden
     document.getElementById("triage").innerHTML = getNoTasksCard("no_task_triage", "No tasks Triage");
     document.getElementById("triage").innerHTML += getPlaceholder();
     document.getElementById("toDo").innerHTML = getNoTasksCard("no_task_toDo", "No tasks To do");
@@ -36,9 +35,8 @@ function emptyBoard() {
 */
 function showCardOnBoard(index) {
     let subtasks = currentTasks[index].subtasks.total;
-    let progress =  currentTasks[index].subtasks.number_of_finished_subtasks / subtasks * 100;
+    let progress = currentTasks[index].subtasks.number_of_finished_subtasks / subtasks * 100;
     let layer = "";
-  
     getCard(index, layer);
     checkCategory(index, layer);
     checkSubtasks(subtasks, index, progress, layer);
@@ -52,7 +50,7 @@ function showCardOnBoard(index) {
  * @param {number} index - This is the index number of the task which is shown on the board
  * @param {string} layer - This is the parameter indicating whether the function is used for the card or for the overlay
 */
-function getCard(index, layer){
+function getCard(index, layer) {
     document.getElementById("no_task_" + currentTasks[index].status).classList.add("d_none");
     document.getElementById(currentTasks[index].status).innerHTML += getExampleCard(index, layer);
 }
@@ -63,7 +61,7 @@ function getCard(index, layer){
  * @param {number} index - This is the index number of the task which is shown on the board
  * @param {string} layer - This is the parameter indicating whether the function is used for the card or for the overlay
 */
-function checkCategory(index, layer){
+function checkCategory(index, layer) {
     if (currentTasks[index].category == "User Story") {
         document.getElementById("category_" + index + layer).classList.add("user_story" + layer);
         document.getElementById("category_" + index + layer).classList.remove("technical_task" + layer);
@@ -81,7 +79,7 @@ function checkPriority(index) {
         prio = "High";
     } else if (currentTasks[index].prio == "low_prio") {
         prio = "Low";
-    }   
+    }
     document.getElementById('prio_text_' + index).innerHTML = prio;
 }
 
@@ -97,7 +95,7 @@ function checkPriority(index) {
 function checkSubtasks(subtasks, index, progress, layer) {
     if (subtasks != 0) {
         document.getElementById("subtasks_box" + index + "_" + layer).innerHTML = getSubtasks(index, subtasks, progress, layer);
-    } 
+    }
 }
 
 
@@ -124,7 +122,7 @@ function checkBoardContacts(index, layer) {
     if (currentTasks[index].contacts) {
         showContacts(index, layer);
     } else {
-       document.getElementById("Profile_badges_" + index + "_" + layer).innerHTML = "";
+        document.getElementById("Profile_badges_" + index + "_" + layer).innerHTML = "";
     }
 }
 
@@ -142,9 +140,9 @@ function showContacts(index, layer) {
         document.getElementById("Profile_badges_" + index + "_" + layer).innerHTML += getContactDots((currentTasks[index].contacts.length - 5));
     } else {
         for (let i = 0; i < currentTasks[index].contacts.length; i++) {
-                    getCorrectContact(index, i, layer);
+            getCorrectContact(index, i, layer);
         }
-    } 
+    }
 }
 
 
@@ -155,8 +153,8 @@ function showContacts(index, layer) {
  * @param {number} i - This is the index number of the contact of the task
 */
 function getCorrectContact(index, i, layer) {
-        document.getElementById("Profile_badges_" + index + "_" + layer).innerHTML += getContactIcon(index, i, layer);
-        getContactInitials(index, i, layer);
+    document.getElementById("Profile_badges_" + index + "_" + layer).innerHTML += getContactIcon(index, i, layer);
+    getContactInitials(index, i, layer);
 }
 
 
@@ -170,7 +168,7 @@ function getContactInitials(index, i, layer) {
     let names = currentTasks[index].contacts[i].name.split(' ');
     let initialsBoard = "";
     for (let a = 0; a < names.length; a++) {
-        initialsBoard += names[a].substr(0,1);
+        initialsBoard += names[a].substr(0, 1);
     }
     document.getElementById("profile_" + index + "_" + i + "_" + layer).innerHTML += initialsBoard.toUpperCase();
 }

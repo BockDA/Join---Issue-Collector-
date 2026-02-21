@@ -2,8 +2,7 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: rgb(246, 247, 248);
-  
-}
+  }
 
 .bg_login {
     width: 100%;
@@ -49,7 +48,7 @@ body {
     flex-direction: column;
     align-items: center;
     box-shadow: 0 0 14px 3px rgb(0, 0, 0, 0.04);
-    height: 353px;
+    min-height: 580px;
 }
 
 .login_heading_div {
@@ -103,7 +102,7 @@ body {
 }
 
 .input_login {
-    height: 22px;
+    height: 49px;
     padding: 12px 21px;
     width: 378px;
     border: 1px solid #D1D1D1;
@@ -282,7 +281,7 @@ body {
 }
 
 .login_logo {
-    opacity: 1 !important;
+    opacity: 1;
 
 }
 

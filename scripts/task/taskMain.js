@@ -422,12 +422,10 @@ function timePopUp(duration) {
 /**
  * function to collect the data which is then stored in the db
  */
-function collectData() { // TODO: Hier werden die daten gespeichert wird erweiter mit uiser der gespeichert hat
+function collectData() {
   let mobileUserDiv = document.getElementById('mobile_current_user');
   let nameUser = mobileUserDiv ? mobileUserDiv.textContent.trim() : '';
-  // let nameUser = mobileUserDiv.textContent.trim();
-  console.log("Schreibe neuen Task")
-  currentTaskAdd = {
+    currentTaskAdd = {
     creatorType: "Member",
     userName: loadUserNameLoacalStor(),
     createdBy: "Profil",
@@ -451,8 +449,7 @@ function collectData() { // TODO: Hier werden die daten gespeichert wird erweite
 
 
 function loadUserNameLoacalStor() {
-  console.log("hole wert aus speicher");
-  return localStorage.getItem("userNameLogIn");
+   return localStorage.getItem("userNameLogIn");
 }
 
 

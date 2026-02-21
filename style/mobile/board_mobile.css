@@ -48,7 +48,12 @@
     .board_content_box{
         min-height: auto !important;
         overflow-y: auto;
+        padding-bottom: 16px;
         scrollbar-color: rgb(167, 168, 188) transparent;
+    }
+
+    .board_content_box::-webkit-scrollbar-track {
+        margin-bottom: 16px;
     }
     .add_task_btn{
         width: 166px;
