@@ -16,14 +16,14 @@ function welcomeTemplate() {
             <div id="" class="welcome-option">
                 <div class="welcome-section-btn">
                     <div class="option-a">
-                        <img src="../assets/icons/work.png" alt="stakeholder icon">
+                        <img src="./assets/icons/work.png" alt="stakeholder icon">
                         <span>Are your a stakeholder?</span>
                     </div>
                     <button id="" class="btn-stakeholder" onclick="dialogShowCreateMail()">Create request</button>
                 </div>
                 <div class="welcome-section-btn">
                     <div class="option-b">
-                    <img src="../assets/icons/group.png" alt="team icon">
+                    <img src="./assets/icons/group.png" alt="team icon">
                     <span>Are you a team member?</span>
                     </div>
                         <button id="" class="btn-team" onclick="dialogShowStartPage()">Member log in</button>

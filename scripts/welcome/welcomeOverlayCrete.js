@@ -5,10 +5,10 @@
 function welcomeCreateEmail() {
     return `
     <div id="mail" class="welcome-mail">
-        <img class="logo" src="../assets/icons/logo.svg" alt="logo">
+        <img class="logo" src="./assets/icons/logo.svg" alt="logo">
             <div class="mail-content">
                 <div class="mail-header mail-header--top">
-                    <img class="mail-back-icon mail-back-icon--header" src="../assets/icons/arrow-left-line-black.png" onclick="dialogShoW()" alt="back">
+                    <img class="mail-back-icon mail-back-icon--header" src="./assets/icons/arrow-left-line-black.png" onclick="dialogShoW()" alt="back">
                       <p class="requestAdvertisement">
                          <span class="requestCount"></span> of 10 requests used today
                       </p>
@@ -16,10 +16,10 @@ function welcomeCreateEmail() {
                 <div class="welcome-container-inner">
                     <div class="welcome-headline-row">
                         <p class="welcome-headline">Welcome</p>
-                        <img class="mail-back-icon mail-back-icon--headline" src="../assets/icons/arrow-left-line-black.png" onclick="dialogShoW()" alt="back">
+                        <img class="mail-back-icon mail-back-icon--headline" src="./assets/icons/arrow-left-line-black.png" onclick="dialogShoW()" alt="back">
                     </div>
                     <div class="mail-header mail-header--below">
-                        <img class="mail-back-icon mail-back-icon--header" src="../assets/icons/arrow-left-line-black.png" onclick="dialogShoW()" alt="back">
+                        <img class="mail-back-icon mail-back-icon--header" src="./assets/icons/arrow-left-line-black.png" onclick="dialogShoW()" alt="back">
                         <p class="requestAdvertisement">
                             <span class="requestCount"></span> of 10 requests used today
                         </p>
@@ -32,7 +32,7 @@ function welcomeCreateEmail() {
                                 <p> no extra steps needed</p>
                             </div>
 
-                            <img class="welcome-picture welcome-picture--responsive" src="../assets/icons/picWelcomeMail.png" alt="welcome-illustration">
+                            <img class="welcome-picture welcome-picture--responsive" src="./assets/icons/picWelcomeMail.png" alt="welcome-illustration">
 
                             <div class="welcome-text-second">
                                 <p>On this platform, you can submit your feature requests via email. Our AI system will
@@ -56,15 +56,15 @@ function welcomeCreateEmail() {
                             <p>to create tickets.</p>
                             </div>
                         </div>
-                        <img class="welcome-picture welcome-picture--desktop" src="../assets/icons/picWelcomeMail.png" alt="welcome-illustration">
-                        <img class="welcome-picture-second" src="../assets/icons/Artboard.png" alt="welcome-illustration">
+                        <img class="welcome-picture welcome-picture--desktop" src="./assets/icons/picWelcomeMail.png" alt="welcome-illustration">
+                        <img class="welcome-picture-second" src="./assets/icons/Artboard.png" alt="welcome-illustration">
                     </div>
                 </div>
                 <button class="welcome-btn-mail welcome-button" id="welcomeTaskButton" onclick="dialogShowSendMail()">Create Email
-                    Request <img class="welcome-arrow-down" src="../assets/icons/check.png" alt="arrow-down"></button>
+                    Request <img class="welcome-arrow-down" src="./assets/icons/check.png" alt="arrow-down"></button>
 
                  <button class="welcome-btn-sendmail welcome-button" id="welcomeTaskButton" onclick="callGmail()">Send an email
-                   <img class="welcome-arrow-down" src="../assets/icons/check.png" alt="arrow-down"></button>
+                   <img class="welcome-arrow-down" src="./assets/icons/check.png" alt="arrow-down"></button>
                          </div>
                     <footer>
                 <a href="./HTML/guest_policy.html">Privacy Policy</a>

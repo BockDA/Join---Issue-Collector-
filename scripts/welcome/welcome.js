@@ -34,7 +34,7 @@ function dialogShowCreateMail() {
  */
 function dialogShowStartPage() {
     document.getElementById("body").innerHTML = "";
-    window.location.href = "/startPage.html";
+    window.location.href = "./startPage.html";
 }
 
 /**
