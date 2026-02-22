@@ -4,7 +4,7 @@ function getExampleCard(index, layer) {
                 <div class="card_header">
                     <div id="category_${index}${layer}" class="task_category technical_task">${currentTasks[index].category}</div>
                     <div onclick="stopPropagation(event)" id="change_category_btn_${index}">
-                        <img onclick="openCategoryOverlay(event, ${index})" id="change_category_icon_${index}" class="change_category_btn" src="..//assets/icons/change_category_icon.png" alt="change category">
+                        <img onclick="openCategoryOverlay(event, ${index})" id="change_category_icon_${index}" class="change_category_btn" src="../assets/icons/change_category_icon.png" alt="change category">
                     </div>
                 </div>
                 <div>
@@ -14,7 +14,7 @@ function getExampleCard(index, layer) {
                 <div id="subtasks_box${index}_${layer}"></div>
                 <div class="card_footer">
                     <div id="Profile_badges_${index}_${layer}" class="profile_badges"></div>
-                    <img class="prio_icon ${currentTasks[index].prio}_${layer}" src=".//assets/icons/${currentTasks[index].prio}.svg" alt="priority indicator">
+                    <img class="prio_icon ${currentTasks[index].prio}_${layer}" src="../assets/icons/${currentTasks[index].prio}.svg" alt="priority indicator">
                 </div>                          
             </div>`
 }
@@ -69,7 +69,7 @@ function getCardOverlayContent(index) {
                     </div>
                     
                     <div class="close_btn_overlay">
-                        <img onclick="closeOverlay('bg_overlay')"  src=".//assets/icons/close.svg" alt="close button">
+                        <img onclick="closeOverlay('bg_overlay')"  src="../assets/icons/close.svg" alt="close button">
                     </div>
                 </div>
                 <div style="overflow-wrap: break-word;">
@@ -98,19 +98,19 @@ function getCardOverlayContent(index) {
                     <p class="color_blue al_center font_weight_700">Priority:</p>
                     <div class="priority_div">
                         <div id="prio_text_${index}">Medium</div>
-                        <img class="prio_icon" src=".//assets/icons/${currentTasks[index].prio}.svg" alt="priority indicator">
+                        <img class="prio_icon" src="../assets/icons/${currentTasks[index].prio}.svg" alt="priority indicator">
                     </div>
                 </div>
                 <div id="task_description_overlay_${index}" class="task_description_overlay fd_column gap_8"></div>
                 <div id="subtasks_box_overlay${index}"></div>
                 <div  class="overlay_options">
                     <div onclick="deleteTask(${index})" class="overlay_option delete_btn_overlay_board">
-                        <img class="delete_icon" src=".//assets/icons/delete.svg" alt="delete button">
+                        <img class="delete_icon" src="../assets/icons/delete.svg" alt="delete button">
                         <p>Delete</p>
                     </div>
                     <div class="seperator_overlay_options"></div>
                     <div onclick="editTask(${index})"  class="overlay_option edit_btn_overlay_board">
-                        <img class="edit_icon" src=".//assets/icons/edit.svg" alt="edit button">
+                        <img class="edit_icon" src="../assets/icons/edit.svg" alt="edit button">
                         <p >Edit</p>
                     </div>
                 </div>
@@ -157,21 +157,21 @@ function getDragOptionsMobile(index, x, y) {
                 <div class="category_menu">
                     <p class="category_menu_heading">Move to</p>
                     <div onclick="moveCardMobileVersion(${index},'toDo')" class="div_category_options" id="div_category_options_toDo">
-                        <img id="arrow_up_toDo_${index}" class="d_none" src=".//assets/icons/arrow_upward.svg" alt="arrow upward">
+                        <img id="arrow_up_toDo_${index}" class="d_none" src="../assets/icons/arrow_upward.svg" alt="arrow upward">
                         <p class="category_menu_text">To do</p>
                     </div>
                     <div onclick="moveCardMobileVersion(${index}, 'inProgress')" class="div_category_options" id="div_category_options_inProgress">
-                        <img id="arrow_down_inProgress_${index}" class="d_none" src=".//assets/icons/arrow_downward.svg" alt="arrow upward">
-                        <img id="arrow_up_inProgress_${index}" class="d_none" src=".//assets/icons/arrow_upward.svg" alt="arrow upward">
+                        <img id="arrow_down_inProgress_${index}" class="d_none" src="../assets/icons/arrow_downward.svg" alt="arrow upward">
+                        <img id="arrow_up_inProgress_${index}" class="d_none" src="../assets/icons/arrow_upward.svg" alt="arrow upward">
                         <p class="category_menu_text">In progress</p>
                     </div>
                     <div onclick="moveCardMobileVersion(${index}, 'awaitFeedback')" class="div_category_options" id="div_category_options_awaitFeedback">
-                        <img id="arrow_down_awaitFeedback_${index}" class="d_none" src=".//assets/icons/arrow_downward.svg" alt="arrow upward">
-                        <img id="arrow_up_awaitFeedback_${index}" class="d_none" src=".//assets/icons/arrow_upward.svg" alt="arrow upward">
+                        <img id="arrow_down_awaitFeedback_${index}" class="d_none" src="../assets/icons/arrow_downward.svg" alt="arrow upward">
+                        <img id="arrow_up_awaitFeedback_${index}" class="d_none" src="../assets/icons/arrow_upward.svg" alt="arrow upward">
                         <p class="category_menu_text">Review</p>
                     </div>
                     <div onclick="moveCardMobileVersion(${index}, 'done')" class="div_category_options" id="div_category_options_done">
-                        <img id="arrow_down_done_${index}" class="d_none" src=".//assets/icons/arrow_downward.svg" alt="arrow upward">
+                        <img id="arrow_down_done_${index}" class="d_none" src="../assets/icons/arrow_downward.svg" alt="arrow upward">
                         <p class="category_menu_text">Done</p>
                     </div>
                 </div>
@@ -180,7 +180,7 @@ function getDragOptionsMobile(index, x, y) {
 
 
 function getMobileDragger(index) {
-    return `<img onclick="openCategoryOverlay(event, ${index})" id="change_category_icon_${index}" class="change_category_btn" src=".//assets/icons/change_category_icon.png" alt="change category">`
+    return `<img onclick="openCategoryOverlay(event, ${index})" id="change_category_icon_${index}" class="change_category_btn" src="../assets/icons/change_category_icon.png" alt="change category">`
 }
 
 
@@ -190,7 +190,7 @@ function editTaskTemplate(index) {
             <div id="category_overlay${index}" class="task_category task_category_overlay  "></div>
            
            <div class="close_btn_overlay">
-              <img onclick="closeOverlay('bg_overlay')"  src=".//assets/icons/close.svg" alt="close button">
+              <img onclick="closeOverlay('bg_overlay')"  src="../assets/icons/close.svg" alt="close button">
             </div>
         
         </div>
@@ -224,16 +224,16 @@ function editTaskTemplate(index) {
 
                 <div class="prio_buttons">
                        <button onclick="btnPrioSelect('urgent');checkPrioEditTask('high_prio')" class="btn_prio button-urgent" tabindex="5">Urgent
-                       <img class="prio_img" src="./assets/icons/high_prio.svg" alt="urgent">
+                       <img class="prio_img" src="../assets/icons/high_prio.svg" alt="urgent">
                     </button>
                     <button onclick="btnPrioSelect('medium');checkPrioEditTask('medium_prio')" class="btn_prio button_medium" tabindex="6">Medium
                         <div id="btnPrioGroup" class="prio_img prio_img_group">
-                            <img src="./assets/icons/linePrio.svg">
-                            <img src="./assets/icons/linePrio.svg">
+                            <img src="../assets/icons/linePrio.svg">
+                            <img src="../assets/icons/linePrio.svg">
                         </div>
                     </button>
                     <button onclick="btnPrioSelect('low');checkPrioEditTask('low_prio')" class="btn_prio button-low" tabindex="7">Low
-                        <img class="prio_img" src="../assets/icons/low_prio.svg">
+                        <img class="prio_img" src="./assets/icons/low_prio.svg">
                     </button>
                 </div>
             </div>
@@ -242,7 +242,7 @@ function editTaskTemplate(index) {
                 <div class="task_Contact_dropdown" onmouseleave="taskContactListDrobdownEditClose()">
                     <div class="task_input_section">
                         <input type="text" id="taskDropDownInput" class="task_dropdown_input" tabindex="3" placeholder="Select contacts to assign" onclick="taskContactListDrobdownEdit()" onkeyup="taskContactFilterList()">
-                        <img src="./assets/icons/arrow_down.svg" >
+                        <img src="../assets/icons/arrow_down.svg" >
                     </div>
                     <div id="taskContactDrowdownMenue" class="task_dropdown_content">
                         <div id="taskDropDownList" class="task_dropdown_list"></div>
@@ -255,13 +255,13 @@ function editTaskTemplate(index) {
                         <div class="input_wrapper">
                             <input type="text" placeholder=" Add new subtask"   id="inputSubtask" class="input_subtasks" oninput="subTaskInputCheck()">                                                
                        
-                            <img src="./assets/icons/add.png" id="subTaskAddIcon" class="add_subtasks_new ele_hide" onclick="subTaskInputCheck(true)">
+                            <img src="../assets/icons/add.png" id="subTaskAddIcon" class="add_subtasks_new ele_hide" onclick="subTaskInputCheck(true)">
                             
                             
                             <div id="subTaskEditIocn" class="add_subtasks sub_Task_Edit_Iocn ele_hide">
-                                <img id="subTaskCloseIcon" onclick="subTaskClose()" src="./assets/icons/close.svg">
-                                <img src="./assets/icons/vectorV.svg">
-                                <img id="subTaskCheckIcon" onclick="taskCreateTaskEdit()" src="./assets/icons/checkSW.svg">
+                                <img id="subTaskCloseIcon" onclick="subTaskClose()" src="../assets/icons/close.svg">
+                                <img src="../assets/icons/vectorV.svg">
+                                <img id="subTaskCheckIcon" onclick="taskCreateTaskEdit()" src="../assets/icons/checkSW.svg">
                             </div>
 
                            </div>
@@ -272,7 +272,7 @@ function editTaskTemplate(index) {
                     
                         
                         <div class="btn_div">
-                            <button id="button_Ok_Edit"  class="button_Ok" onclick="TaskEditSave()" >OK<img src="./assets/icons/check.svg"></button>
+                            <button id="button_Ok_Edit"  class="button_Ok" onclick="TaskEditSave()" >OK<img src="../assets/icons/check.svg"></button>
                          </div>
       
    `
@@ -289,7 +289,7 @@ function getAddTaskOverlay() {
               
          <div onclick="stopPropagation(event)" id="addTask_card" class="addTask_overlay">
             <div class="close_btn_AddOverlay">
-            <img  src=".//assets/icons/close.svg" onclick="closeOverlay('addTask_overlay')">
+            <img  src="../assets/icons/close.svg" onclick="closeOverlay('addTask_overlay')">
             </div>            
                      <p class="addTask_Title_ol">Add Task</p>
                          <div class="container_AddTask_ol"> 
@@ -317,7 +317,7 @@ function getAddTaskOverlay() {
                                                         <input type="text" id="taskDropDownInput" class="task_dropdown_input_ol" tabindex="3"
                                                             placeholder="Select contacts to assign" onclick="taskContactListDrobdown()"
                                                             onkeyup="taskContactFilterList()">
-                                                        <img src="./assets/icons/arrow_down.svg">
+                                                        <img src="../assets/icons/arrow_down.svg">
                                                     </div>
                                                     <div id="taskContactDrowdownMenue" class="task_dropdown_content_ol">
                                                         <div id="taskDropDownList" class="task_dropdown_list_ol">
@@ -349,7 +349,7 @@ function getAddTaskOverlay() {
                                             <h2>Due date<span class="star_red_ol">*</span></h2>
                                             <div class="date_input_ol">
                                             <input type="date" id="taskDate" class="date_input_field_ol"  onblur="requiredInputDate()" onchange="requiredInputDate()" onfocus="errorFieldsFocus('error_Field_Date')"  tabindex="4">
-                                            <img src="./assets/icons/event.png" class="date_icon_ol" onclick="openDatePicker()">
+                                            <img src="../assets/icons/event.png" class="date_icon_ol" onclick="openDatePicker()">
                                             </div>
                                               <span id="error_Field_Date" class="error_Field">&nbsp;</span>         
                                       </div>
@@ -361,7 +361,7 @@ function getAddTaskOverlay() {
                                         
                                             <button onclick="btnPrioSelect('urgent')" class="btn_prio button-urgent"
                                                 tabindex="5">Urgent
-                                                <img class="prio_img" src="./assets/icons/high_prio.svg" alt="urgent">
+                                                <img class="prio_img" src="../assets/icons/high_prio.svg" alt="urgent">
                                             </button>
                                         
                                             <button onclick="btnPrioSelect('medium')" class="btn_prio button_medium"
@@ -373,7 +373,7 @@ function getAddTaskOverlay() {
                                             </button>
                                         
                                             <button onclick="btnPrioSelect('low')" class="btn_prio button-low" tabindex="7">Low
-                                                <img class="prio_img" src="./assets/icons/low_prio.svg">
+                                                <img class="prio_img" src="../assets/icons/low_prio.svg">
                                             </button>
                                          </div>
                                   </div>
@@ -397,14 +397,14 @@ function getAddTaskOverlay() {
                                         <input type="text" id="inputSubtask" class="input_subtasks_ol"
                                             oninput="subTaskInputCheck()" maxlength="40">
                                             <img id="subTaskAddIcon" class="add_subtasks_new_ol ele_hide"
-                                            onclick="subTaskInputCheck(true)" src="./assets/icons/add.png" alt="add-icon">
+                                            onclick="subTaskInputCheck(true)" src="../assets/icons/add.png" alt="add-icon">
                                     
                                             <div id="subTaskEditIocn" class="add_subtasks_ol sub_Task_Edit_Iocn_ol ele_hide">
-                                                <img id="subTaskCloseIcon" onclick="subTaskClose()" src="./assets/icons/close.svg"
+                                                <img id="subTaskCloseIcon" onclick="subTaskClose()" src="../assets/icons/close.svg"
                                                     alt="add-icon">
-                                                <img src="./assets/icons/vectorV.svg">
+                                                <img src="../assets/icons/vectorV.svg">
                                                 <img id="subTaskCheckIcon" onclick="taskCreateTask()"
-                                                    src="./assets/icons/checkSW.svg" alt="add-icon">
+                                                    src="../assets/icons/checkSW.svg" alt="add-icon">
                                             </div>
                                         </div>
                            
@@ -414,9 +414,9 @@ function getAddTaskOverlay() {
                                 </div>
                                                                 <div class="button_bottom_task_ol">
                                                 <button id="btnClearTask" class="button_clear_task" onclick="addTaskClear()">Clear <img
-                                                        class="cancel_ol" src="./assets/icons/iconoir_cancel.png" alt=""></button>
+                                                        class="cancel_ol" src="../assets/icons/iconoir_cancel.png" alt=""></button>
                                                 <button id="btnCreateTask" class="button_create_task" onclick="checkInputData('overlay')">Create Task
-                                                    <img src="./assets/icons/check.png" alt=""></button>
+                                                    <img src="../assets/icons/check.png" alt=""></button>
                                             </div>
                              </div>
                                 <div class="required_text_mobile_ol">
@@ -427,16 +427,16 @@ function getAddTaskOverlay() {
                                 <div id="notificationFinish" class="message_Finish_ol">
                                     <div class="message_Finish_contents_ol">
                                         <p>Task added to board</p>
-                                        <img src="./assets/icons/boardIcon.svg">
+                                        <img src="../assets/icons/boardIcon.svg">
                                     </div>
                                 </div>
                        </div>  
          
                          <div class="button_bottom_task_mobile_ol">
                               <button id="btnClearTask" class="button_clear_task" onclick="addTaskClear()">Clear <img
-                              class="cancel_ol" src="./assets/icons/iconoir_cancel.png" alt=""></button>
+                              class="cancel_ol" src="../assets/icons/iconoir_cancel.png" alt=""></button>
                               <button id="btnCreateTaskMobile" class="button_create_task" onclick="checkInputData('overlay')">Create Task
-                              <img src="./assets/icons/check.png" alt=""></button>
+                              <img src="../assets/icons/check.png" alt=""></button>
                          </div>
               </div> 
       </div>
@@ -496,14 +496,14 @@ function profileSelection(index) {
     if (profil == "Profil") {
         return `
         <div class="profil_entry">
-        <img src="./assets/icons/person.png">
+        <img src="../assets/icons/person.png">
         <p>Profil</p>
         </div>
         `
     } else if (profil == "mail") {
         return `
         <div class="profil_entry">
-            <img src="./assets/icons/email.png">
+            <img src="../assets/icons/email.png">
             <p>E-Mail</p>
         </div>
           `
