@@ -370,9 +370,7 @@ span {
   width: 14px;
   height: 14px;
   cursor: pointer;
-  background-color: yellow;
-
-}
+  }
 
 .add_subtasks {
   display: flex;
