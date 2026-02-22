@@ -216,18 +216,28 @@ function btnPrioBtnSelect(auswahl, btnColor, id) {
  * @param {Boolean} flag status of the list
  */
 function subTaskInputCheck(flag) {
-  let subTaskInput = document.getElementById("inputSubtask");
+  const subTaskInput = document.getElementById("inputSubtask");
+  if (!subTaskInput) {
+    return;
+  }
+
+  const addIcon = document.getElementById("subTaskAddIcon");
+  const editIcons = document.getElementById("subTaskEditIocn");
+
   if (flag) {
-    subTaskInput.value === null;
     subTaskInput.focus();
+    addIcon?.classList.add("ele_hide");
+    editIcons?.classList.remove("ele_hide");
+    return;
   }
-  if (subTaskInput) {
-    document.getElementById("subTaskAddIcon").classList.add("ele_hide");
-    document.getElementById("subTaskEditIocn").classList.remove("ele_hide");
-  } else {
-    document.getElementById("subTaskAddIcon").classList.remove("ele_hide");
-    document.getElementById("subTaskEditIocn").classList.add("ele_hide");
+
+  const editIconsOpen = editIcons && !editIcons.classList.contains("ele_hide");
+  if (editIconsOpen) {
+    return;
   }
+
+  addIcon?.classList.remove("ele_hide");
+  editIcons?.classList.add("ele_hide");
 }
 
 /**
@@ -425,7 +435,7 @@ function timePopUp(duration) {
 function collectData() {
   let mobileUserDiv = document.getElementById('mobile_current_user');
   let nameUser = mobileUserDiv ? mobileUserDiv.textContent.trim() : '';
-    currentTaskAdd = {
+  currentTaskAdd = {
     creatorType: "Member",
     userName: loadUserNameLoacalStor(),
     createdBy: "Profil",
@@ -449,7 +459,7 @@ function collectData() {
 
 
 function loadUserNameLoacalStor() {
-   return localStorage.getItem("userNameLogIn");
+  return localStorage.getItem("userNameLogIn");
 }
 
 
