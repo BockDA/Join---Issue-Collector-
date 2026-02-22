@@ -54,7 +54,7 @@
     .content {
         top: 270px;
         left: 140px;
-          background-color: red;
+         
     }
 
     .first-container {
@@ -216,13 +216,7 @@
 }
 
 @media (max-width: 550px) {
-    .content {
-        
-         background-color:yellow
-         
-    }
-
-    .first-container {
+   .first-container {
         top: 150px;
         left: 115px;
         flex-direction: column;
@@ -460,9 +454,6 @@
     height: 110px;
     
     }
-}
-
-
 
     .container-task {
         height: 140px;

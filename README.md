@@ -1,4 +1,4 @@
-JOIN – Kanban-Style Task Manager
+##JOIN – Kanban-Style Task Manager
 
 JOIN is a collaborative web-based task manager inspired by the Kanban system. Developed using JavaScript, Firebase, HTML, and CSS, and extended with n8n automation, it enables users to visually manage tasks and automatically create tasks from incoming emails.
 
