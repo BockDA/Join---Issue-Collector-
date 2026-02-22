@@ -114,4 +114,3 @@ Wenn du willst, ergänze ich dir noch:
 
 🧠 n8n Workflow JSON (Import ready)
 
-Dann hast du eine komplette Dev-Doku für dein Repo.
