@@ -1,0 +1,1002 @@
+{
+  "name": "JoinDAn8n",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -1360,
+        -96
+      ],
+      "id": "03b64921-2335-4f28-a423-db7d519cfecb",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/tasks/{{ $json.nextId }}.json ",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"title\":\"{{ $('AI Agent').item.json.output.title }}\",\n  \"category\":\"{{ $('AI Agent').item.json.output.category }}\",\n  \"createdBy\": \"mail\",\n  \"creatorEmail\":\"{{ $('Email Trigger (IMAP)').item.json.from }}\",\n  \"creatorType\": \"Extern\",\n  \"deadline\":\"{{ $('AI Agent').item.json.output.deadline }}\",\n  \"description\":\"{{ $('AI Agent').item.json.output.description }}\",\n  \"prio\":\"{{ $('AI Agent').item.json.output.prio }}\",\n  \"status\": \"triage\",\n  \"userName\":\"{{ $('AI Agent').item.json.output.userName }}\" ,\n  \"contacts\": [\n    {\n      \"color\": \"10\",\n      \"email\":\"{{ $('Email Trigger (IMAP)').item.json.from }}\",\n      \"name\":\"{{ $('AI Agent').item.json.output.userName }}\"\n    }\n  ],\n  \"subtasks\": {\n    \"number_of_finished_subtasks\": 0,\n    \"total\": 0\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -960,
+        -96
+      ],
+      "id": "0cd24e89-3cf2-492c-b870-5497c5959000",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n//letzte id und dann id erhöhen um 1\nconst db = $input.first().json;\nconst tasks = db.tasks || {};\nconst ids = Object.keys(tasks).map(Number);\nconst lastId = ids.length ? Math.max(...ids) : 0;\nconst nextId = lastId + 1;\nreturn [{\n  json: {\n    lastId,\n    nextId\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1152,
+        -96
+      ],
+      "id": "c846090a-b0ee-4986-881e-f638b4d731f6",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "P93b9vA57k1AsRAS",
+          "mode": "list",
+          "cachedResultName": "Tabelle",
+          "cachedResultUrl": "/projects/II82ptLwEHLnnTtR/datatables/P93b9vA57k1AsRAS"
+        },
+        "matchType": "=anyCondition",
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "CounterNr": "={{ $json.counterAkt }}",
+            "DateforMax": "={{ $json.datumAkt }}"
+          },
+          "matchingColumns": [
+            "CounterNr"
+          ],
+          "schema": [
+            {
+              "id": "CounterNr",
+              "displayName": "CounterNr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "DateforMax",
+              "displayName": "DateforMax",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "emailOK",
+              "displayName": "emailOK",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "dryRun": false
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -2224,
+        -416
+      ],
+      "id": "144e6bbe-475b-4e7b-8649-f08533e8494c",
+      "name": "Update row(s)"
+    },
+    {
+      "parameters": {
+        "content": "## Durchlauf prüfen \n",
+        "height": 304,
+        "width": 720
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2768,
+        -528
+      ],
+      "typeVersion": 1,
+      "id": "3f9bce79-4e04-4ef6-8af9-cad127e23416",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3d7ad739-0d00-4760-a048-11123ba1bf5f",
+              "leftValue": "={{ $json.CounterNr }}",
+              "rightValue": 11,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1968,
+        -416
+      ],
+      "id": "35f7fa51-0fa2-4bef-9647-c008241ce7ec",
+      "name": "If",
+      "notesInFlow": true,
+      "notes": "# Größer 10"
+    },
+    {
+      "parameters": {
+        "content": "## Vergleich\n",
+        "height": 304,
+        "width": 192
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2016,
+        -528
+      ],
+      "typeVersion": 1,
+      "id": "3f44ea51-788e-464f-bfb8-4b7be34b9706",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      Nachricht: \"Limit erreicht\"\n         \n    },\n  },\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1280,
+        -432
+      ],
+      "id": "220721a2-136e-431a-92b4-a01dac28420d",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2.1,
+      "position": [
+        -3104,
+        -416
+      ],
+      "id": "7a55ce8b-1a70-47ac-a118-b8b94f446593",
+      "name": "Email Trigger (IMAP)",
+      "credentials": {
+        "imap": {
+          "id": "5g5sWC3W2oM3eJHD",
+          "name": "IMAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const dbcounter = $input.first().json.CounterNr;\nlet dateDB =$input.first().json.DateforMax;\nconst dateToday = new Date().toLocaleDateString('en-CA');\nlet counter = dbcounter;\n\nlet dbDate  = String(dateDB).trim();\nlet aktDate = String(dateToday).trim();\n\n\nif(dbDate===aktDate){\ncounter=counter + 1;\n }\nelse{\n  counter=1;\n  dbDate=aktDate;\n}\n\nreturn [\n  {\n    json: {\n      counterDB: dbcounter,\n      counterAkt:counter,\n      datumDB:dbDate,\n      datumAkt:aktDate,\n      \n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2448,
+        -416
+      ],
+      "id": "58fafa6d-95c4-4d4e-895c-5cd17fe3954f",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "path": "counterStatus",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -2960,
+        -64
+      ],
+      "id": "1270f1ca-ea3f-4fb8-ba44-d3c55de231e3",
+      "name": "Webhook",
+      "webhookId": "aa1f1e29-5ed1-4b47-baae-0a272aa4ccbe"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "=\n {{ $json.CounterNr }}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        -2480,
+        -64
+      ],
+      "id": "839e6e99-7784-42d8-b622-0e5aef7da73e",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "P93b9vA57k1AsRAS",
+          "mode": "list",
+          "cachedResultName": "Tabelle",
+          "cachedResultUrl": "/projects/II82ptLwEHLnnTtR/datatables/P93b9vA57k1AsRAS"
+        },
+        "limit": 1
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -2704,
+        -64
+      ],
+      "id": "624056f9-2e6c-4755-bfea-601bb2d21e12",
+      "name": "Get row(s)1"
+    },
+    {
+      "parameters": {
+        "content": "## Counter Status\n",
+        "height": 272,
+        "width": 768
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -3024,
+        -160
+      ],
+      "typeVersion": 1,
+      "id": "d337dd87-e572-4d53-8e7b-4cd79d0a69e1",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "P93b9vA57k1AsRAS",
+          "mode": "list",
+          "cachedResultName": "Tabelle",
+          "cachedResultUrl": "/projects/II82ptLwEHLnnTtR/datatables/P93b9vA57k1AsRAS"
+        },
+        "limit": 1
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -2688,
+        -416
+      ],
+      "id": "cc68416a-4d84-48f7-9240-1734121b741b",
+      "name": "Get row(s)"
+    },
+    {
+      "parameters": {
+        "content": "## Mitteilung an den Verfasser das Limit ist erreicht\n",
+        "height": 256,
+        "width": 592
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1408,
+        -496
+      ],
+      "typeVersion": 1,
+      "id": "945d20f5-bfae-45fb-aa9c-adc3b2635640",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Daten werden in Firebase geschrieben und Mitteilung an Verfasser per E-Mail\n",
+        "height": 352,
+        "width": 928
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1456,
+        -176
+      ],
+      "typeVersion": 1,
+      "id": "e016a71b-7d80-4bf0-ae6f-a5bef66410a4",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -1712,
+        176
+      ],
+      "id": "9d6d6127-2c64-4ebe-9992-a9fc69179e96",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "PXvsh0V2diuWmtWe",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analysieren Sie diese E-Mail und extrahieren folgende Punkte\n\n-title\n-description:\n-deadline im format 22/12/2024 \n-deatline If there is no deadline, today's date plus three days.\n-Prioität: high_prio  : medium_prio : low_prio\n-category :Technical Task  : User Story\n-userName:\n\nEmail content:\nFrom:{{ $('Email Trigger (IMAP)').item.json.from }}\n{{ $('Email Trigger (IMAP)').item.json.textPlain }}\nDate:{{ $today }}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -1760,
+        -128
+      ],
+      "id": "9148f4a3-da93-48b0-b24b-01427b007629",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"title\":\"\" ,\n  \"description\":\"\",\n  \"deadline\":\"\",\n  \"prio\":\"\",\n  \"category\":\"\",\n  \"userName\":\"\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -1408,
+        176
+      ],
+      "id": "9604cd74-1e13-4afd-9479-e1788b3cb0b2",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.Subject }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "erledigt",
+              "description": "Join Nachricht  neuer Task wurde eingetragen"
+            },
+            {
+              "category": "zu bearbeiten",
+              "description": "Join Nachricht Limit überschritten HINWEIS lesen !!"
+            },
+            {
+              "category": "fehler",
+              "description": "Join  ein Fehler ist aufgetreten"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1.1,
+      "position": [
+        -176,
+        -272
+      ],
+      "id": "5ffabdce-73f5-42fa-a7f5-6dd0245f90f1",
+      "name": "Text Classifier"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "responsesApiEnabled": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -176,
+        16
+      ],
+      "id": "f6a0c661-1f17-4085-a537-d383247073f6",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "PXvsh0V2diuWmtWe",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Email Trigger (IMAP)').item.json.from }}",
+        "subject": "Join Nachricht Limit überschritten HINWEIS lesen !!",
+        "message": "Ihre Email wurde nicht verarbeitet da das Tageslimit  überschritten wurde",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -1024,
+        -432
+      ],
+      "id": "d33a1c83-559a-469d-b4f9-8783cfa2e58f",
+      "name": "Send a message Auftrag fehlgeschlagen",
+      "webhookId": "c26f5349-5c80-47c1-9a33-a3628add086f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VHhGCsIEoOon5MKq",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "messageId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -368,
+        -272
+      ],
+      "id": "1ae64f28-dbde-4b9f-922a-9d013a55bb7a",
+      "name": "Get a message",
+      "webhookId": "29a7814c-79c4-4275-ad88-6bce8d04e63a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VHhGCsIEoOon5MKq",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Email Trigger (IMAP)').item.json.from }}",
+        "subject": "Join Nachricht  neuer Task wurde eingetragen",
+        "message": "Ihre Nachricht wurde übermittel und eingetragen",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -720,
+        -96
+      ],
+      "id": "51a493f0-0dad-4bb1-bdae-6fc987092d95",
+      "name": "Send a message Auftrag eingetragen",
+      "webhookId": "c26f5349-5c80-47c1-9a33-a3628add086f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VHhGCsIEoOon5MKq",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -2992,
+        240
+      ],
+      "id": "4c0df5b9-92e9-406d-86bf-f356b7139cf1",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "sendTo": "=cbock2011@gmail.com",
+        "subject": "=Join Nachricht  es ist ein unerwarteter Fehler aufgetreten",
+        "message": "=Join  ein Fehler ist aufgetreten wir werden uns bei Ihnen melden",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -2640,
+        240
+      ],
+      "id": "3255f6b4-2098-472e-84cf-2bd5aad20ce4",
+      "name": "Fehler im Workflow",
+      "webhookId": "c26f5349-5c80-47c1-9a33-a3628add086f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VHhGCsIEoOon5MKq",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Fehlerbehandlung\n",
+        "height": 256,
+        "width": 656
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -3024,
+        144
+      ],
+      "typeVersion": 1,
+      "id": "1d18603f-2007-44d2-93f9-1022b0e49fad",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## Email sortierer\nMail in richtiges Label sortieren",
+        "height": 544,
+        "width": 992
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -416,
+        -368
+      ],
+      "typeVersion": 1,
+      "id": "892e8c1c-be7f-4652-8414-645d8befa660",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $('Get a message1').item.json.id }}",
+        "labelIds": [
+          "Label_3512860555770847695"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        256,
+        -336
+      ],
+      "id": "99f182ac-3e5f-465c-9d1a-c2f0d22d673c",
+      "name": "Add label to erledigt",
+      "webhookId": "083dc9e1-1752-4dcc-811d-7b9a93c0bbe2",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VHhGCsIEoOon5MKq",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
+        "labelIds": [
+          "Label_4878486603544235628"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        256,
+        -144
+      ],
+      "id": "9af06e52-202e-4afd-8a96-c746f9f2c18e",
+      "name": "Add label to zu bearbeiten",
+      "webhookId": "083dc9e1-1752-4dcc-811d-7b9a93c0bbe2",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VHhGCsIEoOon5MKq",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $('Get a message').item.json.id }}",
+        "labelIds": [
+          "Label_1523737324954935610"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        256,
+        48
+      ],
+      "id": "3bbbd825-10b4-4784-acd9-ebfc9c502e0c",
+      "name": "Add label fehler",
+      "webhookId": "083dc9e1-1752-4dcc-811d-7b9a93c0bbe2",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VHhGCsIEoOon5MKq",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "moveMail",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -2992,
+        576
+      ],
+      "id": "e4cd9581-43bb-4f60-a534-036d88706948",
+      "name": "Webhook1",
+      "webhookId": "aa1f1e29-5ed1-4b47-baae-0a272aa4ccbe"
+    },
+    {
+      "parameters": {
+        "content": "## Email Benachrichtigung wenn Card in neue Category verschoben wurde\n",
+        "height": 320,
+        "width": 672
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -3040,
+        448
+      ],
+      "typeVersion": 1,
+      "id": "00f46a86-3f4d-4880-a0c6-a9a89e646771",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.body.creatorEmail }}",
+        "subject": "Card wurde verschoben",
+        "message": "=Die Karte mit dem Titel  {{ $json.body.title }} wurde in die Category {{ $json.body.category }} verschoben",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -2576,
+        576
+      ],
+      "id": "b58f2d53-963c-4b63-bf0e-62af6d34e6e5",
+      "name": "Send a message Card verschoben",
+      "webhookId": "c26f5349-5c80-47c1-9a33-a3628add086f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VHhGCsIEoOon5MKq",
+          "name": "Gmail account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Send a message Auftrag eingetragen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row(s)": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Trigger (IMAP)": {
+      "main": [
+        [
+          {
+            "node": "Get row(s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Update row(s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get row(s)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s)1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s)": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Send a message Auftrag fehlgeschlagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Classifier": {
+      "main": [
+        [
+          {
+            "node": "Add label to erledigt",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Add label to zu bearbeiten",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Add label fehler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message Auftrag fehlgeschlagen": {
+      "main": [
+        [
+          {
+            "node": "Get a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a message": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message Auftrag eingetragen": {
+      "main": [
+        [
+          {
+            "node": "Get a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Fehler im Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fehler im Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Send a message Card verschoben",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Berlin",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "f24d2790-93c8-41ce-b143-41b3bdc881e0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ca636ae6a46d7e53b024e111b8cc2ec5dbb4fb90cd160b417470ad095d98fae1"
+  },
+  "id": "lmznmLqwICCDn6HGMnumz",
+  "tags": []
+}
