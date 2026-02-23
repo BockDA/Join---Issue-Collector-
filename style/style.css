@@ -11,10 +11,8 @@ body.welcome-overlay-open {
     overflow: hidden;
 }
 
-*,
-*::before,
-*::after {
-       margin: 0;
+*
+{       margin: 0;
     font-family: "Inter", sans-serif;
 }
 

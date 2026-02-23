@@ -148,18 +148,16 @@ body {
     max-width: calc(100% - 40px);
     margin: 20px auto;
     flex: 1 1 auto;
-    overflow: visible;
-    padding-bottom: 200px;
-
+    padding-bottom: 100px;
 }
 
 .welcome-mail .welcome-button{
-    position: fixed;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: 40px;
     top: auto;
-    z-index: 1001;
+
 }
 
 .mail-header{
@@ -196,11 +194,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
-    gap:20px;
+     gap:20px;
     max-width:964px; 
     margin: auto;
-    margin-top: 60px;
+    margin-top: 20px;
     
 }
 
@@ -233,13 +230,11 @@ body {
 
 .welcome-container{
     display: flex;
-
 }
 
 .welcome-mail-textarea{
     width: 470px;
     height: 280px;
-   
 }
 
 
@@ -251,19 +246,22 @@ body {
     text-align: left;
     margin-bottom: 20px;
     color:var(--grau);
-}
+    margin-left: 20px;
+    }
 
 
 .welcome-text-second{
     display: flex;
     flex-direction: column;
-    gap:15px;
+     gap:15px;
     font-family: 'open sans';
     font-weight: 400;
     font-size: 19px;
-     text-align: left;
-     margin-bottom: 30px;
+    margin-bottom: 30px;
      color:var(--grau);
+     max-width: 330px;
+     margin-left: 20px;
+ 
 }
 
 
