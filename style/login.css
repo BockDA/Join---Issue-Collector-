@@ -48,7 +48,7 @@ body {
     flex-direction: column;
     align-items: center;
     box-shadow: 0 0 14px 3px rgb(0, 0, 0, 0.04);
-    min-height: 590px;
+    min-height: 400px;
 }
 
 .login_heading_div {
@@ -102,7 +102,7 @@ body {
 }
 
 .input_login {
-    height: 49px;
+
     padding: 12px 21px;
     width: 378px;
     border: 1px solid #D1D1D1;
@@ -150,11 +150,12 @@ body {
 .login_btns {
     display: flex;
     gap: 35px;
+
 }
 
 .login_footer {
     height: 60px;
-    position: fixed;
+    position: absolute;
     display: flex;
     justify-content: center;
     bottom: 0;

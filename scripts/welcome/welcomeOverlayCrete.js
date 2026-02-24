@@ -5,8 +5,8 @@
 function welcomeCreateEmail() {
     return `
     <div id="mail" class="welcome-mail">
-        <img class="logo" src="./assets/icons/logo.svg" alt="logo">
             <div class="mail-content">
+                <img class="logo" src="./assets/icons/logo.svg" alt="logo">
                 <div class="mail-header mail-header--top">
                     <img class="mail-back-icon mail-back-icon--header" src="./assets/icons/arrow-left-line-black.png" onclick="dialogShoW()" alt="back">
                       <p class="requestAdvertisement">
