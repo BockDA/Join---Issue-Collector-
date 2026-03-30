@@ -117,9 +117,25 @@ function updateHTML() {
  * @returns {number}
  */
 function countTasks(filter = {}) {
-  return currentTasks.filter(task =>
-    task && Object.entries(filter).every(([key, value]) => task[key] === value)
-  ).length;
+  const filterEntries = Object.entries(filter);
+
+  return currentTasks.filter((task) => {
+    if (!task) return false;
+
+    for (const [key, value] of filterEntries) {
+      if (task?.[key] !== value) return false;
+    }
+
+    if (filter.createdBy === 'mail') {
+      const creatorEmail = typeof task.creatorEmail === 'string' ? task.creatorEmail.trim() : '';
+      const hasContactEmail = Array.isArray(task.contacts)
+        && task.contacts.some((c) => typeof c?.email === 'string' && c.email.trim() !== '');
+
+      if (!creatorEmail && !hasContactEmail) return false;
+    }
+
+    return true;
+  }).length;
 }
 
 

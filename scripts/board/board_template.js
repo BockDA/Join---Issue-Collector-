@@ -233,7 +233,7 @@ function editTaskTemplate(index) {
                         </div>
                     </button>
                     <button onclick="btnPrioSelect('low');checkPrioEditTask('low_prio')" class="btn_prio button-low" tabindex="7">Low
-                        <img class="prio_img" src="./assets/icons/low_prio.svg">
+                        <img class="prio_img" src="../assets/icons/low_prio.svg">
                     </button>
                 </div>
             </div>
@@ -367,8 +367,8 @@ function getAddTaskOverlay() {
                                             <button onclick="btnPrioSelect('medium')" class="btn_prio button_medium"
                                                 tabindex="6">Medium
                                                 <div id="btnPrioGroup" class="prio_img prio_img_group">
-                                                    <img src="./assets/icons/linePrio.svg">
-                                                    <img src="./assets/icons/linePrio.svg">
+                                                    <img src="../assets/icons/linePrio.svg">
+                                                    <img src="../assets/icons/linePrio.svg">
                                                 </div>
                                             </button>
                                         

@@ -33,6 +33,10 @@ function toggleMenu() {
 function renderInitials() {
  // const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
  // const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/"
+  if (typeof Base_URL === 'undefined') {
+    console.error('Base_URL is not defined. Ensure scripts/data.js is loaded before scripts/script.js.');
+    return;
+  }
   renderUserLogo();
 
   fetch(`${Base_URL}/currentUser.json`)
@@ -52,6 +56,10 @@ function renderInitials() {
  * This function renders the current user's name in the UI.
  */
 function renderCurrentUser() {
+  if (typeof Base_URL === 'undefined') {
+    console.error('Base_URL is not defined. Ensure scripts/data.js is loaded before scripts/script.js.');
+    return;
+  }
   let userDiv = document.getElementById('current_user');
   let mobileUserDiv = document.getElementById('mobile_current_user');
 
