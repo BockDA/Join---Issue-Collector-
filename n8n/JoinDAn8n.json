@@ -9,7 +9,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -1360,
+        -1408,
         -96
       ],
       "id": "03b64921-2335-4f28-a423-db7d519cfecb",
@@ -18,33 +18,20 @@
     {
       "parameters": {
         "method": "PUT",
-        "url": "=https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/tasks/{{ $json.nextId }}.json ",
+        "url": "=https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/tasks/{{ $json.nextId }}.json",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"title\":\"{{ $('AI Agent').item.json.output.title }}\",\n  \"category\":\"{{ $('AI Agent').item.json.output.category }}\",\n  \"createdBy\": \"mail\",\n  \"creatorEmail\":\"{{ $('Email Trigger (IMAP)').item.json.from }}\",\n  \"creatorType\": \"Extern\",\n  \"deadline\":\"{{ $('AI Agent').item.json.output.deadline }}\",\n  \"description\":\"{{ $('AI Agent').item.json.output.description }}\",\n  \"prio\":\"{{ $('AI Agent').item.json.output.prio }}\",\n  \"status\": \"triage\",\n  \"userName\":\"{{ $('AI Agent').item.json.output.userName }}\" ,\n  \"contacts\": [\n    {\n      \"color\": \"10\",\n      \"email\":\"{{ $('Email Trigger (IMAP)').item.json.from }}\",\n      \"name\":\"{{ $('AI Agent').item.json.output.userName }}\"\n    }\n  ],\n  \"subtasks\": {\n    \"number_of_finished_subtasks\": 0,\n    \"total\": 0\n  }\n}\n",
+        "jsonBody": "={{ {\n  \"title\": $json.title,\n  \"category\": $json.category,\n  \"createdBy\": $json.createdBy,\n  \"creatorEmail\": $json.creatorEmail,\n  \"creatorType\": $json.creatorType,\n  \"deadline\": $json.deadline,\n  \"description\": $json.description,\n  \"prio\": $json.prio,\n  \"status\": $json.status,\n  \"userName\": $json.userName,\n  \"contacts\": $json.contacts,\n  \"subtasks\": $json.subtasks\n} }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -960,
+        -544,
         -96
       ],
       "id": "0cd24e89-3cf2-492c-b870-5497c5959000",
       "name": "HTTP Request1"
-    },
-    {
-      "parameters": {
-        "jsCode": "\n//letzte id und dann id erhöhen um 1\nconst db = $input.first().json;\nconst tasks = db.tasks || {};\nconst ids = Object.keys(tasks).map(Number);\nconst lastId = ids.length ? Math.max(...ids) : 0;\nconst nextId = lastId + 1;\nreturn [{\n  json: {\n    lastId,\n    nextId\n  }\n}];\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -1152,
-        -96
-      ],
-      "id": "c846090a-b0ee-4986-881e-f638b4d731f6",
-      "name": "Code in JavaScript"
     },
     {
       "parameters": {
@@ -193,8 +180,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1280,
-        -432
+        -1440,
+        -384
       ],
       "id": "220721a2-136e-431a-92b4-a01dac28420d",
       "name": "Code in JavaScript1"
@@ -256,7 +243,7 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        -2480,
+        -2448,
         -64
       ],
       "id": "839e6e99-7784-42d8-b622-0e5aef7da73e",
@@ -323,12 +310,12 @@
       "parameters": {
         "content": "## Mitteilung an den Verfasser das Limit ist erreicht\n",
         "height": 256,
-        "width": 592
+        "width": 1008
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1408,
-        -496
+        -1488,
+        -480
       ],
       "typeVersion": 1,
       "id": "945d20f5-bfae-45fb-aa9c-adc3b2635640",
@@ -338,12 +325,12 @@
       "parameters": {
         "content": "## Daten werden in Firebase geschrieben und Mitteilung an Verfasser per E-Mail\n",
         "height": 352,
-        "width": 928
+        "width": 1344
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1456,
-        -176
+        -1488,
+        -192
       ],
       "typeVersion": 1,
       "id": "e016a71b-7d80-4bf0-ae6f-a5bef66410a4",
@@ -363,8 +350,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        -1712,
-        176
+        -1888,
+        336
       ],
       "id": "9d6d6127-2c64-4ebe-9992-a9fc69179e96",
       "name": "OpenAI Chat Model",
@@ -378,28 +365,29 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Analysieren Sie diese E-Mail und extrahieren folgende Punkte\n\n-title\n-description:\n-deadline im format 22/12/2024 \n-deatline If there is no deadline, today's date plus three days.\n-Prioität: high_prio  : medium_prio : low_prio\n-category :Technical Task  : User Story\n-userName:\n\nEmail content:\nFrom:{{ $('Email Trigger (IMAP)').item.json.from }}\n{{ $('Email Trigger (IMAP)').item.json.textPlain }}\nDate:{{ $today }}",
+        "text": "=Analysieren Sie diese E-Mail und extrahieren Sie folgende Punkte als JSON:\n\n- title\n- description\n- deadline im Format DD/MM/YYYY\n- Wenn keine Deadline vorhanden ist, verwende das heutige Datum plus 3 Tage\n- prio: high_prio | medium_prio | low_prio\n- category: Technical Task | User Story\n- userName\n- subtasks: Array mit 0 bis 6 Einträgen\n\nWichtige Regeln:\n- Antworten Sie nur mit gültigem JSON.\n- Keine Erklärungen, kein Fließtext.\n- \"subtasks\" muss immer ein Array sein.\n- Wenn keine Subtasks explizit als Liste, Aufzählung oder einzelne Punkte genannt sind, dann \"subtasks\": [].\n- Jeder Subtask soll ein Objekt sein mit:\n  - title\n  - done\n- done ist immer false beim Erstellen.\n- Extrahieren Sie als Subtasks NUR explizit genannte Aufzählungspunkte, z. B. Zeilen mit \"-\", \"•\", \"*\", oder nummerierte Listen.\n- Erzeugen Sie KEINE zusätzlichen Subtasks aus description, title oder allgemeinem Fließtext.\n- Formulierungen im Beschreibungstext wie \"bitte prüfen\", \"soll überprüft werden\" oder ähnliche Sätze sind keine Subtasks, außer sie stehen ausdrücklich als eigener Listenpunkt.\n- Übernehmen Sie Subtasks möglichst wortgetreu aus der E-Mail.\n\nErwartetes Ausgabeformat:\n\n{\n  \"title\": \"\",\n  \"description\": \"\",\n  \"deadline\": \"\",\n  \"prio\": \"\",\n  \"category\": \"\",\n  \"userName\": \"\",\n  \"subtasks\": [\n    {\n      \"title\": \"\",\n      \"done\": false\n    }\n  ]\n}\n\nEmail content:\nFrom: {{ $('Email Trigger (IMAP)').item.json.from }}\n{{ $('Email Trigger (IMAP)').item.json.textPlain }}\nDate: {{ $today }}",
         "hasOutputParser": true,
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        -1760,
-        -128
+        -1824,
+        -96
       ],
       "id": "9148f4a3-da93-48b0-b24b-01427b007629",
       "name": "AI Agent"
     },
     {
       "parameters": {
-        "jsonSchemaExample": "{\n  \"title\":\"\" ,\n  \"description\":\"\",\n  \"deadline\":\"\",\n  \"prio\":\"\",\n  \"category\":\"\",\n  \"userName\":\"\"\n}\n"
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"title\": { \"type\": \"string\" },\n    \"description\": { \"type\": \"string\" },\n    \"deadline\": { \"type\": \"string\" },\n    \"prio\": { \"type\": \"string\" },\n    \"category\": { \"type\": \"string\" },\n    \"userName\": { \"type\": \"string\" },\n\n    \"subtasks\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"title\": { \"type\": \"string\" },\n          \"done\": { \"type\": \"boolean\" }\n        },\n        \"required\": [\"title\", \"done\"]\n      }\n    }\n  },\n  \"required\": [\n    \"title\",\n    \"description\",\n    \"deadline\",\n    \"prio\",\n    \"category\",\n    \"userName\",\n    \"subtasks\"\n  ]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        -1408,
-        176
+        -1616,
+        320
       ],
       "id": "9604cd74-1e13-4afd-9479-e1788b3cb0b2",
       "name": "Structured Output Parser"
@@ -428,7 +416,7 @@
       "type": "@n8n/n8n-nodes-langchain.textClassifier",
       "typeVersion": 1.1,
       "position": [
-        -176,
+        240,
         -272
       ],
       "id": "5ffabdce-73f5-42fa-a7f5-6dd0245f90f1",
@@ -448,7 +436,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        -176,
+        240,
         16
       ],
       "id": "f6a0c661-1f17-4085-a537-d383247073f6",
@@ -470,8 +458,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        -1024,
-        -432
+        -1088,
+        -384
       ],
       "id": "d33a1c83-559a-469d-b4f9-8783cfa2e58f",
       "name": "Send a message Auftrag fehlgeschlagen",
@@ -491,7 +479,7 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        -368,
+        48,
         -272
       ],
       "id": "1ae64f28-dbde-4b9f-922a-9d013a55bb7a",
@@ -514,7 +502,7 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        -720,
+        -304,
         -96
       ],
       "id": "51a493f0-0dad-4bb1-bdae-6fc987092d95",
@@ -548,7 +536,7 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        -2640,
+        -2464,
         240
       ],
       "id": "3255f6b4-2098-472e-84cf-2bd5aad20ce4",
@@ -565,7 +553,7 @@
       "parameters": {
         "content": "## Fehlerbehandlung\n",
         "height": 256,
-        "width": 656
+        "width": 768
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
@@ -584,8 +572,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -416,
-        -368
+        -64,
+        -336
       ],
       "typeVersion": 1,
       "id": "892e8c1c-be7f-4652-8414-645d8befa660",
@@ -602,7 +590,7 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        256,
+        672,
         -336
       ],
       "id": "99f182ac-3e5f-465c-9d1a-c2f0d22d673c",
@@ -626,7 +614,7 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        256,
+        672,
         -144
       ],
       "id": "9af06e52-202e-4afd-8a96-c746f9f2c18e",
@@ -650,7 +638,7 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        256,
+        672,
         48
       ],
       "id": "3bbbd825-10b4-4784-acd9-ebfc9c502e0c",
@@ -683,7 +671,7 @@
       "parameters": {
         "content": "## Email Benachrichtigung wenn Card in neue Category verschoben wurde\n",
         "height": 320,
-        "width": 672
+        "width": 784
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
@@ -716,6 +704,45 @@
           "name": "Gmail account 2"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "\n//letzte id und dann id erhöhen um 1\nconst db = $input.first().json;\nconst tasks = db.tasks || {};\nconst ids = Object.keys(tasks).map(Number);\nconst lastId = ids.length ? Math.max(...ids) : 0;\nconst nextId = lastId + 1;\nreturn [{\n  json: {\n    lastId,\n    nextId\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1184,
+        -96
+      ],
+      "id": "c846090a-b0ee-4986-881e-f638b4d731f6",
+      "name": "ID erhöhen"
+    },
+    {
+      "parameters": {
+        "jsCode": "const output = $('AI Agent').item.json.output;\nconst from = $('Email Trigger (IMAP)').item.json.from;\nconst nextId = $('ID erhöhen').item.json.nextId;\n\nconst subtasksArray = Array.isArray(output.subtasks) ? output.subtasks : [];\n\nconst subtasksTodo = {};\nlet finishedCount = 0;\n\nfor (const subtask of subtasksArray) {\n  if (!subtask || !subtask.title) continue;\n\n  const status = subtask.done ? 'done' : 'todo';\n  subtasksTodo[subtask.title] = status;\n\n  if (subtask.done) {\n    finishedCount++;\n  }\n}\n\nreturn [\n  {\n    json: {\n      nextId: nextId,\n      title: output.title || \"\",\n      category: output.category || \"\",\n      createdBy: \"mail\",\n      creatorEmail: from || \"\",\n      creatorType: \"Extern\",\n      deadline: output.deadline || \"\",\n      description: output.description || \"\",\n      prio: output.prio || \"\",\n      status: \"triage\",\n      userName: output.userName || \"\",\n      contacts: [\n        {\n          color: \"10\",\n          email: from || \"\",\n          name: output.userName || \"\"\n        }\n      ],\n      subtasks: {\n        number_of_finished_subtasks: finishedCount,\n        subtasks_todo: subtasksTodo,\n        total: Object.keys(subtasksTodo).length\n      }\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -768,
+        -96
+      ],
+      "id": "a24edbac-fae0-43d6-a038-4052fcd295aa",
+      "name": "Subtask in Firebase"
+    },
+    {
+      "parameters": {
+        "jsCode": "const output = $('AI Agent').item.json.output;\nconst from = $('Email Trigger (IMAP)').item.json.from;\nconst subtasksArray = Array.isArray(output.subtasks) ? output.subtasks : [];\nconst subtasksTodo = {};\nlet finishedCount = 0;\n\nfor (const subtask of subtasksArray) {\n  if (!subtask || !subtask.title) continue;\n\n  const status = subtask.done ? 'done' : 'todo';\n  subtasksTodo[subtask.title] = status;\n\n  if (subtask.done) {\n    finishedCount++;\n  }\n}\n\nreturn [\n  {\n    json: {\n      title: output.title || \"\",\n      category: output.category || \"\",\n      createdBy: \"mail\",\n      creatorEmail: from || \"\",\n      creatorType: \"Extern\",\n      deadline: output.deadline || \"\",\n      description: output.description || \"\",\n      prio: output.prio || \"\",\n      status: \"triage\",\n      userName: output.userName || \"\",\n      contacts: [\n        {\n          color: \"10\",\n          email: from || \"\",\n          name: output.userName || \"\"\n        }\n      ],\n      subtasks: {\n        number_of_finished_subtasks: finishedCount,\n        subtasks_todo: subtasksTodo,\n        total: Object.keys(subtasksTodo).length\n      }\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -960,
+        -96
+      ],
+      "id": "c537d9c7-920c-40c5-ba0e-6ee24d46055b",
+      "name": "Daten in Firebase"
     }
   ],
   "pinData": {},
@@ -724,7 +751,7 @@
       "main": [
         [
           {
-            "node": "Code in JavaScript",
+            "node": "ID erhöhen",
             "type": "main",
             "index": 0
           }
@@ -736,17 +763,6 @@
         [
           {
             "node": "Send a message Auftrag eingetragen",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code in JavaScript": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request1",
             "type": "main",
             "index": 0
           }
@@ -982,6 +998,39 @@
           }
         ]
       ]
+    },
+    "ID erhöhen": {
+      "main": [
+        [
+          {
+            "node": "Daten in Firebase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Subtask in Firebase": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Daten in Firebase": {
+      "main": [
+        [
+          {
+            "node": "Subtask in Firebase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
@@ -992,7 +1041,7 @@
     "timezone": "Europe/Berlin",
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "versionId": "f24d2790-93c8-41ce-b143-41b3bdc881e0",
+  "versionId": "1c5d081d-11e8-4404-b053-77ca822aeb15",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ca636ae6a46d7e53b024e111b8cc2ec5dbb4fb90cd160b417470ad095d98fae1"

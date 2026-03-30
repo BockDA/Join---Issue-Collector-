@@ -1,4 +1,18 @@
 
+function getPrioIconName(prio) {
+    const normalized = typeof prio === 'string' ? prio.trim().toLowerCase() : '';
+
+    if (normalized === 'high_prio' || normalized === 'medium_prio' || normalized === 'low_prio') {
+        return normalized;
+    }
+
+    if (normalized === 'urgent' || normalized === 'high') return 'high_prio';
+    if (normalized === 'medium') return 'medium_prio';
+    if (normalized === 'low') return 'low_prio';
+
+    return 'medium_prio';
+}
+
 function getExampleCard(index, layer) {
     return `<div id="card_number_${index}" class="card" onclick="showCardOverlay(${index})" draggable="true" ondragstart="startDragging(${index})">
                 <div class="card_header">
@@ -14,7 +28,7 @@ function getExampleCard(index, layer) {
                 <div id="subtasks_box${index}_${layer}"></div>
                 <div class="card_footer">
                     <div id="Profile_badges_${index}_${layer}" class="profile_badges"></div>
-                    <img class="prio_icon ${currentTasks[index].prio}_${layer}" src="../assets/icons/${currentTasks[index].prio}.svg" alt="priority indicator">
+                    <img class="prio_icon ${currentTasks[index].prio}_${layer}" src="../assets/icons/${getPrioIconName(currentTasks[index].prio)}.svg" alt="priority indicator">
                 </div>                          
             </div>`
 }
@@ -98,7 +112,7 @@ function getCardOverlayContent(index) {
                     <p class="color_blue al_center font_weight_700">Priority:</p>
                     <div class="priority_div">
                         <div id="prio_text_${index}">Medium</div>
-                        <img class="prio_icon" src="../assets/icons/${currentTasks[index].prio}.svg" alt="priority indicator">
+                        <img class="prio_icon" src="../assets/icons/${getPrioIconName(currentTasks[index].prio)}.svg" alt="priority indicator">
                     </div>
                 </div>
                 <div id="task_description_overlay_${index}" class="task_description_overlay fd_column gap_8"></div>
