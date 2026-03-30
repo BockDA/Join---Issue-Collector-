@@ -501,3 +501,179 @@
     }
 }
 
+/* Final mobile layout: centered content with 10px gutters + consistent gaps */
+@media (max-width: 780px) {
+    .content {
+        left: 0;
+        right: 0;
+        width: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 0;
+        padding-bottom: 90px;
+        box-sizing: border-box;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "todo todo"
+            "urgent email"
+            "tasks tasks";
+        gap: 10px;
+    }
+
+    .content-to-do {
+        grid-area: todo;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .content-pen,
+    .content-success {
+        position: static;
+        left: auto;
+        top: auto;
+        width: 100%;
+        height: auto;
+        min-height: 130px;
+        min-width: 0;
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "icon number"
+            "label label";
+        justify-content: center;
+        align-content: center;
+        column-gap: 12px;
+        row-gap: 4px;
+    }
+
+    .content-pen .text-pen,
+    .content-success .text-pen {
+        display: contents;
+    }
+
+    .content-pen .img-pen,
+    .content-success .img-pen {
+        grid-area: icon;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .content-pen .one-done,
+    .content-success .one-done {
+        grid-area: number;
+        width: auto;
+        height: auto;
+        line-height: 1;
+        align-self: center;
+        justify-self: start;
+    }
+
+    .content-pen .text-to-do,
+    .content-success .text-to-do {
+        grid-area: label;
+        width: 100%;
+        text-align: center;
+        align-self: start;
+    }
+
+    .content-date {
+        grid-area: urgent;
+        position: static;
+        left: auto;
+        top: auto;
+        width: 100%;
+        height: auto;
+        min-height: 110px;
+        min-width: 0;
+        margin: 0;
+    }
+
+    .content-date {
+        position: relative;
+        gap: 12px;
+        justify-content: space-between;
+    }
+
+    .content-date::before {
+        content: "";
+        position: absolute;
+        left: 46%;
+        top: 50%;
+        width: 2px;
+        height: 84px;
+        background-color: #d1d1d1;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+    }
+
+    .content-date-div,
+    .content-deadline {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .content-deadline {
+        padding-left: 0;
+        margin-left: -18px;
+    }
+
+    .content-date .one-urgent {
+        margin-left: -10px;
+    }
+
+    .content-date .text-urgent {
+        margin-top: 12px;
+    }
+
+    .content-date-div {
+        padding-left: 20px;
+        justify-content: center;
+    }
+
+    .content-date .line-between,
+    .content-date .line-between-div {
+        display: none;
+    }
+
+    .container-Email {
+        grid-area: email;
+        position: static;
+        left: auto;
+        top: auto;
+        width: 100%;
+        height: auto;
+        min-height: 130px;
+        min-width: 0;
+        margin: 0;
+    }
+
+    .container-task {
+        grid-area: tasks;
+        position: static;
+        left: auto;
+        top: auto;
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .container-task-one,
+    .container-task-two,
+    .container-task-three {
+        position: static;
+        left: auto;
+        top: auto;
+        width: 100%;
+        min-width: 0;
+    }
+}
+
