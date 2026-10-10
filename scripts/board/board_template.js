@@ -78,7 +78,7 @@ function getCardOverlayContent(index) {
     return `<div onclick="stopPropagation(event)" id="card_overlay" class="card_overlay_board slide-in-overlay">
                 <div class="card_overlay_header">
                     <div id="category_${index}_overlay" class="task_category task_category_overlay technical_task_overlay ">${currentTasks[index].category}</div>
-                    <div>
+                    <div class="ai_note_overlay">
                     <p>${noteAIagent(index)}</p>
                     </div>
                     
@@ -170,7 +170,12 @@ function getDragOptionsMobile(index, x, y) {
     return `<div class="div_category_menu" style="position:absolute;top:${y}px;left:${x}px;">
                 <div class="category_menu">
                     <p class="category_menu_heading">Move to</p>
+                    <div onclick="moveCardMobileVersion(${index}, 'triage')" class="div_category_options" id="div_category_options_triage">
+                        <img id="arrow_up_triage_${index}" class="d_none" src="../assets/icons/arrow_upward.svg" alt="arrow upward">
+                        <p class="category_menu_text">Triage</p>
+                    </div>
                     <div onclick="moveCardMobileVersion(${index},'toDo')" class="div_category_options" id="div_category_options_toDo">
+                        <img id="arrow_down_toDo_${index}" class="d_none" src="../assets/icons/arrow_downward.svg" alt="arrow downward">
                         <img id="arrow_up_toDo_${index}" class="d_none" src="../assets/icons/arrow_upward.svg" alt="arrow upward">
                         <p class="category_menu_text">To do</p>
                     </div>

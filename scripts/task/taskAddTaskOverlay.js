@@ -9,6 +9,7 @@ function taskAddOverlayInit() {
   checkAllRequiredData();
   loadDataFirebase();
   addTaskClear();
+  setMinDate();
   setFocusontitle();
 }
 

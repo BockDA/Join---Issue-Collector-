@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.svg">
+    <link rel="stylesheet" href="../style/fonts.css">
+    <link rel="stylesheet" href="../style/time/time-tracking.css">
+    <title>VoltZeit Arbeitszeitverwaltung</title>
+    <script src="../scripts/data.js"></script>
+    <script src="../scripts/time/time-tracking.js" defer></script>
+</head>
+
+<body>
+    <header class="app-header">
+        <a class="brand" href="../index.html" aria-label="Zur Startseite">
+            <img src="../assets/icons/work.png" alt="">
+            <span>VoltZeit</span>
+        </a>
+        <div class="sync-state" id="sync-state">Firebase bereit</div>
+    </header>
+
+    <main class="shell">
+        <section class="intro">
+            <div>
+                <p class="eyebrow">Elektrohandwerk</p>
+                <h1>Arbeitszeiten mobil erfassen, im B&uuml;ro auswerten.</h1>
+                <p class="intro-copy">Monteure buchen Baustelle, T&auml;tigkeit, Pausen und Notizen direkt am Telefon. Die Desktop-Ansicht zeigt Tagesstatus, Stunden und Exportdaten aus Firebase.</p>
+            </div>
+            <div class="today-card">
+                <span>Heute</span>
+                <strong id="today-total">0:00 h</strong>
+                <small id="today-date"></small>
+            </div>
+        </section>
+
+        <section class="workspace">
+            <form class="time-form" id="time-form">
+                <div class="section-title">
+                    <img src="../assets/icons/event.png" alt="">
+                    <div>
+                        <h2>Mobile Erfassung</h2>
+                        <p>Optimiert f&uuml;r die schnelle Eingabe auf der Baustelle.</p>
+                    </div>
+                </div>
+
+                <label>
+                    Mitarbeiter
+                    <input id="employee" name="employee" type="text" list="employee-list" placeholder="z. B. Max Schneider" required>
+                </label>
+                <datalist id="employee-list"></datalist>
+
+                <label>
+                    Baustelle / Auftrag
+                    <input id="project" name="project" type="text" list="project-list" placeholder="z. B. BV M&uuml;ller, Schaltschrank EG" required>
+                </label>
+                <datalist id="project-list"></datalist>
+
+                <div class="grid-two">
+                    <label>
+                        Datum
+                        <input id="work-date" name="date" type="date" required>
+                    </label>
+                    <label>
+                        T&auml;tigkeit
+                        <select id="activity" name="activity">
+                            <option>Installation</option>
+                            <option>Wartung</option>
+                            <option>St&ouml;rung</option>
+                            <option>Pr&uuml;fung</option>
+                            <option>Fahrtzeit</option>
+                            <option>Dokumentation</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="grid-three">
+                    <label>
+                        Start
+                        <input id="start-time" name="start" type="time" required>
+                    </label>
+                    <label>
+                        Ende
+                        <input id="end-time" name="end" type="time" required>
+                    </label>
+                    <label>
+                        Pause (Min.)
+                        <input id="break-minutes" name="breakMinutes" type="number" min="0" step="5" value="30">
+                    </label>
+                </div>
+
+                <label>
+                    Notiz
+                    <textarea id="note" name="note" rows="3" placeholder="Material, Besonderheiten, Abnahme, Restarbeiten"></textarea>
+                </label>
+
+                <div class="quick-actions" aria-label="Schnellauswahl">
+                    <button type="button" data-now="start">
+                        <img src="../assets/icons/add.svg" alt=""> Start jetzt
+                    </button>
+                    <button type="button" data-now="end">
+                        <img src="../assets/icons/check.svg" alt=""> Ende jetzt
+                    </button>
+                    <button type="button" data-preset="full-day">7:00-16:00</button>
+                </div>
+
+                <button class="primary-action" type="submit">
+                    <img src="../assets/icons/check.svg" alt=""> Arbeitszeit speichern
+                </button>
+            </form>
+
+            <section class="desktop-panel">
+                <div class="section-title">
+                    <img src="../assets/icons/board.svg" alt="">
+                    <div>
+                        <h2>Desktop-Auswertung</h2>
+                        <p>Filter, Tagesstatus und CSV-Export f&uuml;r das B&uuml;ro.</p>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div>
+                        <span>Eintr&auml;ge</span>
+                        <strong id="entry-count">0</strong>
+                    </div>
+                    <div>
+                        <span>Gesamtzeit</span>
+                        <strong id="total-hours">0:00 h</strong>
+                    </div>
+                    <div>
+                        <span>Aktive Baustellen</span>
+                        <strong id="project-count">0</strong>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <label>
+                        Von
+                        <input id="filter-from" type="date">
+                    </label>
+                    <label>
+                        Bis
+                        <input id="filter-to" type="date">
+                    </label>
+                    <label>
+                        Suche
+                        <input id="filter-query" type="search" placeholder="Mitarbeiter, Baustelle, T&auml;tigkeit">
+                    </label>
+                    <button id="export-csv" type="button">
+                        <img src="../assets/icons/arrow_downward.svg" alt=""> CSV
+                    </button>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Datum</th>
+                                <th>Mitarbeiter</th>
+                                <th>Baustelle</th>
+                                <th>Zeit</th>
+                                <th>Pause</th>
+                                <th>Stunden</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="entries-body"></tbody>
+                    </table>
+                </div>
+                <p class="empty-state" id="empty-state">Noch keine Arbeitszeiten erfasst.</p>
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>

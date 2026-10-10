@@ -228,6 +228,15 @@ function openCategoryOverlay(event, index) {
  * @param {number} index - This parameter indicates the element that should be moved
 */
 function adaptCategoryOverlay(index) {
+    // Triage is the top column, so every other column needs an arrow pointing up to it
+    if (currentTasks[index].status != 'triage') {
+        document.getElementById('arrow_up_triage_' + index).classList.remove('d_none');
+    }
+    if (currentTasks[index].status == 'triage') {
+        changeCategoryOverlay(index, 'div_category_options_triage', 'arrow_down_toDo_', 'arrow_down_inProgress_', 'arrow_down_awaitFeedback_');
+        // changeCategoryOverlay only handles three arrows, triage needs a fourth one
+        document.getElementById('arrow_down_done_' + index).classList.remove('d_none');
+    }
     if (currentTasks[index].status == 'toDo') {
         changeCategoryOverlay(index, 'div_category_options_toDo', 'arrow_down_inProgress_', 'arrow_down_awaitFeedback_', 'arrow_down_done_');
     }
@@ -271,6 +280,13 @@ function closeCategoryOverlay() {
  * This function resets the classes that have been adapted of the overlay of category options based on their status
 */
 function resetAdaptedClassesCategoryOverlay() {
+    if (currentTasks[elementToBeDropped].status != 'triage') {
+        document.getElementById('arrow_up_triage_' + elementToBeDropped).classList.add('d_none');
+    }
+    if (currentTasks[elementToBeDropped].status == 'triage') {
+        resetClassCategoryOverlay('div_category_options_triage', 'arrow_down_toDo_', 'arrow_down_inProgress_', 'arrow_down_awaitFeedback_');
+        document.getElementById('arrow_down_done_' + elementToBeDropped).classList.add('d_none');
+    }
     if (currentTasks[elementToBeDropped].status == 'toDo') {
         resetClassCategoryOverlay('div_category_options_toDo', 'arrow_down_inProgress_', 'arrow_down_awaitFeedback_', 'arrow_down_done_');
     }

@@ -2,13 +2,11 @@
     .container-morning {
         top: 575px;
         left: 925px;
-     
     }
 
     .titel-one {
         font-size: 26px;
         line-height: 0;
-
     }
 
     .titel-two {
@@ -27,7 +25,6 @@
     .content {
         top: 270px;
         left: 165px;
-   
     }
 
     .first-container {
@@ -40,21 +37,18 @@
     .content {
         top: 270px;
         left: 100px;
-           
     }
 
     .first-container {
         top: 150px;
         left: 100px;
     }
-
 }
 
 @media (max-width: 780px) {
     .content {
         top: 270px;
         left: 140px;
-         
     }
 
     .first-container {
@@ -100,33 +94,20 @@
 
     .content-date {
         height: 140px;
-        width: 260px;
+        width: 205px;
         top: 195px;
         gap: 20px;
-
-
     }
 
-    .content-date-div{
-        img{
+    .content-date-div {
+        img {
             width: 30px;
             height: 30px;
         }
     }
 
-
-
-.container-Email{
-     top:195px;
-    left:300px;
-    height: 140px;
-    width: 170px;
-    
-}
-
-
-
-
+    .container-Email {
+    }
 
     .one-urgent {
         font-size: 49px;
@@ -140,7 +121,6 @@
 
     .task-text-small {
         font-size: 16px;
-
     }
 
     .container-task {
@@ -165,15 +145,13 @@
         left: 310px;
     }
 
-
     .category_menu {
         padding: 8px 16px;
         border-radius: 8px;
         background-color: #091931;
         width: 100%;
+    }
 }
-}
-
 
 @media (max-width: 720px) {
     .content {
@@ -185,6 +163,13 @@
         top: 150px;
         left: 100px;
     }
+
+    .container-Email {
+        
+       
+       
+    }
+
 }
 
 @media (max-width: 650px) {
@@ -216,7 +201,7 @@
 }
 
 @media (max-width: 550px) {
-   .first-container {
+    .first-container {
         top: 150px;
         left: 115px;
         flex-direction: column;
@@ -244,6 +229,8 @@
         top: 100px;
         height: 0px;
         left: 0px;
+        /* thinner blue bar: 1.5px top + 1.5px bottom border = 3px instead of 6px */
+        border-width: 1.5px;
     }
 
     .content-to-do {
@@ -272,7 +259,6 @@
         width: 140px;
         height: 130px;
         left: 190px;
-        
     }
 
     .img-up {
@@ -287,30 +273,22 @@
         height: 130px;
         top: 175px;
         gap: 15px;
-      }
+    }
 
     .content-date-div {
         width: 80px;
         flex-direction: row;
-        
     }
-
 
     .content-deadline-date {
-        font-size: 16px;        
+        font-size: 16px;
     }
 
-
-.container-Email{
-    top:175px;
-    left:230px;
-    height: 130px;
-    width: 100px;
-    .text-urget {
-        font-size: 30px;
+    .container-Email {
+        .text-urget {
+            font-size: 30px;
+        }
     }
-
-}
     .line-between {
         width: 0;
         height: 60px;
@@ -320,17 +298,12 @@
 
     .line-between-div {
         padding-left: 0;
-     
     }
 
     .one-urgent {
         font-size: 30px;
         line-height: 90px;
-      
-
     }
-
-
 
     .content-deadline {
         width: 80px;
@@ -409,24 +382,23 @@
     }
 
     .content-pen {
-        width: 125px;
+        width: 25px;
         height: 110px;
-        gap:7px;
+        gap: 7px;
     }
 
     .content-success {
         width: 125px;
         height: 110px;
         left: 170px;
-        gap:7px;
+        gap: 7px;
     }
 
     .content-date {
         width: 160px;
         height: 110px;
         top: 155px;
-        gap: 60px
-        
+        gap: 60px;
     }
 
     .content-date-div {
@@ -434,25 +406,16 @@
         gap: 0px;
     }
 
-
-
-
     .content-deadline-date {
-            height: 15px;
-        }
+        height: 15px;
+    }
 
- .line-between {
-               top: 25px;
+    .line-between {
+        top: 25px;
         left: 70px;
     }
 
-
-
-.container-Email{
-      top:155px;
-    left:200px;
-    height: 110px;
-    
+    .container-Email {
     }
 
     .container-task {
@@ -460,11 +423,11 @@
         top: 275px;
     }
 
-    .container-task-one{
+    .container-task-one {
         width: 83px;
     }
 
-    .container-task-two{
+    .container-task-two {
         width: 83px;
         left: 93px;
     }
@@ -473,7 +436,6 @@
         width: 83px;
         left: 185px;
     }
-    
 
     .first-container {
         top: 130px;
@@ -486,7 +448,7 @@
         }
     }
 
-    .hr_first_container{
+    .hr_first_container {
         top: 80px;
     }
 }
@@ -496,8 +458,8 @@
         left: 0;
     }
 
-    .first-container{
-        left: 30px
+    .first-container {
+        left: 30px;
     }
 }
 
@@ -510,13 +472,18 @@
         padding-left: 10px;
         padding-right: 10px;
         padding-top: 0;
-        padding-bottom: 90px;
+        padding-bottom: 0;
         box-sizing: border-box;
+        /* ends 5px above the 80px high mobile navbar, scrolls if the screen is too low */
+        bottom: 85px;
+        margin-bottom: 0;
         height: auto;
         max-height: none;
-        overflow: visible;
+        overflow-y: auto;
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        /* keep the rows at the top instead of stretching them over the free space */
+        align-content: start;
+        /* grid-template-columns: repeat(2, minmax(0, 1fr));*/
         grid-template-areas:
             "todo todo"
             "urgent email"
@@ -584,13 +551,9 @@
     }
 
     .content-date {
-        grid-area: urgent;
-        position: static;
-        left: auto;
         top: auto;
         width: 100%;
-        height: auto;
-        min-height: 110px;
+
         min-width: 0;
         margin: 0;
     }
@@ -598,43 +561,68 @@
     .content-date {
         position: relative;
         gap: 12px;
-        justify-content: space-between;
+        justify-content: center;
+        /* keeps the texts away from the rounded border */
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
-    .content-date::before {
-        content: "";
-        position: absolute;
-        left: 46%;
-        top: 50%;
-        width: 2px;
-        height: 84px;
-        background-color: #d1d1d1;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
+    /* left part keeps its size, right part may shrink and wrap its text */
+    .content-date-div {
+        flex: 0 0 auto;
+        /* older media queries set fixed widths (down to 10px), auto uses the content width */
+        width: auto;
     }
 
-    .content-date-div,
     .content-deadline {
-        flex: 1;
+        flex: 0 1 auto;
         min-width: 0;
+        width: auto;
+        height: auto;
+        gap: 4px;
+        /* the separator line, always placed directly between the two parts */
+        border-left: 2px solid #d1d1d1;
+        padding-left: 12px;
     }
 
-    .content-deadline {
-        padding-left: 0;
-        margin-left: -18px;
+    /* smaller deadline texts, like in the design */
+    .content-deadline-date {
+        width: auto;
+        height: auto;
+        font-size: 14px;
+    }
+
+    .content-deadline-date-upcoming {
+        height: auto;
+        font-size: 12px;
+        line-height: 1.2;
+    }
+
+    /* number and "Urgent" stacked directly below each other, like in the design */
+    .content-date .text-up {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .content-date .one-urgent {
-        margin-left: -10px;
+        width: auto;
+        height: auto;
+        line-height: 1;
     }
 
     .content-date .text-urgent {
-        margin-top: 12px;
+        width: auto;
+        height: auto;
+        font-size: 12px;
     }
 
     .content-date-div {
-        padding-left: 20px;
+        padding-left: 0;
         justify-content: center;
+        gap: 8px;
     }
 
     .content-date .line-between,
@@ -642,16 +630,23 @@
         display: none;
     }
 
+    /* row with urgent and email box, spans both grid columns */
+    .content-two {
+        grid-column: 1 / -1;
+        display: flex;
+        gap: 10px;
+    }
+
+    .content-date {
+        flex: 1;
+    }
+
     .container-Email {
-        grid-area: email;
         position: static;
-        left: auto;
-        top: auto;
-        width: 100%;
+        width: 100px;
+        flex-shrink: 0;
+        /* auto lets flexbox stretch it to the same height as the urgent box */
         height: auto;
-        min-height: 130px;
-        min-width: 0;
-        margin: 0;
     }
 
     .container-task {
@@ -676,4 +671,3 @@
         min-width: 0;
     }
 }
-

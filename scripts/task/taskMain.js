@@ -21,6 +21,7 @@ function init() {
   checkAllRequiredData();
   subTaskListRender();
   showHelpIconMobile();
+  setMinDate();
   document.getElementById("taskTitle").focus();
 }
 
@@ -166,6 +167,21 @@ function openDatePicker() {
     dateInput.focus();
   }
   dateInput.focus();
+}
+
+
+/**
+ * function sets the earliest selectable date in the datepicker to tomorrow,
+ * so that past dates can no longer be selected
+ */
+function setMinDate() {
+  let tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  let year = tomorrow.getFullYear();
+  // getMonth() starts at 0 (January = 0), therefore + 1
+  let month = String(tomorrow.getMonth() + 1).padStart(2, "0");
+  let day = String(tomorrow.getDate()).padStart(2, "0");
+  document.getElementById("taskDate").min = `${year}-${month}-${day}`;
 }
 
 

@@ -79,6 +79,8 @@
     }
     .add_task_icon_mobile{
         display: unset;
+        /* same size as the desktop icon, without it the svg shows at its own 30px */
+        width: 24px;
     }
     .add_task_icon_mobile:hover{
         cursor: pointer;
@@ -126,9 +128,9 @@
     }
     .add_task_mobile{
         background-color: #2A3647;
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -141,7 +143,7 @@
         display: none;
     }
     .add_icon_board {
-        width: 20px;
+        width: 16px;
         display: block;
     }
     .input_board{
@@ -278,6 +280,30 @@
 
 .card_overlay_board{
       width: 100%;;
+      /* include the padding in the 100%, otherwise the overlay is 48px wider than the screen */
+      box-sizing: border-box;
+}
+
+/* not enough space for category, AI label and close button in one row */
+.card_overlay_header{
+      flex-wrap: wrap;
+      row-gap: 8px;
+}
+
+.ai_note_overlay{
+      /* order 1 moves the AI label behind the close button, width 100% gives it its own row */
+      order: 1;
+      width: 100%;
+}
+
+.ai_note_overlay img{
+      max-width: 100%;
+}
+
+/* creator, member type, name and profile do not fit in one row, so they are stacked */
+.creator_name{
+      flex-direction: column;
+      align-items: flex-start;
 }
 
 }

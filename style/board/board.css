@@ -257,6 +257,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* prevents flexbox from squeezing the circle into an oval on small screens */
+    flex-shrink: 0;
 }
 
 .prio_icon {

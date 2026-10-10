@@ -40,6 +40,7 @@ function TaskEditOverlayRender() {
   document.getElementById("taskDate").value = dateConversation(
     DataTaskEdit[indexEdit].deadline
   );
+  setMinDate();
   checkPrioEditTask(DataTaskEdit[indexEdit].prio);
   subTaskListLoadEdit();
   taskReadinArrayContactEdit(DataContactsAll, DataTaskContactsTask);
