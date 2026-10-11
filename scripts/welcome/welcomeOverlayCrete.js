@@ -55,16 +55,16 @@ function welcomeCreateEmail() {
                             <p>out team will review them manually instead of using Al </p>
                             <p>to create tickets.</p>
                             </div>
+
+                            <button class="welcome-btn-mail welcome-button" id="welcomeTaskButton" onclick="dialogShowSendMail()">Create request <img class="welcome-arrow-down" src="./assets/icons/check.png" alt="arrow-down"></button>
+
+                            <button class="welcome-btn-sendmail welcome-button" id="welcomeTaskButton" onclick="callGmail()">Send an email
+                                <img class="welcome-arrow-down" src="./assets/icons/check.png" alt="arrow-down"></button>
                         </div>
                         <img class="welcome-picture welcome-picture--desktop" src="./assets/icons/picWelcomeMail.png" alt="welcome-illustration">
                         <img class="welcome-picture-second" src="./assets/icons/Artboard.png" alt="welcome-illustration">
                     </div>
                 </div>
-                <button class="welcome-btn-mail welcome-button" id="welcomeTaskButton" onclick="dialogShowSendMail()">Create Email
-                    Request <img class="welcome-arrow-down" src="./assets/icons/check.png" alt="arrow-down"></button>
-
-                 <button class="welcome-btn-sendmail welcome-button" id="welcomeTaskButton" onclick="callGmail()">Send an email
-                   <img class="welcome-arrow-down" src="./assets/icons/check.png" alt="arrow-down"></button>
                          </div>
                     <footer>
                 <a href="./HTML/guest_policy.html">Privacy Policy</a>

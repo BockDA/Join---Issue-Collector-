@@ -1,12 +1,7 @@
 html,
 body {
     width: 100%;
-    max-width: 1920px;
     touch-action: pan-y;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-
 }
 
 body.welcome-overlay-open {
