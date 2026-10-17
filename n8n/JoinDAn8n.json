@@ -53,7 +53,7 @@
     },
     {
       "parameters": {
-        "content": "## Vergleich\n",
+        "content": "##Comparison\n",
         "height": 304,
         "width": 192
       },
@@ -94,7 +94,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         -3024,
-        -160
+        -128
       ],
       "typeVersion": 1,
       "id": "d337dd87-e572-4d53-8e7b-4cd79d0a69e1",
@@ -102,7 +102,7 @@
     },
     {
       "parameters": {
-        "content": "## Mitteilung an den Verfasser das Limit ist erreicht\n",
+        "content": "##Message to the author: the limit has been reached.\n",
         "height": 256,
         "width": 1008
       },
@@ -117,7 +117,7 @@
     },
     {
       "parameters": {
-        "content": "## Daten werden in Firebase geschrieben und Mitteilung an Verfasser per E-Mail\n",
+        "content": "## Data is written to Firebase, and a notification is sent to the author via email.\n",
         "height": 352,
         "width": 1344
       },
@@ -265,30 +265,7 @@
     },
     {
       "parameters": {
-        "sendTo": "=cbock2011@gmail.com",
-        "subject": "=Join Nachricht  es ist ein unerwarteter Fehler aufgetreten",
-        "message": "=Join  ein Fehler ist aufgetreten wir werden uns bei Ihnen melden",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.2,
-      "position": [
-        -2464,
-        240
-      ],
-      "id": "3255f6b4-2098-472e-84cf-2bd5aad20ce4",
-      "name": "Fehler im Workflow",
-      "webhookId": "c26f5349-5c80-47c1-9a33-a3628add086f",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "VHhGCsIEoOon5MKq",
-          "name": "Gmail account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "content": "## Fehlerbehandlung\n",
+        "content": "## Error handling\n",
         "height": 256,
         "width": 768
       },
@@ -390,7 +367,7 @@
     },
     {
       "parameters": {
-        "content": "## Email Benachrichtigung wenn Card in neue Category verschoben wurde\n",
+        "content": "## Email notification when a card is moved to a new category\n",
         "height": 320,
         "width": 784
       },
@@ -405,20 +382,7 @@
     },
     {
       "parameters": {
-        "jsCode": "\n//letzte id und dann id erhöhen um 1\nconst db = $input.first().json;\nconst tasks = db.tasks || {};\nconst ids = Object.keys(tasks).map(Number);\nconst lastId = ids.length ? Math.max(...ids) : 0;\nconst nextId = lastId + 1;\nreturn [{\n  json: {\n    lastId,\n    nextId\n  }\n}];\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -1184,
-        -96
-      ],
-      "id": "c846090a-b0ee-4986-881e-f638b4d731f6",
-      "name": "ID erhöhen"
-    },
-    {
-      "parameters": {
-        "jsCode": "const output = $('AI Agent').item.json.output;\nconst from = $('Email Trigger (IMAP)').item.json.from;\nconst nextId = $('ID erhöhen').item.json.nextId;\n\nconst subtasksArray = Array.isArray(output.subtasks) ? output.subtasks : [];\n\nconst subtasksTodo = {};\nlet finishedCount = 0;\n\nfor (const subtask of subtasksArray) {\n  if (!subtask || !subtask.title) continue;\n\n  const status = subtask.done ? 'done' : 'todo';\n  subtasksTodo[subtask.title] = status;\n\n  if (subtask.done) {\n    finishedCount++;\n  }\n}\n\nreturn [\n  {\n    json: {\n      nextId: nextId,\n      title: output.title || \"\",\n      category: output.category || \"\",\n      createdBy: \"mail\",\n      creatorEmail: from || \"\",\n      creatorType: \"Extern\",\n      deadline: output.deadline || \"\",\n      description: output.description || \"\",\n      prio: output.prio || \"\",\n      status: \"triage\",\n      userName: output.userName || \"\",\n      contacts: [\n        {\n          color: \"10\",\n          email: from || \"\",\n          name: output.userName || \"\"\n        }\n      ],\n      subtasks: {\n        number_of_finished_subtasks: finishedCount,\n        subtasks_todo: subtasksTodo,\n        total: Object.keys(subtasksTodo).length\n      }\n    }\n  }\n];"
+        "jsCode": "const output = $('AI Agent').item.json.output;\nconst from = $('Email Trigger (IMAP)').item.json.from;\nconst nextId = $('Increase ID').item.json.nextId;\n\nconst subtasksArray = Array.isArray(output.subtasks) ? output.subtasks : [];\n\nconst subtasksTodo = {};\nlet finishedCount = 0;\n\nfor (const subtask of subtasksArray) {\n  if (!subtask || !subtask.title) continue;\n\n  const status = subtask.done ? 'done' : 'todo';\n  subtasksTodo[subtask.title] = status;\n\n  if (subtask.done) {\n    finishedCount++;\n  }\n}\n\nreturn [\n  {\n    json: {\n      nextId: nextId,\n      title: output.title || \"\",\n      category: output.category || \"\",\n      createdBy: \"mail\",\n      creatorEmail: from || \"\",\n      creatorType: \"Extern\",\n      deadline: output.deadline || \"\",\n      description: output.description || \"\",\n      prio: output.prio || \"\",\n      status: \"triage\",\n      userName: output.userName || \"\",\n      contacts: [\n        {\n          color: \"10\",\n          email: from || \"\",\n          name: output.userName || \"\"\n        }\n      ],\n      subtasks: {\n        number_of_finished_subtasks: finishedCount,\n        subtasks_todo: subtasksTodo,\n        total: Object.keys(subtasksTodo).length\n      }\n    }\n  }\n];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -448,7 +412,7 @@
         -416
       ],
       "id": "cc68416a-4d84-48f7-9240-1734121b741b",
-      "name": "Zeilen lesen für Counter Wert"
+      "name": "Read lines for counter value"
     },
     {
       "parameters": {
@@ -461,7 +425,7 @@
         -416
       ],
       "id": "58fafa6d-95c4-4d4e-895c-5cd17fe3954f",
-      "name": "Counter Wert prüfen (Datum) und um +1 erhöhen"
+      "name": "Check the counter value (date) and increment it by +1"
     },
     {
       "parameters": {
@@ -536,7 +500,43 @@
         -416
       ],
       "id": "144e6bbe-475b-4e7b-8649-f08533e8494c",
-      "name": "Neuen Counter Wert in DB schreiben"
+      "name": "Write new counter value to DB"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      Nachricht: \"Limit erreicht\"\n         \n    },\n  },\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1440,
+        -384
+      ],
+      "id": "220721a2-136e-431a-92b4-a01dac28420d",
+      "name": "Create a JSON with the message \"Limit reached\""
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Email Trigger (IMAP)').item.json.from }}",
+        "subject": "Join Nachricht Limit überschritten HINWEIS lesen !!",
+        "message": "Ihre Email wurde nicht verarbeitet da das Tageslimit  überschritten wurde",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -1088,
+        -384
+      ],
+      "id": "d33a1c83-559a-469d-b4f9-8783cfa2e58f",
+      "name": "Sending message: Order failed",
+      "webhookId": "c26f5349-5c80-47c1-9a33-a3628add086f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VHhGCsIEoOon5MKq",
+          "name": "Gmail account 2"
+        }
+      }
     },
     {
       "parameters": {
@@ -551,7 +551,7 @@
         -64
       ],
       "id": "1270f1ca-ea3f-4fb8-ba44-d3c55de231e3",
-      "name": "Webhook Counter Wert",
+      "name": "Webhook Counter Value",
       "webhookId": "aa1f1e29-5ed1-4b47-baae-0a272aa4ccbe"
     },
     {
@@ -573,7 +573,7 @@
         -64
       ],
       "id": "624056f9-2e6c-4755-bfea-601bb2d21e12",
-      "name": "Zeile lesen (Counter)"
+      "name": "Read line (counter)"
     },
     {
       "parameters": {
@@ -588,7 +588,7 @@
         -64
       ],
       "id": "839e6e99-7784-42d8-b622-0e5aef7da73e",
-      "name": "Counter Wert zurückgeben"
+      "name": "Return counter value"
     },
     {
       "parameters": {},
@@ -599,7 +599,30 @@
         240
       ],
       "id": "4c0df5b9-92e9-406d-86bf-f356b7139cf1",
-      "name": "Fehler Überwachung"
+      "name": "Error monitoring"
+    },
+    {
+      "parameters": {
+        "sendTo": "=cbock2011@gmail.com",
+        "subject": "=Join Nachricht  es ist ein unerwarteter Fehler aufgetreten",
+        "message": "=Join  ein Fehler ist aufgetreten wir werden uns bei Ihnen melden",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -2464,
+        240
+      ],
+      "id": "3255f6b4-2098-472e-84cf-2bd5aad20ce4",
+      "name": "Error in the workflow",
+      "webhookId": "c26f5349-5c80-47c1-9a33-a3628add086f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VHhGCsIEoOon5MKq",
+          "name": "Gmail account 2"
+        }
+      }
     },
     {
       "parameters": {
@@ -614,7 +637,7 @@
         576
       ],
       "id": "e4cd9581-43bb-4f60-a534-036d88706948",
-      "name": "Nachricht wenn Card verschoben wurde",
+      "name": "Notification when a card has been moved",
       "webhookId": "aa1f1e29-5ed1-4b47-baae-0a272aa4ccbe"
     },
     {
@@ -631,43 +654,7 @@
         576
       ],
       "id": "b58f2d53-963c-4b63-bf0e-62af6d34e6e5",
-      "name": "Nachrict per Mail versenden \"Karte verschoben\"",
-      "webhookId": "c26f5349-5c80-47c1-9a33-a3628add086f",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "VHhGCsIEoOon5MKq",
-          "name": "Gmail account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "return [\n  {\n    json: {\n      Nachricht: \"Limit erreicht\"\n         \n    },\n  },\n];\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -1440,
-        -384
-      ],
-      "id": "220721a2-136e-431a-92b4-a01dac28420d",
-      "name": "Macht ein Json mit Nachricht\"Limit erreicht\""
-    },
-    {
-      "parameters": {
-        "sendTo": "={{ $('Email Trigger (IMAP)').item.json.from }}",
-        "subject": "Join Nachricht Limit überschritten HINWEIS lesen !!",
-        "message": "Ihre Email wurde nicht verarbeitet da das Tageslimit  überschritten wurde",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.2,
-      "position": [
-        -1088,
-        -384
-      ],
-      "id": "d33a1c83-559a-469d-b4f9-8783cfa2e58f",
-      "name": "Sendet Nachricht Auftrag fehlgeschlagen",
+      "name": "Send \"Map moved\" notification via email",
       "webhookId": "c26f5349-5c80-47c1-9a33-a3628add086f",
       "credentials": {
         "gmailOAuth2": {
@@ -688,7 +675,20 @@
         -96
       ],
       "id": "03b64921-2335-4f28-a423-db7d519cfecb",
-      "name": "Daten per http an Firebase senden"
+      "name": "Send data to Firebase via HTTP"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n//letzte id und dann id erhöhen um 1\nconst db = $input.first().json;\nconst tasks = db.tasks || {};\nconst ids = Object.keys(tasks).map(Number);\nconst lastId = ids.length ? Math.max(...ids) : 0;\nconst nextId = lastId + 1;\nreturn [{\n  json: {\n    lastId,\n    nextId\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1184,
+        -96
+      ],
+      "id": "c846090a-b0ee-4986-881e-f638b4d731f6",
+      "name": "Increase ID"
     },
     {
       "parameters": {
@@ -701,7 +701,7 @@
         -96
       ],
       "id": "c537d9c7-920c-40c5-ba0e-6ee24d46055b",
-      "name": "Daten in Firebase schreiben"
+      "name": "Writing data to Firebase"
     },
     {
       "parameters": {
@@ -719,7 +719,7 @@
         -96
       ],
       "id": "0cd24e89-3cf2-492c-b870-5497c5959000",
-      "name": "HTTP Rückmeldung"
+      "name": "HTTP response"
     },
     {
       "parameters": {
@@ -735,7 +735,7 @@
         -96
       ],
       "id": "51a493f0-0dad-4bb1-bdae-6fc987092d95",
-      "name": "Sende Nachricht \" Auftrag eingetragen\"",
+      "name": "Send message \"Order entered\"",
       "webhookId": "c26f5349-5c80-47c1-9a33-a3628add086f",
       "credentials": {
         "gmailOAuth2": {
@@ -751,7 +751,7 @@
       "main": [
         [
           {
-            "node": "Macht ein Json mit Nachricht\"Limit erreicht\"",
+            "node": "Create a JSON with the message \"Limit reached\"",
             "type": "main",
             "index": 0
           }
@@ -769,7 +769,7 @@
       "main": [
         [
           {
-            "node": "Zeilen lesen für Counter Wert",
+            "node": "Read lines for counter value",
             "type": "main",
             "index": 0
           }
@@ -791,7 +791,7 @@
       "main": [
         [
           {
-            "node": "Daten per http an Firebase senden",
+            "node": "Send data to Firebase via HTTP",
             "type": "main",
             "index": 0
           }
@@ -856,62 +856,40 @@
         ]
       ]
     },
-    "Fehler im Workflow": {
-      "main": [
-        [
-          {
-            "node": "Get a message",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "ID erhöhen": {
-      "main": [
-        [
-          {
-            "node": "Daten in Firebase schreiben",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Subtask in Firebase": {
       "main": [
         [
           {
-            "node": "HTTP Rückmeldung",
+            "node": "HTTP response",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Zeilen lesen für Counter Wert": {
+    "Read lines for counter value": {
       "main": [
         [
           {
-            "node": "Counter Wert prüfen (Datum) und um +1 erhöhen",
+            "node": "Check the counter value (date) and increment it by +1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Counter Wert prüfen (Datum) und um +1 erhöhen": {
+    "Check the counter value (date) and increment it by +1": {
       "main": [
         [
           {
-            "node": "Neuen Counter Wert in DB schreiben",
+            "node": "Write new counter value to DB",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Neuen Counter Wert in DB schreiben": {
+    "Write new counter value to DB": {
       "main": [
         [
           {
@@ -922,62 +900,18 @@
         ]
       ]
     },
-    "Webhook Counter Wert": {
+    "Create a JSON with the message \"Limit reached\"": {
       "main": [
         [
           {
-            "node": "Zeile lesen (Counter)",
+            "node": "Sending message: Order failed",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Zeile lesen (Counter)": {
-      "main": [
-        [
-          {
-            "node": "Counter Wert zurückgeben",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Fehler Überwachung": {
-      "main": [
-        [
-          {
-            "node": "Fehler im Workflow",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Nachricht wenn Card verschoben wurde": {
-      "main": [
-        [
-          {
-            "node": "Nachrict per Mail versenden \"Karte verschoben\"",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Macht ein Json mit Nachricht\"Limit erreicht\"": {
-      "main": [
-        [
-          {
-            "node": "Sendet Nachricht Auftrag fehlgeschlagen",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Sendet Nachricht Auftrag fehlgeschlagen": {
+    "Sending message: Order failed": {
       "main": [
         [
           {
@@ -988,18 +922,84 @@
         ]
       ]
     },
-    "Daten per http an Firebase senden": {
+    "Webhook Counter Value": {
       "main": [
         [
           {
-            "node": "ID erhöhen",
+            "node": "Read line (counter)",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Daten in Firebase schreiben": {
+    "Read line (counter)": {
+      "main": [
+        [
+          {
+            "node": "Return counter value",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error monitoring": {
+      "main": [
+        [
+          {
+            "node": "Error in the workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error in the workflow": {
+      "main": [
+        [
+          {
+            "node": "Get a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notification when a card has been moved": {
+      "main": [
+        [
+          {
+            "node": "Send \"Map moved\" notification via email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send data to Firebase via HTTP": {
+      "main": [
+        [
+          {
+            "node": "Increase ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Increase ID": {
+      "main": [
+        [
+          {
+            "node": "Writing data to Firebase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Writing data to Firebase": {
       "main": [
         [
           {
@@ -1010,18 +1010,18 @@
         ]
       ]
     },
-    "HTTP Rückmeldung": {
+    "HTTP response": {
       "main": [
         [
           {
-            "node": "Sende Nachricht \" Auftrag eingetragen\"",
+            "node": "Send message \"Order entered\"",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Sende Nachricht \" Auftrag eingetragen\"": {
+    "Send message \"Order entered\"": {
       "main": [
         [
           {
@@ -1041,7 +1041,7 @@
     "timezone": "Europe/Berlin",
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "versionId": "cab72e1c-4b0e-420b-81b2-679c4198b668",
+  "versionId": "d3e5d125-29e6-4c33-8d95-e66dc6ebe52d",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ca636ae6a46d7e53b024e111b8cc2ec5dbb4fb90cd160b417470ad095d98fae1"
