@@ -102,7 +102,6 @@ body {
 }
 
 .input_login {
-
     padding: 12px 21px;
     width: 378px;
     border: 1px solid #D1D1D1;
@@ -150,7 +149,6 @@ body {
 .login_btns {
     display: flex;
     gap: 35px;
-
 }
 
 .login_footer {
@@ -223,7 +221,6 @@ body {
 
 .privacy_check:hover {
     cursor: pointer;
-
     .check_box_btn {
         background-image: url(../assets/icons/checked_hover.png);
     }
@@ -283,7 +280,6 @@ body {
 
 .login_logo {
     opacity: 1;
-
 }
 
 .login_logo img {
@@ -293,13 +289,11 @@ body {
     transform: translate(-50%, -50%);
     animation: slide-in 1.0s ease-out forwards;
     z-index: 1000;
-
 }
 
 .mobile_sign_up_div{
     display: none;
 }
-
 
 /* Animation LogoJoin */
 @keyframes slide-in {
@@ -309,12 +303,10 @@ body {
     }
 
     to {
-
         width: 90px;
         height: 125px;
         top: 10%;
         left: 7%;
-
     }
 }
 
@@ -322,7 +314,6 @@ body {
     opacity: 0;
     transition: 0.5s ease-in;
     animation: fadeIn 1s ease-in 0.5s forwards;
-
 }
 
 @keyframes fadeIn {
@@ -333,7 +324,6 @@ body {
     to {
         opacity: 1;
     }
-
 }
 
 .wrong_data_alert {

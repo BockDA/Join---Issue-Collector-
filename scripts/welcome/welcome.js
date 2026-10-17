@@ -11,7 +11,6 @@ function logoNone() {
 function dialogShoW() {
     document.getElementById("body").style.backgroundColor = "var(--sideheader-main-color)";
     document.getElementById("body").classList.add("welcome-overlay-open");
-    //document.getElementById("mail").style.display = "flex";
     document.getElementById("body").innerHTML = "";
     document.getElementById("body").innerHTML += welcomeTemplate();
 }
@@ -53,7 +52,6 @@ function dialogShowSendMail() {
     counterMax();
 }
 
-
 /**
  * Open Gmail dialog, show email, close after 2 seconds
  */
@@ -86,7 +84,6 @@ async function counterStatus() {
     return data;
 }
 
-
 /**
  * Retrieve the number of email requests and daily limit.
  */
@@ -112,4 +109,3 @@ async function counterMax() {
         btn.style.opacity = "0.5";
     }
 }
-

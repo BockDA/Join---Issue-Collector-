@@ -68,7 +68,6 @@
     width: 126px;
     height: 48px;
     border-radius: 8px;
-
     border: 0;
     background-color: rgb(42, 54, 71);
     color: white;
@@ -136,7 +135,6 @@
     color: #29ABE2;
     border-color: #29ABE2;
     filter: invert(50%) sepia(100%) saturate(200%) hue-rotate(165deg) brightness(100%) contrast(100%);
-
 }
 
 .button_create_task {
@@ -156,8 +154,6 @@
     transition: box-shadow 0.3s ease, transform 0.2s ease;
     pointer-events: none;
     opacity: 0.5;
-
-
     img {
         background-color: #2A3647;
     }
@@ -170,12 +166,9 @@
     }
 }
 
-
-
 button:hover {
     cursor: pointer;
 }
-
 
 .prio_buttons {
     width: 100%;
@@ -196,7 +189,6 @@ button:hover {
         border-color: #D1D1D1;
     }
 }
-
 
 .go_back_btn {
     width: 32px;
@@ -264,12 +256,9 @@ button:hover {
     to {top: calc(50vh + 37px ); }
 }
 
-
-
 .delete_btn_overlay_board:hover {
     cursor: pointer;
 }
-
 
 .edit_btn_overlay_board:hover {
     cursor: pointer;

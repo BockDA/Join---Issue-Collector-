@@ -16,7 +16,6 @@ function contactCardScrollList(newContact, contactsId, color, letter) {
     `;
 }
 
-
 function contactCardMiddle(user, contactIndex, firstLetter, color) {
     let nameParts = user.name.trim().split(" ");
     let initials = nameParts[0].charAt(0).toUpperCase();
@@ -53,12 +52,10 @@ function contactCardMiddle(user, contactIndex, firstLetter, color) {
     `;
 }
 
-
 function contactcardHeadline(mode) {
     let headline = document.getElementById('headline');
     headline.innerHTML = cardNewContact(mode);
 }
-
 
 function cardNewContact(mode) {
     let title = mode === "edit" ? "Edit Contact" : "Add Contact";
@@ -74,12 +71,10 @@ function cardNewContact(mode) {
     `;
 }
 
-
 function contactcardHeadlineEdit() {
     let headline = document.getElementById('headline');
     headline.innerHTML = cardNewContactEdit();
 }
-
 
 function cardNewContactEdit() {
     let title = "Edit Contact";
@@ -91,7 +86,6 @@ function cardNewContactEdit() {
     `;
 }
 
-
 function alertSuccess() {
     return `
     <div id ="alert">
@@ -100,6 +94,3 @@ function alertSuccess() {
         </div>
     </div>`
 }
-
-
-

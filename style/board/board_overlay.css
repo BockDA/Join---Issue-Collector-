@@ -2,7 +2,6 @@
     width: 100%;
     height: 100%;
     position: absolute;
-   
     background-color: rgba(0, 0, 0, 0.4);
     top: 0;
     display: flex;
@@ -11,16 +10,13 @@
     padding-top: 48px;
 }
 
-
 .bg_overlay:hover {
    cursor: pointer;
 }
 
-
  .close_btn_AddOverlay{
     cursor: pointer;
   }                    
-                     
 
 .card_overlay_board {
     width: 500px;
@@ -39,7 +35,6 @@
 
 .card_overlay_board:hover {
    cursor: default;
-
 }
 
 .slide-in-overlay {
@@ -50,13 +45,15 @@
     from {
         right: -100vw;
     }
+
     to {
         right: calc((100vw - 525px) / 2);
     }
 }
 
 .technical_task_overlay {
-    min-width: 250px;
+    /* 176px + 2 x 16px padding = 208px visible width */
+    min-width: 176px;
     min-height: 40px;
     background-color: #1FD7C1;
 }
@@ -69,10 +66,9 @@
 
 .task_category_overlay {
     height: 28px !important;
-    padding: 4px 24px !important;
+    padding: 4px 16px !important;
     font-size: 23px !important;
 }
-
 
 .creator_name{
   display: flex;
@@ -80,7 +76,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-
     }
 
 .creator_name_detail{
@@ -93,13 +88,48 @@
         width: 16px;
         height:16px ;
     }
+
     p{
         font-weight: 400;
         font-size: 16px;
         color: #2A3647;
     }
-    background-color:  #1FD7C1;
+
+    background-color: var(--details-background-color);
     border-radius: 4px;
+}
+
+/* icon and text side by side */
+.ai_note_overlay p{
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai_note_overlay img{
+    width: 20px;
+    height: 20px;
+}
+
+/* gradient text: the gradient is the background, background-clip cuts it to the letters */
+.ai_note_text{
+    font-size: 18px;
+    font-weight: 400;
+    white-space: nowrap;
+    background: linear-gradient(90deg, #8a2be2 0%, #29abe2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.creator_extern{
+    background-color: var(--details-background-color-Extern);
+}
+
+.creator_member{
+    background-color: var(--details-background-color-Member);
 }
 
 .profil_entry{
@@ -108,8 +138,6 @@
     align-items: center;
     gap:5px;
 }
-
-
 
 .task_description_overlay {
     font-weight: 400;
@@ -228,6 +256,7 @@
     from {
         right: -100vw;
     }
+
     to {
         right: calc((100vw - 1116px) / 2);
     }
@@ -241,6 +270,7 @@
     from {
         right: calc((100vw - 1116px) / 2);
     }
+
     to {
         right: -100vw;
     }

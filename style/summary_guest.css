@@ -22,7 +22,6 @@ hr {
     display: flex;
     align-items: center;
     gap: 30px;
-
     span {
         height: 32px;
         font-size: 27px;
@@ -119,8 +118,6 @@ hr {
     line-height: 76.8px;
     font-weight: 600;
 }
-
-
 
 .content-date {
     width: 560px;
@@ -323,7 +320,6 @@ hr {
 }
 
 /* Hover Effekter */
-
 .content-pen {
     transition: all 0.3s ease-in-out;
     cursor: pointer;
@@ -394,6 +390,7 @@ hr {
     background-color: #2a3647;
     transform: scale(1.1);
 }
+
 .container-task div:hover .task-text-big,
 .container-task div:hover .task-text-small {
     color: white;

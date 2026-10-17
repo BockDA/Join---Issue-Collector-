@@ -10,14 +10,12 @@ function showErrorMessage(message, fieldId) {
   updateErrorDisplay();
   if (fieldId === "form") {
     setTimeout(() => {
-      
       if (fieldErrors["form"] === message) {
         removeErrorMessage("form");
       }
     }, 2500); 
   }
 }
-
 
 /**
  * Removes the error message for a specific field.
@@ -27,7 +25,6 @@ function removeErrorMessage(fieldId) {
   delete fieldErrors[fieldId];
   updateErrorDisplay();
 }
-
 
 /**
  * Validates the email input field.
@@ -52,7 +49,6 @@ async function validateEmail(email) {
   }
 }
 
-
 /**
  * Validates the password input field.
  * Checks for presence and minimum length.
@@ -73,7 +69,6 @@ function validatePassword(password) {
   }
 }
 
-
 /**
  * Validates the login form by checking both email and password fields.
  * If any errors are found, a general form error message is displayed.
@@ -83,21 +78,16 @@ function validatePassword(password) {
 async function validateLoginForm() {
   let email = document.getElementById("email").value.trim();
   let password = document.getElementById("password").value.trim();
-
   let emailValid = await validateEmail(email);
   let passwordValid = validatePassword(password);
-
   let isValid = emailValid && passwordValid;
-
   if (!isValid) {
     showErrorMessage("Please fill in all fields.", "form");
   } else {
     removeErrorMessage("form");
   }
-
   return isValid;
 }
-
 
 /**
  * Updates the error display area with the first error message from fieldErrors.
@@ -115,18 +105,15 @@ function updateErrorDisplay() {
   }
 }
 
-
 /**
  * Logs in the user after validating the form.
  */
 async function userLogin() {
   const isFormValid = await validateLoginForm();
   if (!isFormValid) return;
-
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
   const userData = await checkIfContactExists(email);
-
   if (!userData) return showErrorMessage("User not found.", "form");
   if (userData.password !== password) {
     return showErrorMessage("Incorrect password.", "form");
@@ -136,7 +123,6 @@ async function userLogin() {
   localStorage.setItem("greetingShown", "false");
   window.location.href = "./HTML/summary.html";
 }
-
 
 /**
  * Stores the current user data in the database.
@@ -156,7 +142,6 @@ async function createUserFolder(userData) {
   }
 }
 
-
 /**
  * Checks if a user exists with the given email.
  * @param {string} email - Email address to check.
@@ -172,7 +157,6 @@ async function checkIfContactExists(email) {
     return null;
   }
 }
-
 
 /**
  * Searches for a user in the dataset by email.
@@ -190,7 +174,6 @@ function findUserByEmail(data, email) {
   return null;
 }
 
-
 /**
  * Initializes all required DOM elements and event listeners.
  */
@@ -200,12 +183,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleIcon = document.getElementById("togglePasswordVisibility");
   const lockIcon = document.getElementById("lockIcon");
   errorMessageElement = document.querySelector(".wrong_data_alert");
-
   setupPasswordField(passwordInput, toggleIcon, lockIcon);
   setupEmailValidation(emailInput);
   setupPasswordValidation(passwordInput);
 });
-
 
 /* @param {HTMLElement} input - The password input field.
 * @param {HTMLElement} toggleIcon - Icon for toggling visibility.
@@ -215,10 +196,8 @@ function setupPasswordField(input, toggleIcon, lockIcon) {
  input.addEventListener("input", () => {
    const value = input.value.trim();
    const hasContent = value.length > 0;
-
    lockIcon.style.display = hasContent ? "none" : "inline";
    toggleIcon.style.display = hasContent ? "inline" : "none";
-
    if (!value) {
      removeErrorMessage("password");
    } else if (value.length < 4) {
@@ -227,7 +206,6 @@ function setupPasswordField(input, toggleIcon, lockIcon) {
      removeErrorMessage("password");
    }
  });
-
  toggleIcon.addEventListener("click", () => {
    const isPassword = input.type === "password";
    input.type = isPassword ? "text" : "password";
@@ -236,7 +214,6 @@ function setupPasswordField(input, toggleIcon, lockIcon) {
      : "./assets/icons/visibility_off.svg";
  });
 }
-
 
 /**
  * Sets up blur validation for the email input field.
@@ -264,7 +241,6 @@ function setupEmailValidation(input) {
   });
 }
 
-
 /**
  * Sets up blur validation for the password input field.
  * @param {HTMLElement} input - The password input field.
@@ -276,7 +252,6 @@ function setupPasswordValidation(input) {
       removeErrorMessage("password");
       return;
     }
-
     if (password.length < 4) {
       showErrorMessage("Wrong password", "password");
     } else {

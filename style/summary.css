@@ -29,7 +29,6 @@ hr {
     display: flex;
     align-items: center;
     gap: 30px;
-
     span {
         height: 32px;
         font-size: 27px;
@@ -133,7 +132,7 @@ hr {
     padding-left: 20px;
     padding-right: 20px;
     height: 168px;
-    width: 364px;
+    width: 320px;
     position: absolute;
     top: 220px;
     display: flex;
@@ -151,13 +150,12 @@ hr {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     position: absolute;
-    left: 470px;
+    /* same 54px gap as between to-do and done, right edge in line with the done box */
+    left: 416px;
     top: 220px;
-
     height: 168px;
-    width: 110px;
+    width: 168px;
     background-color: white;
     border: 1px solid #d1d1d1;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -370,7 +368,6 @@ hr {
 }
 
 /* Hover Effekter */
-
 .content-pen {
     transition: all 0.3s ease-in-out;
     cursor: pointer;
@@ -446,6 +443,7 @@ hr {
     transform: scale(1.1);
     cursor: pointer;
 }
+
 .container-task div:hover .task-text-big,
 .container-task div:hover .task-text-small {
     color: white;

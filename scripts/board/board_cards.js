@@ -10,7 +10,6 @@ function updateTaskBoard() {
     }
 }
 
-
 /** 
  * This function deletes all task cards from the board and places an indicator that there are no tasks in the column
 */
@@ -26,7 +25,6 @@ function emptyBoard() {
     document.getElementById("done").innerHTML = getNoTasksCard("no_task_done", "No tasks Done");
     document.getElementById("done").innerHTML += getPlaceholder();
 }
-
 
 /** 
  * This function puts one card on the board
@@ -44,7 +42,6 @@ function showCardOnBoard(index) {
     checkBoardContacts(index, layer);
 }
 
-
 /** 
  * This function puts one card template on the board at the right position an removes the column-is-empty-sign
  * @param {number} index - This is the index number of the task which is shown on the board
@@ -54,7 +51,6 @@ function getCard(index, layer) {
     document.getElementById("no_task_" + currentTasks[index].status).classList.add("d_none");
     document.getElementById(currentTasks[index].status).innerHTML += getExampleCard(index, layer);
 }
-
 
 /** 
  * This function changes the category to userStory if needed, since it is assigned Technical Task by default
@@ -67,7 +63,6 @@ function checkCategory(index, layer) {
         document.getElementById("category_" + index + layer).classList.remove("technical_task" + layer);
     }
 }
-
 
 /** 
  * This function is used to indicate the correct priority at the card
@@ -83,7 +78,6 @@ function checkPriority(index) {
     document.getElementById('prio_text_' + index).innerHTML = prio;
 }
 
-
 /** 
  * This function is used to find out, whether the task has subtasks
  * If this is the case, it creates an area, where this is indicated at the card
@@ -98,7 +92,6 @@ function checkSubtasks(subtasks, index, progress, layer) {
     }
 }
 
-
 /** 
  * This function is used to find out, whether the task has a description
  * If this is not the case, it removes the area for the description text on the card
@@ -110,7 +103,6 @@ function checkDescription(index, layer) {
         document.getElementById("description_" + index + "_" + layer).classList.add("d_none");
     }
 }
-
 
 /** 
  * This function is used to find out, whether the task has assigned contacts
@@ -125,7 +117,6 @@ function checkBoardContacts(index, layer) {
         document.getElementById("Profile_badges_" + index + "_" + layer).innerHTML = "";
     }
 }
-
 
 /** 
  * This function is used to show all (max five) assigned contacts on the task card
@@ -145,7 +136,6 @@ function showContacts(index, layer) {
     }
 }
 
-
 /** 
  * This function is used to get the correct contact and to add a profile badge on the card
  * @param {string} layer - This is the parameter indicating whether the function is used for the card or for the overlay
@@ -156,7 +146,6 @@ function getCorrectContact(index, i, layer) {
     document.getElementById("Profile_badges_" + index + "_" + layer).innerHTML += getContactIcon(index, i, layer);
     getContactInitials(index, i, layer);
 }
-
 
 /** 
  * This function is used to get the initials of the contact and to place it in the profile badge
@@ -172,7 +161,3 @@ function getContactInitials(index, i, layer) {
     }
     document.getElementById("profile_" + index + "_" + i + "_" + layer).innerHTML += initialsBoard.toUpperCase();
 }
-
-
-
-

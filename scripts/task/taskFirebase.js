@@ -1,13 +1,11 @@
-//const Base_URLTask ="https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
-
 const Base_URLTask = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/";
+
 /**
  *Function retrieves the data Task and Contacts on the FirebaseDB
  */
 async function loadDataFirebase() {
   try {
     const [responseTask, responseContact] = await Promise.all([
-     
       fetch(Base_URLTask + "/tasks/" + ".json"),
       fetch(Base_URLTask + "/contacts/" + ".json"),
     ]);
@@ -18,8 +16,6 @@ async function loadDataFirebase() {
   } catch (error) {      }
 }
 
-
-
 /**
  * Function writes the data from a task into the FirebaseDB when creating a new task
  */
@@ -27,7 +23,6 @@ function pushTaskToServer() {
   collectData();
   postTaskData(`/tasks/${taskId}`, currentTaskAdd);
 }
-
 
 /**
  * Function writes the data from a task to the FirebaseDB when a task changes

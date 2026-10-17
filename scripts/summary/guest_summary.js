@@ -6,7 +6,6 @@ function toggleMenu() {
   document.getElementById('submenu_toogle').classList.toggle('submenu_open');
 }
 
-
 /**
  * This event listener listens for clicks on the document.
  * It closes the submenu if the user clicks outside of the submenu and the toggle button.
@@ -15,7 +14,6 @@ function toggleMenu() {
 document.addEventListener('click', function(event) {
   const submenu = document.getElementById('submenu_toogle');
   const toggleButton = document.getElementById('guest_logo_user_sign_in');
-
   if (!submenu.contains(event.target) && !toggleButton.contains(event.target)) {
     submenu.classList.remove('submenu_open'); 
   }
@@ -34,7 +32,6 @@ async function fetchData() {
   update();
 }
 
-
 /**
  * This function updates the page content and shows a greeting if the user is logged in.
  */
@@ -46,7 +43,6 @@ function update() {
   renderWelcome();
 }
 
-
 /**
  * This function shows a greeting container for mobile users when the page loads.
  * It hides the greeting after 3 seconds and sets a flag to avoid showing it again.
@@ -55,14 +51,12 @@ function showGreetingContainer() {
   if (window.innerWidth < 1000) {
     const mobileGuestContainer = document.querySelector('.mobile_container-morning');
     mobileGuestContainer.style.display = 'flex';
-
     setTimeout(() => {
       mobileGuestContainer.style.display = 'none';
       localStorage.setItem('greetingShown', 'true');
     }, 3000);
   }
 }
-
 
 /**
  * This function checks if the user is logged in by looking at the 'userLoggedIn' flag in localStorage.
@@ -71,7 +65,6 @@ function showGreetingContainer() {
 function isUserLoggedIn() {
   return localStorage.getItem('userLoggedIn') === 'true';
 }
-
 
 /**
  * Delete login user from Local Storage
@@ -88,7 +81,6 @@ function openPage() {
   window.location.href = "../HTML/board.html"; 
 }
 
-
 /**
  * Updates the HTML content based on task data.
  */
@@ -103,12 +95,10 @@ function updateHTML() {
     content_awaiting_feedback: () => countTasks({ status: "awaitFeedback" }),
     content_email: () => countTasks({ createdBy: "mail" })
   };
-
   for (const [id, fn] of Object.entries(contentMap)) {
     document.getElementById(id).innerHTML = fn();
   }
 }
-
 
 /**
  * Returns the number of tasks matching the given criteria.
@@ -118,26 +108,20 @@ function updateHTML() {
  */
 function countTasks(filter = {}) {
   const filterEntries = Object.entries(filter);
-
   return currentTasks.filter((task) => {
     if (!task) return false;
-
     for (const [key, value] of filterEntries) {
       if (task?.[key] !== value) return false;
     }
-
     if (filter.createdBy === 'mail') {
       const creatorEmail = typeof task.creatorEmail === 'string' ? task.creatorEmail.trim() : '';
       const hasContactEmail = Array.isArray(task.contacts)
         && task.contacts.some((c) => typeof c?.email === 'string' && c.email.trim() !== '');
-
       if (!creatorEmail && !hasContactEmail) return false;
     }
-
     return true;
   }).length;
 }
-
 
 /**
  * Returns the deadline of the next upcoming task or a default message.
@@ -147,7 +131,6 @@ function getDeadlineDate() {
   const upcomingTask = currentTasks.find(task => task?.deadline);
   return upcomingTask ? upcomingTask.deadline : "No deadline set";
 }
-
 
 /**
  * This function generates a greeting message based on the current hour and displays it in the UI.

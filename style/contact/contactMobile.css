@@ -7,26 +7,21 @@
     z-index: 1;
 }
 
-
 .img_mobile_add_button {
     width: 56px;
     height: 56px;
     padding-right: 12px;
     display: none;
-
 }
-
 
 .img_mobile_add_button:hover {
     cursor: pointer;
 }
 
-
 .mobile_options_div {
     display: flex;
     flex-direction: column;
 }
-
 
 .edit_mobile {
     display: flex;
@@ -39,7 +34,6 @@
     }
 }
 
-
 .delete_mobile {
     display: flex;
     justify-content: space-evenly;
@@ -49,21 +43,17 @@
         font-size: 16px;
         font-weight: 400;
     }
-
 }
-
 
 .edit_mobile:hover {
     cursor: pointer;
     filter: invert(52%) sepia(97%) saturate(300%) hue-rotate(166deg);
 }
 
-
 .delete_mobile:hover {
     cursor: pointer;
     filter: invert(52%) sepia(97%) saturate(300%) hue-rotate(166deg);
 }
-
 
 .mobile_options {
     display: none;
@@ -71,34 +61,28 @@
     width: 56px;
 }
 
-
 .arrow_back_mobile {
     width: 32px;
     height: 32px;
     display: none;
 }
 
-
 .button_create_contact_mobile {
     display: none;
 }
 
-
 .close_button_mobile {
     display: none;
 }
-
 
 @media (max-width: 1000px) {
     .contact_Detail_Menu {
         display: none;
     }
 
-
     .close_button_mobile_div {
         width: 200px;
     }
-
 
     .close_button_mobile {
         display: flex;
@@ -110,11 +94,9 @@
         right: 24px;
     }
 
-
     .close_button_mobile:hover {
         cursor: pointer;
     }
-
 
     .contact_Detail {
         display: none;
@@ -129,18 +111,15 @@
         transform: translateX(100%);
     }
 
-
     .contact_Detail.show {
         display: block;
         transform: translateX(0);
     }
 
-
     .contact_Detail_List {
         background-color: white;
         color: black;
     }
-
 
     .contact_List_Frame {
         width: 100%;
@@ -152,7 +131,6 @@
         }
     }
 
-
     .contact_scroll {
         width: 100%;
         height: 80vh;
@@ -160,11 +138,9 @@
         max-width: calc(100% - 40px);
     }
 
-
     .contact_Add_btn {
         display: none;
     }
-
 
     .mobile_options {
         display: flex;
@@ -193,7 +169,6 @@
         background-color: white;
     }
 
-
     .mobile_button_options_div {
         position: fixed;
         bottom: 100px;
@@ -201,12 +176,10 @@
         z-index: 1000;
     }
 
-
     .img_mobile_add_button {
         display: block;
         padding-left: 20px
     }
-
 
     .background_close {
         width: 100vw;
@@ -214,7 +187,6 @@
         background: rgba(0, 0, 0, 0);
         z-index: 998;
     }
-
 
     .card_contact {
         display: none;
@@ -224,13 +196,11 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-
     .card_contact.show {
         display: block;
         transform: translateX(0);
         z-index: 1000;
     }
-
 
     .contact_Card_Frame {
         width: auto;
@@ -242,7 +212,6 @@
         display: flex;
         justify-content: center;
         z-index: 100;
-
         .logo_mobile {
             display: none;
         }
@@ -256,13 +225,11 @@
         }
     }
 
-
     .contact_Detail_Header {
         display: flex;
         flex-direction: column;
         align-items: start;
     }
-
 
     .line_Vertikal {
         height: 3px !important;
@@ -270,7 +237,6 @@
         position: relative;
         order: 1;
     }
-
 
     .alert_div {
         position: fixed;
@@ -283,24 +249,20 @@
         padding: 5px;
       }
 
-
     .contact_Detail_abbreviation {
         font-size: 27px;
         height: 80px;
         width: 80px;
     }
 
-
     .contact_Card_Input {
         height: 41px;
         width: 364px;
     }
 
-
     .contact_Line {
         width: auto;
     }
-
 
     .arrow_back_mobile {
         position: fixed;
@@ -309,11 +271,9 @@
         display: block;
     }
 
-
     .arrow_back_mobile:hover {
         cursor: pointer;
     }
-
 
     .contact_Card_Input_Frame_one {
         width: 396px;
@@ -324,12 +284,10 @@
         }
     }
 
-
     .contact_Card_button1,
     .contact_Card_button2 {
         display: none;
     }
-
 
     .contact_Card_button {
         display: flex;
@@ -337,11 +295,9 @@
         width: auto;
     }
 
-
     .contact_Card_Close_img {
         display: none;
     }
-
 
     .contact_Card_abbreviation_Frame {
         width: 396px;
@@ -349,9 +305,7 @@
         display: flex;
         justify-content: center;
         gap: 0;
-
     }
-
 
     .button_create_contact_mobile {
         display: flex;
@@ -369,7 +323,6 @@
         font-weight: 700;
     }
 
-
     .pic_edit {
         position: fixed;
         top: 292px;
@@ -378,7 +331,6 @@
         z-index: 200;
     }
 
-
     .contact_abbreviation_big {
         position: fixed;
         top: 292px;
@@ -386,7 +338,6 @@
         border: 3px;
         z-index: 200;
     }
-
 
     .contact_Entry {
         width: calc(100% - 40px);
@@ -400,7 +351,6 @@
         overflow-x: hidden;
     }
 }
-
 
 @media (max-width: 400px) {
     .contact_Detail_Info_Header {

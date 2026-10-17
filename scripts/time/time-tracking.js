@@ -5,7 +5,6 @@ const timeState = {
 
 const employeeDefaults = ["Max Schneider", "Lea Hoffmann", "Samir Yildiz", "Nina Becker"];
 const projectDefaults = ["BV Mueller", "EFH Klein", "Industriehalle Nord", "Wartung Stadtwerke"];
-
 document.addEventListener("DOMContentLoaded", initTimeTracking);
 
 async function initTimeTracking() {
@@ -20,13 +19,11 @@ function bindEvents() {
   document.getElementById("filter-to").addEventListener("input", renderEntries);
   document.getElementById("filter-query").addEventListener("input", renderEntries);
   document.getElementById("export-csv").addEventListener("click", exportCsv);
-
   document.querySelectorAll("[data-now]").forEach((button) => {
     button.addEventListener("click", () => {
       document.getElementById(`${button.dataset.now}-time`).value = getCurrentTime();
     });
   });
-
   document.querySelector("[data-preset='full-day']").addEventListener("click", () => {
     document.getElementById("start-time").value = "07:00";
     document.getElementById("end-time").value = "16:00";
@@ -68,10 +65,8 @@ async function saveTimeEntry(event) {
   const form = event.currentTarget;
   const entry = collectEntry(form);
   if (!entry) return;
-
   const id = timeState.editingId || createId();
   setSyncState("Speichere...");
-
   try {
     await firebaseRequest(`/timeEntries/${id}`, "PUT", entry);
     const existingIndex = timeState.entries.findIndex((item) => item.id === id);
@@ -100,12 +95,10 @@ function collectEntry(form) {
   const breakMinutes = Number(formData.get("breakMinutes") || 0);
   const grossMinutes = calculateMinutes(start, end);
   const netMinutes = grossMinutes - breakMinutes;
-
   if (netMinutes <= 0) {
     setSyncState("Zeitangaben pruefen", true);
     return null;
   }
-
   return {
     employee: formData.get("employee").trim(),
     project: formData.get("project").trim(),
@@ -164,7 +157,6 @@ function bindRowActions() {
 function editEntry(id) {
   const entry = timeState.entries.find((item) => item.id === id);
   if (!entry) return;
-
   timeState.editingId = id;
   document.getElementById("employee").value = entry.employee;
   document.getElementById("project").value = entry.project;
@@ -181,10 +173,8 @@ function editEntry(id) {
 async function deleteEntry(id) {
   const entry = timeState.entries.find((item) => item.id === id);
   if (!entry) return;
-
   const confirmed = window.confirm(`Arbeitszeit von ${entry.employee} am ${formatDate(entry.date)} loeschen?`);
   if (!confirmed) return;
-
   setSyncState("Loesche...");
   try {
     await firebaseRequest(`/timeEntries/${id}`, "DELETE");
@@ -202,7 +192,6 @@ function getFilteredEntries() {
   const from = document.getElementById("filter-from").value;
   const to = document.getElementById("filter-to").value;
   const query = document.getElementById("filter-query").value.trim().toLowerCase();
-
   return timeState.entries.filter((entry) => {
     const inRange = (!from || entry.date >= from) && (!to || entry.date <= to);
     const haystack = `${entry.employee} ${entry.project} ${entry.activity} ${entry.note}`.toLowerCase();
@@ -217,7 +206,6 @@ function updateStats(entries) {
   const todayMinutes = timeState.entries
     .filter((entry) => entry.date === today)
     .reduce((sum, entry) => sum + Number(entry.netMinutes || 0), 0);
-
   document.getElementById("entry-count").textContent = entries.length;
   document.getElementById("total-hours").textContent = formatMinutes(totalMinutes);
   document.getElementById("project-count").textContent = projects.size;
@@ -261,17 +249,14 @@ async function firebaseRequest(path, method = "GET", body = undefined) {
   if (typeof Base_URL === "undefined") {
     throw new Error("Base_URL ist nicht definiert.");
   }
-
   const response = await fetch(`${Base_URL}${path}.json`, {
     method,
     headers: { "Content-Type": "application/json" },
     body: body ? JSON.stringify(body) : undefined,
   });
-
   if (!response.ok) {
     throw new Error(`Firebase request failed: ${response.status}`);
   }
-
   return response.json();
 }
 

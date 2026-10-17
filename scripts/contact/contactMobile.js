@@ -9,10 +9,8 @@ function checkScreenSize() {
   }
 }
 
-
 // Listens for window resizing to apply changes based on screen size.
 window.addEventListener("resize", checkScreenSize);
-
 
 /**
  * Closes the detailed contact view on mobile screens when the width is below 1000px and shows the contact list again.
@@ -23,7 +21,6 @@ window.addEventListener('resize', () => {
     closeWindowMobile();
   }
 });
-
 
 /**
  * Closes the detailed contact view on mobile and shows the contact list again.
@@ -40,7 +37,6 @@ function closeContactBigMiddleMobil() {
   }
 }
 
-
 /**
  * Shows the contact list on the screen.
  * @function
@@ -52,7 +48,6 @@ function showContactList() {
   }
 }
 
-
 /**
  * Hides the contact list from the screen.
  * @function
@@ -63,7 +58,6 @@ function hideContactList() {
     contactList.style.display = "none";
   }
 }
-
 
 /**
  * Toggles between creating and editing contact details on mobile.
@@ -84,7 +78,6 @@ function toggleEditMobile(isEditing) {
   if (!isEditing && emailInput) clearError(emailInput);
 }
 
-
 /**
  * Enables the editing mode for a contact on mobile.
  * @function
@@ -93,7 +86,6 @@ function editContactMobile() {
   toggleEditMobile(true);
 }
 
-
 /**
  * Disables the editing mode and reverts to the original contact details.
  * @function
@@ -101,7 +93,6 @@ function editContactMobile() {
 function closeEditMobile() {
   toggleEditMobile(false);
 }
-
 
 /**
  * Opens a mobile window with options to edit or delete a contact.
@@ -125,7 +116,6 @@ function openWindowMobile(contactIndex, firstLetter, color) {
   </div>
 </div>`;
 }
-
 
 /**
  * Closes the mobile window by clearing its content.

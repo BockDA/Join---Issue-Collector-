@@ -1,9 +1,9 @@
-
 @media (max-width: 850px) {
     .signup_field_header {
         width: 450px;
         gap: 20px;
     }
+
     .input_login{
         width: 310px;
     }
@@ -19,7 +19,7 @@
     .eye-icon{
         right: 17px;
     }
-  
+
   .lock-icon{
     right: 20px;
   }
@@ -61,6 +61,7 @@
     .signup_field {
         height: 500px;
     }
+
     .signup_field_header {
         width: 280px;
         gap: 0;
@@ -114,7 +115,6 @@
         gap: 12px
     }
 
-
     .wrong_data_alert{
         font-size: 12px;
         top: 420px;
@@ -132,7 +132,6 @@
         top: 150px;
         padding-top: 20px;
     }
-
 
     .heading_login{
         font-size: 40px;

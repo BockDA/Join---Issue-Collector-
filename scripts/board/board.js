@@ -6,7 +6,6 @@ let DragCounter = 0; /** This variable counts the amount of times the element ha
 let x = 0; /** This variable indicates the horizontal mouseposition */
 let y = 0; /** This variable indicates the vertical mouseposition */
 
-
 /** 
  * This function is used to load Data from the database
  * It also created content on the board page based on the received data
@@ -22,7 +21,6 @@ async function loadTaskData() {
     showHelpIconMobile();
 }
 
-
 /** 
  * This function is used to save Data from the database into an array
 */
@@ -36,7 +34,6 @@ async function fetchTaskData() {
             lastTask = task + 1;
         }
     }
-
     for (let index = 0; index < lastTask; index++) {
         if (TaskResponseToJson[index]) {
             currentTasks[index] = TaskResponseToJson[index];
@@ -45,7 +42,6 @@ async function fetchTaskData() {
         }
     }
 }
-
 
 /**
  * This function logs out the user by removing the 'userLoggedIn' flag from localStorage
@@ -56,7 +52,6 @@ function logout() {
     localStorage.removeItem("userEmail");
     localStorage.setItem('greetingShown', 'false');
 }
-
 
 /**
  * This function shows the help icon on mobile screens (below 1000px width).
@@ -72,8 +67,6 @@ function showHelpIconMobile() {
 
 window.onresize = showHelpIconMobile;
 
-
-
 /** 
  * This function adapts the height of the board based on the column which is most filled with cards.
  * This is necessary to be able to drop cards at the bottom in case one column is much longer than anther
@@ -82,7 +75,6 @@ function adaptBoardHeight() {
     window.addEventListener("load", adjustHeight());
     window.addEventListener("resize", adjustHeight());
 }
-
 
 /** 
  * This function finds out the height of each column and saves the longest column in the parameter @param {number} maxHeight
@@ -103,14 +95,12 @@ function adjustHeight() {
     }
 }
 
-
 /** 
  * This function is used to prevent the default functions of html/JavaScript so that dropping elements becomes possible
 */
 function allowDrop(event) {
     event.preventDefault();
 }
-
 
 /** 
  * This function is used to place a box in the column where an element is about to be dropped, indicating that dropping the element is possible at this location
@@ -125,7 +115,6 @@ function showDottedBox(event) {
     }
     DragCounter++;
 }
-
 
 /** 
  * This function is used to remove the box from the column when an element has left the dropzone, indicating that the dropping is not posssible at the current mouse position
@@ -142,7 +131,6 @@ function removeDottedBox(event) {
     }
 }
 
-
 /** 
  * This function is used to rotate the card element which the user is dragging in order to visualize which element they are moving
  * @param {number} index - This parameter is the index number of the element which is being moved
@@ -151,7 +139,6 @@ function startDragging(index) {
     document.getElementById('card_number_' + index).classList.add('rotate_card');
     elementToBeDropped = index;
  }
-
 
 /** 
  * When dropping an element, this function is used to place the card in the new column an to delete the card at the old position y updating the whole board
@@ -169,7 +156,6 @@ async function moveTo(category, event) {
     DragCounter = 0;
     moveCard(elementToBeDropped, category)
 }
-
 
 /** 
  * This function is used to change the category of the task and to show the new order at the board page
@@ -189,7 +175,6 @@ async function moveCard(elementToBeDropped, category) {
     loadTaskData();
 }
 
-
 /** 
  * This function is used to change the category of the task on the database
 */
@@ -202,7 +187,6 @@ async function changeCategory(path = "", newObj) {
         body: JSON.stringify(newObj)
     });
 }
-
 
 /** 
  * This function is used to check if the input field is empty or not
@@ -217,7 +201,6 @@ function startTyping() {
         compareTitleWithCurrentTasks(0, document.getElementById('inputfield_board').value);
     }
 }
-
 
 /** 
  * This function is used to add an alert if the title has not been found
@@ -234,7 +217,6 @@ function findTask() {
     }
     document.getElementById('input_board').classList.remove('input_board_searching');
 }
-
 
 /** 
  * This function compares the search result with the currrent tasks
@@ -257,7 +239,6 @@ function compareTitleWithCurrentTasks(counter, titleToFind) {
     showNoTaskFoundAlert(counter);
 }
 
-
 /** 
  * This function lets the card appear on the board, which is indicated by the index number
  * @param {number} index - This parameter indicates which task card should appear on the board
@@ -268,7 +249,6 @@ function updateBoardBasedOnFindings(index) {
     document.getElementById('back_icon').classList.remove('d_none');
     document.getElementById('search_icon').classList.add('d_none');
 }
-
 
 /** 
  * This function lets an alert box appear, indicating that no tasks have been found
@@ -289,7 +269,6 @@ function showNoTaskFoundAlert(counter) {
     }
 }
 
-
 /** 
  * This function removes the alert box which indicates that no tasks have been found
 */
@@ -297,7 +276,6 @@ function closeAlert() {
     document.getElementById('no_element_found_alert').classList.add('d_none');
     document.getElementById('input_board').classList.remove('alert_input');
 }
-
 
 /** 
  * This function makes the back-arrow dissapear and the seach-icon appear on the input field
@@ -310,8 +288,6 @@ function refreshFoundResults() {
     updateTaskBoard();
     document.getElementById('input_board').classList.remove('input_board_searching');
 }
-
-
 
 /**
  * This function notifies n8n that a card has been moved. n8n then sends an email to the author.
@@ -326,4 +302,3 @@ async function requestMovecardMail(creatorEmail, title, category) {
         body: JSON.stringify({ creatorEmail, title, category })
     })
 }
-

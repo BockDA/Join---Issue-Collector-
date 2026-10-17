@@ -1,20 +1,20 @@
-
 function getPrioIconName(prio) {
-    const normalized = typeof prio === 'string' ? prio.trim().toLowerCase() : '';
-
-    if (normalized === 'high_prio' || normalized === 'medium_prio' || normalized === 'low_prio') {
-        return normalized;
-    }
-
-    if (normalized === 'urgent' || normalized === 'high') return 'high_prio';
-    if (normalized === 'medium') return 'medium_prio';
-    if (normalized === 'low') return 'low_prio';
-
-    return 'medium_prio';
+  const normalized = typeof prio === "string" ? prio.trim().toLowerCase() : "";
+  if (
+    normalized === "high_prio" ||
+    normalized === "medium_prio" ||
+    normalized === "low_prio"
+  ) {
+    return normalized;
+  }
+  if (normalized === "urgent" || normalized === "high") return "high_prio";
+  if (normalized === "medium") return "medium_prio";
+  if (normalized === "low") return "low_prio";
+  return "medium_prio";
 }
 
 function getExampleCard(index, layer) {
-    return `<div id="card_number_${index}" class="card" onclick="showCardOverlay(${index})" draggable="true" ondragstart="startDragging(${index})">
+  return `<div id="card_number_${index}" class="card" onclick="showCardOverlay(${index})" draggable="true" ondragstart="startDragging(${index})">
                 <div class="card_header">
                     <div id="category_${index}${layer}" class="task_category technical_task">${currentTasks[index].category}</div>
                     <div onclick="stopPropagation(event)" id="change_category_btn_${index}">
@@ -30,12 +30,11 @@ function getExampleCard(index, layer) {
                     <div id="Profile_badges_${index}_${layer}" class="profile_badges"></div>
                     <img class="prio_icon ${currentTasks[index].prio}_${layer}" src="../assets/icons/${getPrioIconName(currentTasks[index].prio)}.svg" alt="priority indicator">
                 </div>                          
-            </div>`
+            </div>`;
 }
 
-
 function getSubtasks(index, subtasks, progress, layer) {
-    return `<div id="subtasks_${index}_${layer}" class="progress_box">
+  return `<div id="subtasks_${index}_${layer}" class="progress_box">
                 <div class="progress_bar">
                     <div id="progress_${index}_${layer}" class="progress" style="width: ${progress}%;"></div>
                 </div>
@@ -45,43 +44,36 @@ function getSubtasks(index, subtasks, progress, layer) {
                     <h4 id="subtasks_total" style="font-weight: 400;">${subtasks}</h4><br><br>
                     <h4 style="font-weight: 400;">Subtasks</h4>
                 </div>                   
-            </div>`
+            </div>`;
 }
-
 
 function getContactIcon(index, i, layer) {
-    return `<div id="profile_${index}_${i}_${layer}" class="profile_badge" style="z-index: ${i + 1}; position: relative; left: calc(${i} * -8px); background-color: ${contactColorArray[(currentTasks[index].contacts[i].color)]};"></div>`
+  return `<div id="profile_${index}_${i}_${layer}" class="profile_badge" style="z-index: ${i + 1}; position: relative; left: calc(${i} * -8px); background-color: ${contactColorArray[currentTasks[index].contacts[i].color]};"></div>`;
 }
-
 
 function getContactDots(moreContacts) {
-    return `<div class="dots_more_content">+${moreContacts}</div>`
+  return `<div class="dots_more_content">+${moreContacts}</div>`;
 }
-
 
 function getNoTasksCard(id, text) {
-    return `<div id=${id} class="no_tasks">${text}</div>`
+  return `<div id=${id} class="no_tasks">${text}</div>`;
 }
-
 
 function getPlaceholder() {
-    return `<div class="placeholder"></div>`
+  return `<div class="placeholder"></div>`;
 }
-
 
 function getBgOverlay() {
-    return `<div onclick="closeOverlay('bg_overlay')" id="bg_overlay" class="bg_overlay d_none"></div>`
+  return `<div onclick="closeOverlay('bg_overlay')" id="bg_overlay" class="bg_overlay d_none"></div>`;
 }
 
-
 function getCardOverlayContent(index) {
-    return `<div onclick="stopPropagation(event)" id="card_overlay" class="card_overlay_board slide-in-overlay">
+  return `<div onclick="stopPropagation(event)" id="card_overlay" class="card_overlay_board slide-in-overlay">
                 <div class="card_overlay_header">
                     <div id="category_${index}_overlay" class="task_category task_category_overlay technical_task_overlay ">${currentTasks[index].category}</div>
                     <div class="ai_note_overlay">
                     <p>${noteAIagent(index)}</p>
                     </div>
-                    
                     <div class="close_btn_overlay">
                         <img onclick="closeOverlay('bg_overlay')"  src="../assets/icons/close.svg" alt="close button">
                     </div>
@@ -90,11 +82,10 @@ function getCardOverlayContent(index) {
                     <h1 class="board_heading">${currentTasks[index].title}</h1>
                 </div>
                 <div class="task_description_overlay">${currentTasks[index].description}</div>
-               
                 <div>
                     <div class="creator_name">
                             <h2>Creator:</h2>
-                            <div class="creator_name_detail">
+                            <div class="creator_name_detail ${creatorTypeClass(index)}">
                            ${membercontrol(index)}
                             </div>
                             <h2>${userNameLogin(index)}</h2>
@@ -103,7 +94,6 @@ function getCardOverlayContent(index) {
                         ${profileSelection(index)}  
                     </div>
                 </div>
-                              
                 <div class="task_description_overlay">
                     <p class="color_blue font_weight_700">Due Date:</p>
                     <p>${currentTasks[index].deadline}</p>
@@ -128,46 +118,41 @@ function getCardOverlayContent(index) {
                         <p >Edit</p>
                     </div>
                 </div>
-            </div>`
+            </div>`;
 }
-
 
 function getSubtasksOverlay(index) {
-    return `<div class="task_description_overlay fd_column gap_8">
+  return `<div class="task_description_overlay fd_column gap_8">
                 <p class="color_blue font_weight_700">Subtasks</p>
                 <div id="tasks_box${index}"> </div>
-            </div>`
+            </div>`;
 }
-
 
 function getTaskOverlay(index, i) {
-    return `<div id="check_box_${index}_info${i}" onclick="changeSubtaskCategory(${index}, ${i})" class="task_info">
+  return `<div id="check_box_${index}_info${i}" onclick="changeSubtaskCategory(${index}, ${i})" class="task_info">
                 <div id="check_box_${index}_btn${i}" class="check_box_btn"></div>
                 <p class="font_16">${Object.keys(currentTasks[index].subtasks.subtasks_todo)[i]}</p>
-            </div>`
+            </div>`;
 }
-
 
 function getContactBoxOverlay(index) {
-    return `<p class="color_blue font_weight_700">Assigned To:</p>
-            <div id="profile_badges_overlay${index}"></div>`
+  return `<p class="color_blue font_weight_700">Assigned To:</p>
+            <div id="profile_badges_overlay${index}"></div>`;
 }
-
 
 function getContactIconOverlay(index, i) {
-    return `<div class="contact_info">
-                <div id="profile_${index}_${i}_overlay"  class="profile_badge profile_badge_overlay" style="background-color: ${contactColorArray[(currentTasks[index].contacts[i].color)]};"></div>
+  return `<div class="contact_info">
+                <div id="profile_${index}_${i}_overlay"  class="profile_badge profile_badge_overlay" style="background-color: ${contactColorArray[currentTasks[index].contacts[i].color]};"></div>
                 <p class="font_19">${currentTasks[index].contacts[i].name}</p>
-            </div>`
+            </div>`;
 }
 
-
 function getBgCategory() {
-    return `<div onclick="closeCategoryOverlay()" class="bg_category d_none" id="bg_category"></div>`
+  return `<div onclick="closeCategoryOverlay()" class="bg_category d_none" id="bg_category"></div>`;
 }
 
 function getDragOptionsMobile(index, x, y) {
-    return `<div class="div_category_menu" style="position:absolute;top:${y}px;left:${x}px;">
+  return `<div class="div_category_menu" style="position:absolute;top:${y}px;left:${x}px;">
                 <div class="category_menu">
                     <p class="category_menu_heading">Move to</p>
                     <div onclick="moveCardMobileVersion(${index}, 'triage')" class="div_category_options" id="div_category_options_triage">
@@ -194,31 +179,26 @@ function getDragOptionsMobile(index, x, y) {
                         <p class="category_menu_text">Done</p>
                     </div>
                 </div>
-            </div>`
+            </div>`;
 }
-
 
 function getMobileDragger(index) {
-    return `<img onclick="openCategoryOverlay(event, ${index})" id="change_category_icon_${index}" class="change_category_btn" src="../assets/icons/change_category_icon.png" alt="change category">`
+  return `<img onclick="openCategoryOverlay(event, ${index})" id="change_category_icon_${index}" class="change_category_btn" src="../assets/icons/change_category_icon.png" alt="change category">`;
 }
 
-
 function editTaskTemplate(index) {
-    return `
+  return `
           <div class="card_overlay_header">
             <div id="category_overlay${index}" class="task_category task_category_overlay  "></div>
-           
            <div class="close_btn_overlay">
               <img onclick="closeOverlay('bg_overlay')"  src="../assets/icons/close.svg" alt="close button">
             </div>
-        
         </div>
                       <div class="section_title">
                     <h2 class="title">Title</h2>
                     <input id="taskTitle" class="input_title" type="text" onblur="requiredInputTitle('edit')" onmouseleave="requiredInputTitle('edit')" onfocus="errorFieldsFocus('error_Field_Title')" tabindex="1">
                      <span id="error_Field_Title" class="error_Field">&nbsp;</span>
                  </div>
-
                  <div class="section_description">
                      <h2>Description</h2>
                      <div class="textarea_description">
@@ -226,8 +206,6 @@ function editTaskTemplate(index) {
                      tabindex="2"></textarea>
                      </div>
                  </div>
-
-            
             <div class="section_date_div">
                 <h2>Due date </h2>
                 <div class="task_Date_Input_Div">
@@ -240,7 +218,6 @@ function editTaskTemplate(index) {
             <div>    
             <h2>Priority</h2>
             </div>
-
                 <div class="prio_buttons">
                        <button onclick="btnPrioSelect('urgent');checkPrioEditTask('high_prio')" class="btn_prio button-urgent" tabindex="5">Urgent
                        <img class="prio_img" src="../assets/icons/high_prio.svg" alt="urgent">
@@ -273,40 +250,25 @@ function editTaskTemplate(index) {
                         <h2>Subtasks</h2>
                         <div class="input_wrapper">
                             <input type="text" placeholder=" Add new subtask"   id="inputSubtask" class="input_subtasks" oninput="subTaskInputCheck()">                                                
-                       
                             <img src="../assets/icons/add.png" id="subTaskAddIcon" class="add_subtasks_new ele_hide" onclick="subTaskInputCheck(true)">
-                            
-                            
                             <div id="subTaskEditIocn" class="add_subtasks sub_Task_Edit_Iocn ele_hide">
                                 <img id="subTaskCloseIcon" onclick="subTaskClose()" src="../assets/icons/close.svg">
                                 <img src="../assets/icons/vectorV.svg">
                                 <img id="subTaskCheckIcon" onclick="taskCreateTaskEdit()" src="../assets/icons/checkSW.svg">
                             </div>
-
                            </div>
-                            
                                 <div id="subTaskList" class="subtask_list"></div>
-                              
                 </div>   
-                    
-                        
                         <div class="btn_div">
                             <button id="button_Ok_Edit"  class="button_Ok" onclick="TaskEditSave()" >OK<img src="../assets/icons/check.svg"></button>
                          </div>
-      
-   `
-
+   `;
 }
 
-
-
 function getAddTaskOverlay() {
-
-    return ` 
-        
+  return ` 
      <div onclick="closeOverlay('addTask_overlay')" id="addTask_overlay" class="bg_overlay d_none">
-              
-         <div onclick="stopPropagation(event)" id="addTask_card" class="addTask_overlay">
+            <div onclick="stopPropagation(event)" id="addTask_card" class="addTask_overlay">
             <div class="close_btn_AddOverlay">
             <img  src="../assets/icons/close.svg" onclick="closeOverlay('addTask_overlay')">
             </div>            
@@ -319,7 +281,6 @@ function getAddTaskOverlay() {
                                             placeholder="Enter a title" tabindex="1">
                                              <span id="error_Field_Title" class="error_Field">&nbsp;</span>
                                              </div>  
-
                                         <div class="section_description_ol">
                                             <h2>Description</h2>
                                             <div class="textarea_description_ol">
@@ -327,8 +288,6 @@ function getAddTaskOverlay() {
                                                 tabindex="2"></textarea>
                                             </div>
                                         </div>
-
-  
                                      <div class="section_assigned_ol">
                                          <h2 class="assigned_title_ol">Assigned to</h2>
                                                 <div class="task_Contact_dropdown_ol" onmouseleave="taskContactListDrobdownClose()">
@@ -346,24 +305,14 @@ function getAddTaskOverlay() {
                                                     <div id="initialeIconList" class="initiale_Icon_List_ol icon_List_hide">
                                                     </div>
                                      </div>
-
                                      <div class="required_text_ol">
                                            <span><span class="star_red_ol">*</span class="required-text_ol">This field is requiered</span>
                                      </div>
-
-
                                  </div>
-
-
                                    <div class="hr_ol">
                                      <hr>
                                    </div>
-                        
-
-
                                  <div class="section_right_ol">
-
-
                                      <div class="section_date_div_ol">
                                             <h2>Due date<span class="star_red_ol">*</span></h2>
                                             <div class="date_input_ol">
@@ -372,17 +321,13 @@ function getAddTaskOverlay() {
                                             </div>
                                               <span id="error_Field_Date" class="error_Field">&nbsp;</span>         
                                       </div>
-                                    
-
                                   <div class="section_prio_ol">
                                             <h2>Priority</h2>
                                         <div class="prio_buttons">
-                                        
                                             <button onclick="btnPrioSelect('urgent')" class="btn_prio button-urgent"
                                                 tabindex="5">Urgent
                                                 <img class="prio_img" src="../assets/icons/high_prio.svg" alt="urgent">
                                             </button>
-                                        
                                             <button onclick="btnPrioSelect('medium')" class="btn_prio button_medium"
                                                 tabindex="6">Medium
                                                 <div id="btnPrioGroup" class="prio_img prio_img_group">
@@ -390,13 +335,11 @@ function getAddTaskOverlay() {
                                                     <img src="../assets/icons/linePrio.svg">
                                                 </div>
                                             </button>
-                                        
                                             <button onclick="btnPrioSelect('low')" class="btn_prio button-low" tabindex="7">Low
                                                 <img class="prio_img" src="../assets/icons/low_prio.svg">
                                             </button>
                                          </div>
                                   </div>
-
                                 <div class="section_category_ol">
                                     <h2>Category<span class="star_red_ol">*</span></h2>
                                     <div class="category-wrapper_ol">
@@ -408,7 +351,6 @@ function getAddTaskOverlay() {
                                        <span id="error_Field_Catergory" class="error_Field">&nbsp;</span>  
                                     </div>
                                 </div>
-
                                <div class="section_subtasks_ol">
                                         <h2>Subtasks</h2>
                                     <div class="input_wrapper_ol">
@@ -417,7 +359,6 @@ function getAddTaskOverlay() {
                                             oninput="subTaskInputCheck()" maxlength="40">
                                             <img id="subTaskAddIcon" class="add_subtasks_new_ol ele_hide"
                                             onclick="subTaskInputCheck(true)" src="../assets/icons/add.png" alt="add-icon">
-                                    
                                             <div id="subTaskEditIocn" class="add_subtasks_ol sub_Task_Edit_Iocn_ol ele_hide">
                                                 <img id="subTaskCloseIcon" onclick="subTaskClose()" src="../assets/icons/close.svg"
                                                     alt="add-icon">
@@ -426,7 +367,6 @@ function getAddTaskOverlay() {
                                                     src="../assets/icons/checkSW.svg" alt="add-icon">
                                             </div>
                                         </div>
-                           
                                     </div>
                                            <div id="subTaskList" class="subtask_list_ol">
                                     </div>
@@ -441,8 +381,6 @@ function getAddTaskOverlay() {
                                 <div class="required_text_mobile_ol">
                                     <span><span class="star_red_ol ">*</span class="required-text_ol">This field is requiered</span>
                                 </div>
-
-               
                                 <div id="notificationFinish" class="message_Finish_ol">
                                     <div class="message_Finish_contents_ol">
                                         <p>Task added to board</p>
@@ -450,7 +388,6 @@ function getAddTaskOverlay() {
                                     </div>
                                 </div>
                        </div>  
-         
                          <div class="button_bottom_task_mobile_ol">
                               <button id="btnClearTask" class="button_clear_task" onclick="addTaskClear()">Clear <img
                               class="cancel_ol" src="../assets/icons/iconoir_cancel.png" alt=""></button>
@@ -459,92 +396,105 @@ function getAddTaskOverlay() {
                          </div>
               </div> 
       </div>
-    `
+    `;
 }
-
-
 
 /**
  * If card was created via email, add Logi AI
- * @param {cardIndex} index 
- * @returns 
+ * @param {cardIndex} index
+ * @returns
  */
 function noteAIagent(index) {
-    let profil = currentTasks[index].createdBy;
-    if (profil == "mail") {
-        return `
-            <img src=..//assets/icons/ki_gener.png>
-        `
-    } else {
-        return ``
-    }
+  let profil = currentTasks[index].createdBy;
+  if (profil == "mail") {
+    return `
+            <img src="../assets/icons/wand_stars.png" alt="AI icon">
+            <span class="ai_note_text">Ai-generated ticket</span>
+        `;
+  } else {
+    return ``;
+  }
 }
 
 /**
  * If card was created via email, write externally
- * @param {cardIndex} index 
- * @returns 
+ * @param {cardIndex} index
+ * @returns
  */
 function membercontrol(index) {
-    let member = currentTasks[index].creatorType;
-    if (member == "Member") {
-        return `
+  let member = currentTasks[index].creatorType;
+  if (member == "Member") {
+    return `
          <img src=..//assets/icons/member.png>
         <p>Member</p>
-       `
-    } else if (member === "Extern") {
-        return `
+       `;
+  } else if (member === "Extern") {
+    return `
          <img src=..//assets/icons/extern.png>
         <p>Extern</p>
-       `
-    } else {
-        return `
+       `;
+  } else {
+    return `
          <p>------</p>
-       `
-    }
+       `;
+  }
 }
 
+/**
+ * Returns the CSS class for the background color of the creator box
+ * @param {cardIndex} index
+ * @returns
+ */
+function creatorTypeClass(index) {
+  let member = currentTasks[index].creatorType;
+  if (member === "Member") {
+    return "creator_member";
+  } else if (member === "Extern") {
+    return "creator_extern";
+  } else {
+    return "";
+  }
+}
 
 /**
  * If the card was created via email, write an email to the creator.
- * @param {cardIndex} index 
- * @returns 
+ * @param {cardIndex} index
+ * @returns
  */
 function profileSelection(index) {
-    let profil = currentTasks[index].createdBy;
-    if (profil == "Profil") {
-        return `
+  let profil = currentTasks[index].createdBy;
+  if (profil == "Profil") {
+    return `
         <div class="profil_entry">
         <img src="../assets/icons/person.png">
         <p>Profil</p>
         </div>
-        `
-    } else if (profil == "mail") {
-        return `
+        `;
+  } else if (profil == "mail") {
+    return `
         <div class="profil_entry">
             <img src="../assets/icons/email.png">
             <p>E-Mail</p>
         </div>
-          `
-    } else {
-        return `
+          `;
+  } else {
+    return `
         <div class="profil_entry">
             <p>------</p>
         </div>
-          `
-    }
+          `;
+  }
 }
-
 
 /**
  * If the card was created via email, write the username.
- * @param {cardIndex} index 
- * @returns 
+ * @param {cardIndex} index
+ * @returns
  */
 function userNameLogin(index) {
-    if (currentTasks[index].userName === undefined) {
-        return "------";
-    } else {
-        return currentTasks[index].userName;
-    }
+  if (currentTasks[index].userName === undefined) {
+    return "------";
+  } else {
+    return currentTasks[index].userName;
+  }
 }

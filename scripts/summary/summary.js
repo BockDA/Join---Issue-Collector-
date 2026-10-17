@@ -10,7 +10,6 @@ async function fetchData() {
   update();
 }
 
-
 /**
  * This function updates the HTML and various components based on the current state of the application.
  * It checks if the user is logged in and shows the greeting message if necessary.
@@ -27,7 +26,6 @@ function update() {
   showHelpIconMobile();
 }
 
-
 /**
  * This function shows a greeting container on the mobile view for a few seconds.
  */
@@ -35,14 +33,12 @@ function showGreetingContainer() {
   if (window.innerWidth < 1000) {
     const mobileContainer = document.querySelector('.mobile_container-morning');
     mobileContainer.style.display = 'flex';
-
     setTimeout(() => {
       mobileContainer.style.display = 'none';
       localStorage.setItem('greetingShown', 'true');
     }, 3000);
   }
 }
-
 
 /**
  * This function checks if the user is logged in by checking the 'userLoggedIn' flag in localStorage.
@@ -51,7 +47,6 @@ function showGreetingContainer() {
 function isUserLoggedIn() {
   return localStorage.getItem('userLoggedIn') === 'true';
 }
-
 
 /**
  * This function logs out the user by removing the 'userLoggedIn' flag from localStorage
@@ -63,18 +58,15 @@ function logout() {
   localStorage.setItem('greetingShown', 'false');
 }
 
-
 function openPage() {
   window.location.href = "../HTML/board.html";
 }
-
 
 /**
  * This function shows the help icon on mobile screens (below 1000px width).
  */
 function showHelpIconMobile() {
   let helpLink = document.getElementById("mobile_help_link");
-
   if (window.innerWidth <= 1000) {
     helpLink.style.display = "flex";
   } else {
@@ -83,7 +75,6 @@ function showHelpIconMobile() {
 }
 
 window.onresize = showHelpIconMobile;
-
 
 /**
  * Updates the HTML content based on task data.
@@ -99,12 +90,10 @@ function updateHTML() {
     content_awaiting_feedback: () => countTasks({ status: "awaitFeedback" }),
     content_email:()=>countTasks({createdBy: "mail"})
   };
-
   for (const [id, fn] of Object.entries(contentMap)) {
     document.getElementById(id).innerHTML = fn();
   }
 }
-
 
 /**
  * Returns the number of tasks matching the given criteria.
@@ -114,26 +103,20 @@ function updateHTML() {
  */
 function countTasks(filter = {}) {
   const filterEntries = Object.entries(filter);
-
   return currentTasks.filter((task) => {
     if (!task) return false;
-
     for (const [key, value] of filterEntries) {
       if (task?.[key] !== value) return false;
     }
-
     if (filter.createdBy === 'mail') {
       const creatorEmail = typeof task.creatorEmail === 'string' ? task.creatorEmail.trim() : '';
       const hasContactEmail = Array.isArray(task.contacts)
         && task.contacts.some((c) => typeof c?.email === 'string' && c.email.trim() !== '');
-
       if (!creatorEmail && !hasContactEmail) return false;
     }
-
     return true;
   }).length;
 }
-
 
 /**
  * Returns the deadline of the next upcoming task or a default message.
@@ -144,14 +127,12 @@ function getDeadlineDate() {
   return upcomingTask ? upcomingTask.deadline : "No deadline set";
 }
 
-
 /**
  * This function renders the user logo in the UI.
  */
 function renderUserLogo() {  
   document.getElementById("logo_user_sign_in").innerHTML = addUserLogoTemplate();
 }
-
 
 /**
  * This function renders the user's initials in the UI.
@@ -165,12 +146,9 @@ function renderInitials() {
      const userName = data.name; 
      const initials = getInitials(userName);
      userInitials.textContent = initials;
- 
    })
    .catch(err => console.error("Error fetching user name:", err));
-  
 }
-
 
 /**
  * This function calculates the initials from a full name (first and last name).
@@ -183,15 +161,12 @@ function getInitials(name) {
   return initials;
 }
 
-
 /**
  * This function renders the current user's name in the UI.
  */
-
 function renderCurrentUser() {
   let userDiv = document.getElementById('current_user');
   let mobileUserDiv = document.getElementById('mobile_current_user');
-
   fetch(`${Base_URL}/currentUser.json`)
     .then(res => res.json())
     .then(data => {
@@ -202,16 +177,13 @@ function renderCurrentUser() {
     .catch(err => console.error("Error fetching user name:", err));
 }
 
-
 /**
  * This function renders a personalized greeting message based on the time of day.
  */
 function renderWelcome() {
   let currentWelcome = document.getElementById('content_welcome');
   let mobileCurrentWelcome = document.getElementById('mobie_content_welcome');
-
   const currentHour = new Date().getHours();
-
   let greeting = '';
   if (currentHour >= 5 && currentHour < 12) {
     greeting = 'Good morning,';
@@ -223,4 +195,3 @@ function renderWelcome() {
   currentWelcome.textContent = greeting;
   mobileCurrentWelcome.textContent = greeting;
 }
-

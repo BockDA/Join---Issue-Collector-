@@ -20,7 +20,6 @@ async function guestLogin() {
   localStorage.setItem("greetingShown", "false");
   localStorage.setItem("userNameLogIn", "Guest");
   localStorage.setItem("userEmail", "");
-
   openGuestLoginPage();
 }
 
@@ -42,7 +41,6 @@ function openGuestLoginPage() {
 }
 
 resetLoginState();
-
 
 /**
  * Stores the current user data in the database.

@@ -25,7 +25,6 @@ body {
     align-items: center;
     flex-grow: 1;
    width: calc(100% - 232px);
-
 }
 
 .main_content {

@@ -87,12 +87,10 @@
 
     .input_login {
         width: 250px;
-      
     }
 
     .input_mail[type=email] {
         background-position: 260px 11px;
-   
     }
 
     .input_pw[type=password] {
@@ -145,7 +143,6 @@
     .login_footer {
         padding-top: 25px;
     }
-
 }
 
 @media (max-width: 450px) {
@@ -178,7 +175,6 @@
     }
 }
 
-
 @media (max-width: 400px) {
     .login_heading_div {
         width: 150px;
@@ -187,7 +183,6 @@
     .login_logo img {
         transform: translate(-5%, -50%);
     }
-
 
     .heading_login {
         font-size: 42px;
@@ -203,7 +198,6 @@
 
     .login_field {
         height: 320px;
-       
     }
 
     .mobile_login_field {
@@ -218,7 +212,6 @@
     .login_btns {
         gap: 10px;
         height: 42px;
-     
     }
 
     .login_footer {

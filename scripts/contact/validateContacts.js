@@ -12,11 +12,11 @@ function validateInputs() {
   return nameValid && emailValid && telValid;
 }
 
-
 /**
  * Validates the name input, ensuring it's not empty.
  * @returns {boolean} - Whether the name input is valid.
  */
+
 /**
  * Validates the name input field.
  * Ensures the value is not empty, only contains letters, and has at least 3 characters.
@@ -26,15 +26,12 @@ function validateName() {
   let nameInput = document.getElementById('name_input');
   let nameValue = nameInput.value.trim();
   let errorElement = document.getElementById('name_error');
-
   if (isEmpty(nameValue)) return showNameError(nameInput, errorElement, "Please enter a name!");
   if (!onlyLetters(nameValue)) return showNameError(nameInput, errorElement, "Only letters are allowed!");
   if (!hasMinLength(nameValue)) return showNameError(nameInput, errorElement, "The name must be at least 3 letters!");
-
   clearNameError(nameInput, errorElement);
   return true;
 }
-
 
 /**
  * Adds an event listener that runs after the DOM has fully loaded.
@@ -42,6 +39,7 @@ function validateName() {
  * to validate the input in real time.
  */
 document.addEventListener("DOMContentLoaded", () => {
+
   /**
    * Event listener for the name input field.
    * Triggered on every input change.
@@ -50,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
     validateName();
   });
 });
-
 
 /**
  * Checks if a string is empty.
@@ -61,7 +58,6 @@ function isEmpty(value) {
   return value === "";
 }
 
-
 /**
  * Checks if a string contains only letters (including German umlauts and ß).
  * @param {string} value - The string to validate.
@@ -71,7 +67,6 @@ function onlyLetters(value) {
   return /^[a-zA-ZäöüÄÖÜß\s]+$/.test(value);
 }
 
-
 /**
  * Checks if a string has at least 3 characters.
  * @param {string} value - The string to check.
@@ -80,7 +75,6 @@ function onlyLetters(value) {
 function hasMinLength(value) {
   return value.length >= 3;
 }
-
 
 /**
  * Displays an error message and marks the input as invalid.
@@ -95,7 +89,6 @@ function showNameError(input, errorEl, message) {
   return false;
 }
 
-
 /**
  * Clears the error message and removes the error class from the input.
  * @param {HTMLInputElement} input - The input element to clear.
@@ -105,7 +98,6 @@ function clearNameError(input, errorEl) {
   errorEl.textContent = "";
   input.classList.remove("input-error");
 }
-
 
 /**
  * Validates the email input by checking for emptiness, format, and uniqueness.
@@ -121,12 +113,12 @@ function validateEmailSync(email, original = "") {
   return true;
 }
 
-
 /**
 * Waits for the DOM to fully load before adding event listeners.
 * Adds an input event listener to the email input field to validate the email in real-time.
 */
 document.addEventListener("DOMContentLoaded", () => {
+
   /**
    * Input event listener for the email field.
    * Calls the `validateEmailSync` function with the current input value on each keystroke.
@@ -138,7 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
 /**
  * Validates if a given string follows a standard email format.
  * @param {string} email - The email address to validate.
@@ -148,7 +139,6 @@ function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
-
 
 /**
  * Checks whether the email already exists in the contacts data.
@@ -164,7 +154,6 @@ function emailExists(email, original = "") {
   });
 }
 
-
 /**
  * Displays an error message and marks the input as invalid.
  * @param {HTMLElement} input - The input element to mark.
@@ -175,7 +164,6 @@ function show(input, message) {
   showError(input, message);
   return false;
 }
-
 
 /**
  * Validates the phone number input, ensuring it contains only numbers and is not empty.
@@ -206,13 +194,11 @@ function validateTelInput() {
   return true;
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("tel_input").addEventListener("input", () => {
     validateTelInput();
   });
 });
-
 
 /**
  * Displays an error message and highlights the input element with an error class.
@@ -225,7 +211,6 @@ function showError(inputElement, message) {
   inputElement.classList.add("input-error");
 }
 
-
 /**
  * Clears the error message and removes the error highlight from the input element.
  * @param {HTMLElement} inputElement - The input element to clear errors from.
@@ -235,7 +220,6 @@ function clearError(inputElement) {
   errorElement.textContent = "";
   inputElement.classList.remove("input-error");
 }
-
 
 /**
  * Clears all input errors for name, email, and phone number fields.
@@ -247,7 +231,6 @@ function clearAllErrors() {
   document.getElementById('tel_input').classList.remove("input-error");
 }
 
-
 /**
  * Closes the contact detail modal without saving any changes.
  */
@@ -255,7 +238,6 @@ function cancelStatus() {
   document.getElementById('content-card-big').style.display = 'none';
   closeContactBig();
 }
-
 
 /**
  * Resets the input fields to be empty and restores the cancel button's original functionality.
@@ -269,7 +251,6 @@ function deleteData() {
   cancelButton.innerText = "Cancel";
   cancelButton.setAttribute("onclick", "cancelStatus()");
 }
-
 
 /**
  * Displays a success alert and reloads the user list after an action (like saving).
@@ -290,13 +271,11 @@ async function showAlertSuccess(currentLetter, index) {
   openContactBigMiddle(contactsId);
 }
 
-
 /**
  * This function shows the help icon on mobile screens (below 1000px width).
  */
 function showHelpIconMobile() {
   let helpLink = document.getElementById("mobile_help_link");
-
   if (window.innerWidth <= 1000) {
     helpLink.style.display = "flex";
   } else {
@@ -304,9 +283,7 @@ function showHelpIconMobile() {
   }
 }
 
-
 window.onresize = showHelpIconMobile;
-
 
 /**
  * This function logs out the user by removing the 'userLoggedIn' flag from localStorage

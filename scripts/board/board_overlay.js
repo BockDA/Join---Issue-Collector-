@@ -12,7 +12,6 @@ function showCardOverlay(index) {
     showContactsOnOverlay(index);
 }
 
-
 /** 
  * This function is used to check whether the task has subtasks
  * If this is the case, it creates a space on the overlay to indicate the subtasks and also indicates whethere they are done or not
@@ -29,7 +28,6 @@ function showSubtasksOnOverlay(index) {
     }
 }
 
-
 /** 
  * This function is used to check whether the subtask is done
  * If this is the case, the checkbox gets replaced with a check mark
@@ -42,7 +40,6 @@ function updateCheckboxSubtasks(index, i) {
         document.getElementById("check_box_" + index + "_info" + i).classList.add("task_info_done");
     }
 }
-
 
 /** 
  * This function is used to show the contacts (if assigned to the task) on the overlay
@@ -60,7 +57,6 @@ function showContactsOnOverlay(index) {
         }
     }
 }
-
 
 /** 
  * This function is used to close the overlay
@@ -83,14 +79,12 @@ function closeOverlay(specifier) {
     }, 200);
 }
 
-
 /** 
  * This function is used to prevent the overlay from closing when clicking on the overlay card
 */
 function stopPropagation(event) {
     event.stopPropagation();
 }
-
 
 /** 
  * This function is used to change the category of the subtask from "done" to "to do" or vice versa
@@ -112,7 +106,6 @@ async function changeSubtaskCategory(index, i) {
     document.getElementById('subtasks_box_overlay' + index).classList.remove('disable');
 }
 
-
 /** 
  * This function is used to find out the current category of the task
  * @param {number} index - This is the index number of the task in quetion
@@ -132,7 +125,6 @@ async function checkCurrentCategory(div, index, task, newFinishedTasks) {
     }
 }
 
-
 /** 
  * This function is used to save the subtask status on the database
  * @param {number} index - This is the index number of the task in quetion
@@ -149,7 +141,6 @@ async function changeTaskStatus(index, task, status) {
     });
 }
 
-
 /** 
  * This function is used to save the number of finsihed subtask on the database
  * @param {number} index - This is the index number of the task in quetion
@@ -165,7 +156,6 @@ async function changeNumberOfFinishedTasks(index, newFinishedTasks) {
     });
 }
 
-
 /** 
  * This function is used to delete a task
  * @param {number} index - This is the index number of the task in quetion
@@ -176,7 +166,6 @@ async function deleteTask(index) {
     location.reload();
 }
 
-
 /** 
  * This function is used to delete a task on the database
 */
@@ -185,7 +174,6 @@ async function deleteTaskData(path = "") {
         method: "DELETE",
     });
 }
-
 
 /** 
  * This function lets an overlay appear which makes it possible to add a new task on the board
@@ -206,7 +194,6 @@ function showAddTaskOverlay(category) {
     }
 }
 
-
 /** 
  * This function lets an overlay appear which makes it possible to change the Status of a task with touch devices
  * This overlay will appear at the mouse position of the last click
@@ -221,7 +208,6 @@ function openCategoryOverlay(event, index) {
     document.getElementById('change_category_btn_' + index).innerHTML = getDragOptionsMobile(index, x, y);
     adaptCategoryOverlay(index);
 }
-
 
 /** 
  * This function adapts the overlay which shows the category options based on the category of the current element
@@ -251,7 +237,6 @@ function adaptCategoryOverlay(index) {
     }
 }
 
-
 /** 
  * This function adapts the overlay which shows the category options if the current element is assigned in the category "toDo"
  * @param {number} index - This parameter indicates the element that should be moved
@@ -263,7 +248,6 @@ function changeCategoryOverlay(index, firstElementToBeRemoved, secondElementToBe
     document.getElementById(fourthElementToBeRemoved + index).classList.remove('d_none');
 }
 
-
 /** 
  * This function closes the overlay of category options
 */
@@ -274,7 +258,6 @@ function closeCategoryOverlay() {
     document.getElementById('change_category_btn_' + elementToBeDropped).classList.remove('z99');
     document.getElementById('change_category_btn_' + elementToBeDropped).innerHTML = getMobileDragger(elementToBeDropped);
 }
-
 
 /** 
  * This function resets the classes that have been adapted of the overlay of category options based on their status
@@ -301,7 +284,6 @@ function resetAdaptedClassesCategoryOverlay() {
     }
 }
 
-
 /** 
  * This function resets the classes that have been adapted of the overlay of category options
 */
@@ -312,7 +294,6 @@ function resetClassCategoryOverlay(currentCategory, firstToBeRemoved, secondToBe
     document.getElementById(thirdToBeRemoved + elementToBeDropped).classList.add('d_none');
 }
 
-
 /** 
  * This function moves the card to the new category, closes the mobile-overlay of the categorys and shows the new order at the board page
 */
@@ -320,5 +301,3 @@ function moveCardMobileVersion(index, category) {
     closeCategoryOverlay();
     moveCard(index, category);
 }
-
-

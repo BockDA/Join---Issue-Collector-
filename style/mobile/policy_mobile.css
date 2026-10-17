@@ -6,7 +6,6 @@
 
     .privacy_policy_text {
         padding: 50px 30px;
-      
 }
 
 .legal_notice_text{
@@ -22,9 +21,11 @@
     .privacy_policy_text{
         height: 430px;
     }
+
     .legal_notice_text{
         height: 420px;
     }
+
     .help_content{
         height: 420px;
     }

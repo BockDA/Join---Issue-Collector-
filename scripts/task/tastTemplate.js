@@ -19,7 +19,6 @@ function SubtaskListTemplate(subTaskdesignation, index) {
 `;
 }
 
-
 /**
  * Function to write the contacts as HTML
  * @param {Number} index position of the contact in the list (array)
@@ -49,10 +48,8 @@ function taskContacListTemplate(index, name, color, initials, email, check) {
  */
 function taskContacInitialTemplate(color, initials, numbers) {
   return `
-        
            <span class="initial_Letters_Contact" style="background-color:  ${color}; margin-left: -15px;"> 
            ${initials} 
            </span>
-         
            `;
 }

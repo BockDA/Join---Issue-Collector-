@@ -1,11 +1,11 @@
 :root{
 --blue:#0038FF; 
 --blue2:#4589FF;
+--blue3:#177DA8;
 --grau:#A8A8A8;
 --grau1:#D1D1D1;
 --white:#ffff;
 --black:#000000;
-
 }
 
 :root {
@@ -17,4 +17,6 @@
     --button-hover-color: #29ABE2;
     --item-hover-color: #F8F8F8;
     --details-font-color: #007CEE;
+     --details-background-color-Extern: #EBFC88;
+     --details-background-color-Member: #1FD7C1;
 }

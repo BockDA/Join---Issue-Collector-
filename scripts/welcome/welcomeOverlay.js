@@ -2,7 +2,6 @@
  * View template welcome
  * @returns 
  */
-
 function welcomeTemplate() {
     return `
         <div id="dialog_Show" class="dialog-Show">
@@ -11,7 +10,6 @@ function welcomeTemplate() {
             <hr>
             <p>Pick the option that suits your role: create a request as a </p>
             <p>stakeholder or log in if youre part of the team</p>
-
             <div class="welcome-section"></div>
             <div id="" class="welcome-option">
                 <div class="welcome-section-btn">
@@ -31,6 +29,9 @@ function welcomeTemplate() {
                </div>
           </div>
     </div>
-     
+    <footer>
+        <a href="./HTML/guest_policy.html">Privacy Policy</a>
+        <a href="./HTML/guest_legal_notice.html">Legal notice</a>
+    </footer>
     `
 }

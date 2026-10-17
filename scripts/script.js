@@ -17,8 +17,6 @@ let contactColorArray = [
   "#6e6b6dcc", // grey
 ];
 
-
-
 /**
  * Toggles the visibility of the submenu by adding/removing a CSS class.
  */
@@ -31,26 +29,20 @@ function toggleMenu() {
  * Fetches user data from Firebase and processes the name.
  */
 function renderInitials() {
- // const Base_URL = "https://joinstorage-805e6-default-rtdb.europe-west1.firebasedatabase.app/";
- // const Base_URL = "https://dajoin-dcf8a-default-rtdb.europe-west1.firebasedatabase.app/"
   if (typeof Base_URL === 'undefined') {
     console.error('Base_URL is not defined. Ensure scripts/data.js is loaded before scripts/script.js.');
     return;
   }
   renderUserLogo();
-
   fetch(`${Base_URL}/currentUser.json`)
     .then(res => res.json())
     .then(data => {
       const userName = data.name; 
       const initials = getCurrentInitials(userName);
       document.getElementById('render_initials_user_logo').textContent = initials;
-     
     })
     .catch(err => console.error("Error fetching name:", err)); 
 }
-
-
 
 /**
  * This function renders the current user's name in the UI.
@@ -62,7 +54,6 @@ function renderCurrentUser() {
   }
   let userDiv = document.getElementById('current_user');
   let mobileUserDiv = document.getElementById('mobile_current_user');
-
   fetch(`${Base_URL}/currentUser.json`)
     .then(res => res.json())
     .then(data => {
@@ -71,7 +62,6 @@ function renderCurrentUser() {
       userDiv.textContent = userName;
       mobileUserDiv.textContent = userName;
        writeLoginUserLocalStorage(userName,userEmail);
-
     })
     .catch(err => console.error("Error fetching user name:", err));
 }
@@ -86,7 +76,6 @@ function writeLoginUserLocalStorage(userName,userEmail) {
   localStorage.setItem("userEmail", userEmail);
 }
 
-
 /**
  * Extracts and returns the initials from a full name.
  * @param {string} name - The full name of the user.
@@ -98,14 +87,12 @@ function getCurrentInitials(name) {
   return initials;
 }
 
-
 /**
  * Renders the user logo container into the DOM.
  */
 function renderUserLogo() {
   document.getElementById("logo_user_sign_in").innerHTML = addUserLogoTemplate();
 }
-
 
 /**
  * Returns the HTML template string for the user logo container.
@@ -118,7 +105,6 @@ function addUserLogoTemplate() {
     </div>
   `;
 }
-
 
 /**
  * Navigates the user one step back in browser history.

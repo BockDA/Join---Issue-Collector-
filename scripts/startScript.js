@@ -11,4 +11,3 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function loadTemplate() {
     dialogShoW();
 }
-

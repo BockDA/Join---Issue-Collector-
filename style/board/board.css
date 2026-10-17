@@ -1,7 +1,7 @@
 .board_page {
     display: flex;
 }
-    
+
 .board_content {
     width: calc(100vw - 232px);
     max-width: 1682px;
@@ -39,7 +39,6 @@
     padding: 8px 16px;  
     background-color: hsl(0, 0%, 100%);
     display: flex;
-   
 }
 
 .input_board_searching {
@@ -56,7 +55,6 @@
     font-size: 20px;
     font-weight: 400;
     width: 230px;
-   
 }
 
 .inputfield_board::placeholder {
@@ -81,7 +79,6 @@
 .search_icon {
    height: 24px;
    margin: 0px;
-  
 }
 
 .search_icon:hover {
@@ -222,12 +219,12 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .progress_bar {
     background-color: #F4F4F4;
     width: 100px;
     height: 8px;
     border-radius: 8px;
-
 }
 
 .progress {
@@ -335,6 +332,3 @@
 .nav_mobile{
     display: none;
 }
-    
-   
-

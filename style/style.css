@@ -13,11 +13,9 @@ body.welcome-overlay-open {
     font-family: "Inter", sans-serif;
 }
 
-
 .hidden {
 display: none; 
 }
-
 
 .d_none {
     display: none !important;
@@ -73,7 +71,6 @@ display: none;
     width: 148px;
     background-color: rgba(42, 54, 71);
     border-radius: 20px 0 20px 20px;
-
 }
 
 .submenu a:hover{
@@ -95,5 +92,4 @@ display: none;
     .submenu{
         height: 200px;
     }
-
 }

@@ -165,11 +165,7 @@
     }
 
     .container-Email {
-        
-       
-       
     }
-
 }
 
 @media (max-width: 650px) {
@@ -192,7 +188,6 @@
     .first-container {
         top: 150px;
         left: 50px;
-
         span {
             font-size: 20px;
             line-height: 20px;
@@ -289,6 +284,7 @@
             font-size: 30px;
         }
     }
+
     .line-between {
         width: 0;
         height: 60px;
@@ -361,7 +357,6 @@
     .first-container {
         top: 150px;
         left: 50px;
-
         span {
             font-size: 20px;
             line-height: 20px;
@@ -441,7 +436,6 @@
         top: 130px;
         left: 40px;
         align-items: flex-start;
-
         span {
             font-size: 20px;
             line-height: 20px;
@@ -483,7 +477,6 @@
         display: grid;
         /* keep the rows at the top instead of stretching them over the free space */
         align-content: start;
-        /* grid-template-columns: repeat(2, minmax(0, 1fr));*/
         grid-template-areas:
             "todo todo"
             "urgent email"
@@ -553,7 +546,6 @@
     .content-date {
         top: auto;
         width: 100%;
-
         min-width: 0;
         margin: 0;
     }

@@ -11,7 +11,6 @@ let inputsOK = [false, false, false];
 taskContacteArray;
 window.onresize = showHelpIconMobile;
 
-
 /**
  * start function of addtask
  */
@@ -25,14 +24,12 @@ function init() {
   document.getElementById("taskTitle").focus();
 }
 
-
 /**
  * function that displays the plus in subtask
  */
 function startAddTask() {
   document.getElementById("subTaskAddIcon").classList.remove("ele_hide");
 }
-
 
 /**
  * This function logs out the user by removing the 'userLoggedIn' flag from localStorage
@@ -42,7 +39,6 @@ function logout() {
   localStorage.removeItem("userLoggedIn");
   localStorage.setItem("greetingShown", "false");
 }
-
 
 /**
  * This function shows the help icon on mobile screens (below 1000px width).
@@ -55,7 +51,6 @@ function showHelpIconMobile() {
     helpLink.style.display = "none";
   }
 }
-
 
 /**
  * function checks the correct input in the field title
@@ -79,7 +74,6 @@ function requiredInputTitle(template) {
     checkAllRequiredData();
   }
 }
-
 
 /**
  * function checks the correct input in the field date
@@ -117,7 +111,6 @@ function requiredInputDate(template) {
   }
 }
 
-
 /**
  * function checks the correct input in the field Catergory
  */
@@ -136,7 +129,6 @@ function requiredInputCategory() {
   checkAllRequiredData();
 }
 
-
 /**
  * function checks whether the entry in all three mandatory fields is correct
  */
@@ -154,7 +146,6 @@ function checkAllRequiredData() {
   });
 }
 
-
 /**
  * function opens datepicker
  */
@@ -169,7 +160,6 @@ function openDatePicker() {
   dateInput.focus();
 }
 
-
 /**
  * function sets the earliest selectable date in the datepicker to tomorrow,
  * so that past dates can no longer be selected
@@ -183,7 +173,6 @@ function setMinDate() {
   let day = String(tomorrow.getDate()).padStart(2, "0");
   document.getElementById("taskDate").min = `${year}-${month}-${day}`;
 }
-
 
 /**
  * function controls the priority option
@@ -209,7 +198,6 @@ function btnPrioSelect(btnPrio) {
   }
 }
 
-
 /**
  * function controls PrioButton color
  * @param {String} auswahl selected button
@@ -226,7 +214,6 @@ function btnPrioBtnSelect(auswahl, btnColor, id) {
   [id].classList.add("prio_img_with");
 }
 
-
 /**
  * function opens the list of SubTask
  * @param {Boolean} flag status of the list
@@ -236,22 +223,18 @@ function subTaskInputCheck(flag) {
   if (!subTaskInput) {
     return;
   }
-
   const addIcon = document.getElementById("subTaskAddIcon");
   const editIcons = document.getElementById("subTaskEditIocn");
-
   if (flag) {
     subTaskInput.focus();
     addIcon?.classList.add("ele_hide");
     editIcons?.classList.remove("ele_hide");
     return;
   }
-
   const editIconsOpen = editIcons && !editIcons.classList.contains("ele_hide");
   if (editIconsOpen) {
     return;
   }
-
   addIcon?.classList.remove("ele_hide");
   editIcons?.classList.add("ele_hide");
 }
@@ -287,7 +270,6 @@ function taskCreateTask() {
   subTaskListRender();
 }
 
-
 /**
  * function for processing a subtask
  * @param {Nummber} index position in the array
@@ -310,7 +292,6 @@ function deleteSubTask(index) {
   subTaskListRender();
 }
 
-
 /**
  * function to write the subtask into the array
  * @param {String} taskData Contents of the subtask
@@ -318,7 +299,6 @@ function deleteSubTask(index) {
 function taskReadinArrayTask(taskData) {
   taskId = Object.values(taskData).length;
 }
-
 
 /**
  * function writes the contacts into the array for the list
@@ -345,7 +325,6 @@ function taskReadinArrayContact(DataContact) {
   });
 }
 
-
 /**
  * function to open the contact list
  */
@@ -358,7 +337,6 @@ function taskContactListDrobdown() {
     .classList.toggle("icon_List_hide");
 }
 
-
 /**
  *closing the contactsbox
  */
@@ -368,7 +346,6 @@ function taskContactListDrobdownClose() {
     .classList.remove("ele_show");
   document.getElementById("initialeIconList").classList.add("icon_List_hide");
 }
-
 
 /**
  * function to write the contacts into the list
@@ -385,7 +362,6 @@ function taskContactFilterList() {
     }
   });
 }
-
 
 /**
  *function that checks whether a contact has been selected
@@ -407,7 +383,6 @@ function contactCheckOKinArray() {
     });
 }
 
-
 /**
  * function to save the data
  * @param {String} template from which input does the data come
@@ -415,7 +390,6 @@ function contactCheckOKinArray() {
 async function checkInputData(template) {
   pushTaskToServer();
   timePopUp(2000);
-
   inputsOK = [false, false, false];
   if (template == "overlay") {
     setTimeout(() => {
@@ -431,7 +405,6 @@ async function checkInputData(template) {
   addTaskClear();
 }
 
-
 /**
  * function to display the popup data is saved
  * @param {Number} duration time how long the popup is visible
@@ -443,7 +416,6 @@ function timePopUp(duration) {
     notification.style.display = "none";
   }, duration);
 }
-
 
 /**
  * function to collect the data which is then stored in the db
@@ -473,11 +445,9 @@ function collectData() {
   };
 }
 
-
 function loadUserNameLoacalStor() {
   return localStorage.getItem("userNameLogIn");
 }
-
 
 /**
  * function to convert the date
@@ -519,7 +489,6 @@ function statusSave() {
   }
 }
 
-
 /**
  * function to read status todo
  * @returns
@@ -541,7 +510,6 @@ function errorFieldsFocus(tag) {
   document.getElementById(tag).innerHTML = "&nbsp;";
 }
 
-
 /**
  * delete all error fields
  */
@@ -553,7 +521,6 @@ function errorFieldsClear() {
   document.getElementById("taskCatergory").classList.remove("error_Input");
   document.getElementById("error_Field_Catergory").innerHTML = "&nbsp;";
 }
-
 
 /**
  * function to delete the fields in the input mask

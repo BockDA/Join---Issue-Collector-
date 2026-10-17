@@ -13,7 +13,6 @@ function taskAddOverlayInit() {
   setFocusontitle();
 }
 
-
 /**
  *focus on the title after 100ms bas addTaskOverlay
  */

@@ -1,11 +1,9 @@
 @media (max-width: 1180px) {
-
     .addTask_Title_ol {
         font-size: 50px;
         margin-left: 10px;
         margin-right: 10px;
     }
-
 
     h2 {
         font-size: 16px;
@@ -22,7 +20,6 @@
         margin: 0;
     }
 
-
     .container_AddTask_ol {
         height: calc(100% - 200px);
         overflow-y: auto;
@@ -30,32 +27,23 @@
         justify-content: flex-start;
     }
 
-
     .container_AddTask_ol::-webkit-scrollbar {
         display: none;
     }
-
 
     .section_left_ol {
         margin-left: 10px;
         margin-right: 10px;
     }
 
-
-
-
     .section_right_ol {
         margin-left: 10px;
         margin-right: 10px;
     }
 
-
     .container_AddTask_ol {
         flex-direction: column;
     }
-
-
-
 
     .required_text_ol {
         display: none;
@@ -65,16 +53,13 @@
         display: flex;
     }
 
-
     .hr_ol {
         display: none;
     }
 
-
     .button_bottom_task_ol {
         display: none;
     }
-
 
     .button_bottom_task_mobile_ol {
         display: flex;
@@ -82,9 +67,7 @@
         margin-right: 10px;
     }
 
-
     .section_right_ol {
         margin-bottom: 80px;
     }
-
 }
